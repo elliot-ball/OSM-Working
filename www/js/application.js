@@ -2588,8 +2588,16 @@ function ReturnBlob( data ){
 		$('#login').hide();
 		$('#main').hide();
 		$('#inputServerAddress').val(window.localStorage.getItem("serverAddress"));
-
 	});
+
+	// open login page
+	$('#btnViewLogin').hammer( HammerOptions ).on("tap", function ( event ){
+		// temp comment // there must be a better way to do this
+		$('#settings').show();
+		$('#login').show();
+		$('#main').hide();
+	});
+
 	$('#btnSaveServerAddress').hammer( HammerOptions ).on("tap", function ( event ){
 		if( $('#inputServerAddress').val() == '')
 			// AddMessage("Username or password is blank", "flag");
