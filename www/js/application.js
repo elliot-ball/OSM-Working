@@ -2571,13 +2571,23 @@ function ReturnBlob( data ){
 			}
 		}
 	});
+
+	// opens settings page
+	$('#btnSettings').hammer( HammerOptions ).on("tap", function ( event ){
+		// temp comment // there must be a better way to do this
+		$('#settings').show();
+		$('#login').hide();
+		$('#main').hide();
+	});
 	$('#btnSaveServerAddress').hammer( HammerOptions ).on("tap", function ( event ){
-		if( $('#ServerAddress').val() == '')
+		if( $('#inputServerAddress').val() == '')
 			// AddMessage("Username or password is blank", "flag");
 			AddMessage("Server Address is blank", "long", "top");
 		else{
 			// Spinner.show();
+			window.localStorage.setItem("serverAddress", $('#inputServerAddress').val());
 			AddMessage("Server added", "long", "top");
+			AddMessage("server ip set to = " + window.localStorage.getItem("serverAddress"), "long", "top");
 			// if( GetConnection() == true){
 			// 	var u = $('#inputUsername').val(), p = $('#inputPassword').val();
 			// 	setTimeout(function() {
