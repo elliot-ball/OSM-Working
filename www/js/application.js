@@ -79,7 +79,7 @@ try{
 			AddMessage("Please enter a server address in settings", "long", "top");
 		}
 		else{
-			return window.localStorage.getItem("serverAddress");
+			return address;
 		}
 	}
 	var URL = getServerAddress(), ServerURL = URL+"/mobile.asmx";
@@ -149,6 +149,7 @@ try{
 	//Device Groups
 	var OnMapDevices = new Array(), OffMapDevices = new Array();
 
+	// Show / Hide functions
 	var Shadow = {
 		show: function(e){
 			if( $('shadow').attr("novis") == ""){
@@ -166,6 +167,15 @@ try{
 		},
 		hide: function(e){
 			$('#login').attr("novis", "");
+		}
+	}
+
+	var SettingsPage = {
+		show: function(e){
+			$('#settings').removeAttr("novis");
+		},
+		hide: function(e){
+			$('#settings').attr("novis", "");
 		}
 	}
 
@@ -272,6 +282,7 @@ try{
 // AjaxUserLogin( "craig","password");
 
 	function AjaxUserLogin( login, pass ){
+		console.log("server address = " + URL);
 		document.activeElement.blur();
 		$(document).blur();
 		$.ajax({
@@ -2089,7 +2100,7 @@ function ReturnBlob( data ){
 	var PhoneGap = {
 		ready: function( event ){
 			navigator.splashscreen.show();
-
+			console.log("PG read called conn online");
 			Connection.online = true;
 			Connection.status = "online";
 
@@ -2183,7 +2194,8 @@ function ReturnBlob( data ){
 	}
 
 	function GetConnection(){
-		return Connection.online;
+		return true;
+		// return Connection.online;
 	}
 
 	function ChangeInformation( result, attribute ){
@@ -2579,6 +2591,8 @@ function ReturnBlob( data ){
 			}else{
 				Spinner.hide();
 				// AddMessage("Connection is offline", "flag");
+				console.log("server address = " + URL);
+
 				AddMessage("Connection is offline", "long", "top");
 			}
 		}
