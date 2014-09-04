@@ -179,6 +179,17 @@ try{
 		}
 	}
 
+	var MainPage = {
+		show: function(e){
+			$('#main').removeAttr("novis");
+		},
+		hide: function(e){
+			$('#main').attr("novis", "");
+		}
+	}
+
+	
+
 	var Spinner = {
 		show: function (e){
 			if( !ThisDevice.Browser ){
@@ -291,7 +302,7 @@ try{
 			contentType: "application/json; charset=utf-8",
 			async: true,
 			data: JSON.stringify({
-				login: login,
+				user: login,
 				pass: pass
 			}),
 			dataType: 'json',
@@ -2537,6 +2548,7 @@ function ReturnBlob( data ){
 
 	// Bind phoengap events to the document.
 	document.addEventListener("deviceready", PhoneGap.ready, false);
+	// $(document).ready(PhoneGap.ready);
 	document.addEventListener("backbutton", PhoneGap.back, false);
 	document.addEventListener("pause", PhoneGap.pause, false);
 	document.addEventListener("resume", PhoneGap.resume, false);
@@ -2601,18 +2613,20 @@ function ReturnBlob( data ){
 	// opens settings page
 	$('#btnSettings').hammer( HammerOptions ).on("tap", function ( event ){
 		// temp comment // there must be a better way to do this
-		$('#settings').show();
-		$('#login').hide();
-		$('#main').hide();
+		SettingsPage.show();
+		MainPage.hide();
+		LoginPage.hide();
+		// $('#settings').show();
+		// $('#login').hide();
+		// $('#main').hide();
 		$('#inputServerAddress').val(window.localStorage.getItem("serverAddress"));
 	});
 
 	// open login page
 	$('#btnViewLogin').hammer( HammerOptions ).on("tap", function ( event ){
 		// temp comment // there must be a better way to do this
-		$('#settings').show();
-		$('#login').show();
-		$('#main').hide();
+		SettingsPage.hide();
+		LoginPage.show();
 	});
 
 	$('#btnSaveServerAddress').hammer( HammerOptions ).on("tap", function ( event ){
