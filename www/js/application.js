@@ -2578,6 +2578,8 @@ function ReturnBlob( data ){
 		$('#settings').show();
 		$('#login').hide();
 		$('#main').hide();
+		AddMessage("server ip set to = " + window.localStorage.getItem("serverAddress"), "long", "top");
+		
 	});
 	$('#btnSaveServerAddress').hammer( HammerOptions ).on("tap", function ( event ){
 		if( $('#inputServerAddress').val() == '')
