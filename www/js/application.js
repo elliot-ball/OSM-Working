@@ -2109,8 +2109,8 @@ function ReturnBlob( data ){
 			$('#deleteoptions').prev().removeAttr("novis");
 
 			if( LAZY ){
-				$('#inputUsername').val( "craig" );
-				$('#inputPassword').val( "password" );
+				$('#inputUsername').val( "admin" );
+				$('#inputPassword').val( "admin" );
 			}
 			ReadFile.settings();
 		},
