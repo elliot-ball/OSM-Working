@@ -73,8 +73,17 @@ try{
 	//Filesystem request size; 0 by default
 	var MAXZOOM = 2.0, MINZOOM = 1.0, MAPWIDTH = 1000, MAPHEIGHT = 750, SAFEDEVICES = 30, RequestSize;
 	//Server URL's
-	var URL = "http://192.168.100.109:1234", ServerURL = URL+"/mobile.asmx";
-
+	function getServerAddress(){
+		var address = window.localStorage.getItem("serverAddress");
+		if( address == ''){
+			AddMessage("Please enter a server address in settings", "long", "top");
+		}
+		else{
+			return window.localStorage.getItem("serverAddress");
+		}
+	}
+	var URL = getServerAddress(), ServerURL = URL+"/mobile.asmx";
+	// http://192.168.100.109:1234
 
 
 	//Set up the storage system
@@ -2578,8 +2587,8 @@ function ReturnBlob( data ){
 		$('#settings').show();
 		$('#login').hide();
 		$('#main').hide();
-		AddMessage("server ip set to = " + window.localStorage.getItem("serverAddress"), "long", "top");
-		
+		$('#inputServerAddress').val(window.localStorage.getItem("serverAddress"));
+
 	});
 	$('#btnSaveServerAddress').hammer( HammerOptions ).on("tap", function ( event ){
 		if( $('#inputServerAddress').val() == '')
