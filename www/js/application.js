@@ -2303,13 +2303,16 @@ function ReturnBlob( data ){
 	}
 
 	function AddMessage( msg, duration, position){
-		window.plugins.toast.show( msg, duration, position, function(a){
-			console.log("Toast success " + a);
-		}, function(a){
-			alert("Toast Error" + a);
-		})
-
-
+		// don't use the toast plugin when browser testing is enabled
+		if( ThisDevice.Browser == false ){
+			window.plugins.toast.show( msg, duration, position, function(a){
+			}, function(a){
+				alert("Toast Error" + a);
+			})
+		}
+		else{
+			console.log(msg);
+		}
 	}
 
 	function ChangeGroup( num ){
