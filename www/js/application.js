@@ -19,7 +19,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	ThisDevice.Browser = true;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -353,10 +353,10 @@ var Ajax ={
 	// returns all groups that the user group ID has access to based off the groupPath
 	// writes the avalible groups to the users Device.
 		groups: function( event ){
-			AddMessage("ServerUrl = " + ServerUrl ,"long", "top");
+			AddMessage("ServerUrl = " + window.localStorage.getItem("serverAddress") + "/mobile.asmx" ,"long", "top");
 			$.ajax({
 				type: "POST",
-				url: ServerURL + "/GetAvalibleGroups",
+				url: window.localStorage.getItem("serverAddress") + "/mobile.asmx" + "/GetAvalibleGroups",
 				contentType: "application/json; charset=utf-8",
 				async: true,
 				data: JSON.stringify({
@@ -2381,6 +2381,7 @@ function ReturnBlob( data ){
 			$('#inputselectGroup').val( CurrentGroup.ID_Group+" - "+CurrentGroup.Name );
 
 			Spinner.show();
+			console.log("change group hit!");
 			ReadFile.data();
 
 		}catch(e){
