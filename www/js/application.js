@@ -19,7 +19,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	ThisDevice.Browser = true;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -308,14 +308,17 @@ try{
 			dataType: 'json',
 			success: function( d, status, xhr ){
 				console.log( d.d );
+				console.log("1");
 
 				User = JSON.parse(d.d);
+				console.log("2");
 
 				if(User != 0){
 					Settings.changes = 0;
 					Settings.logged = true;
 					Settings.logTime = GetToday();
 					Settings.user = User;
+				console.log("3");
 
 					AddMessage("Login successful", "short", "top");
 					setTimeout(function() {
@@ -695,6 +698,7 @@ function ReturnBlob( data ){
 
 								setTimeout(function() {
 									LoginPage.hide();
+									SettingsPage.hide();
 									Spinner.hide();
 								}, 50);
 							}
@@ -836,6 +840,7 @@ function ReturnBlob( data ){
 
 									setTimeout(function() {
 										LoginPage.hide();
+										SettingsPage.hide();
 										Spinner.hide();
 										$('#btnTogPanel').trigger("tap");
 									}, 50);
@@ -2110,8 +2115,9 @@ function ReturnBlob( data ){
 
 	var PhoneGap = {
 		ready: function( event ){
-			navigator.splashscreen.show();
-			console.log("PG read called conn online");
+			if( ThisDevice.Browser == false){
+				navigator.splashscreen.show();
+			}
 			Connection.online = true;
 			Connection.status = "online";
 
