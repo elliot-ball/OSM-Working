@@ -19,7 +19,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	ThisDevice.Browser = true;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -82,7 +82,7 @@ try{
 			return address;
 		}
 	}
-	var URL = getServerAddress(), ServerURL = URL+"/mobile.asmx";
+	var URL = window.localStorage.getItem("serverAddress"), ServerURL = URL+"/mobile.asmx";
 	// http://192.168.100.109:1234
 
 
@@ -353,6 +353,7 @@ var Ajax ={
 	// returns all groups that the user group ID has access to based off the groupPath
 	// writes the avalible groups to the users Device.
 		groups: function( event ){
+			AddMessage("ServerUrl = " + ServerUrl ,"long", "top");
 			$.ajax({
 				type: "POST",
 				url: ServerURL + "/GetAvalibleGroups",
@@ -844,7 +845,8 @@ function ReturnBlob( data ){
 										Spinner.hide();
 										$('#btnTogPanel').trigger("tap");
 									}, 50);
-								}else{
+								}
+								else{
 									console.log("No Groups");
 								}
 							};

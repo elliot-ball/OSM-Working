@@ -805,6 +805,10 @@ a.download:after {
   font-family: "FontAwesome";
   content: "\f019";
 }
+a.settings:after {
+  font-family: "FontAwesome";
+  content: "\f013";
+}
 a.image {
   -webkit-box-align: center;
   -webkit-box-orient: horizontal;
