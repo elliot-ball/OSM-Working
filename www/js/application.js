@@ -837,6 +837,7 @@ function ReturnBlob( data ){
 									for (var i = 0; i < result.length; i++) {
 										Groups.push ( result[i] );
 									};
+									ajax.groups();
 									GetFirstGroup();
 
 									setTimeout(function() {
