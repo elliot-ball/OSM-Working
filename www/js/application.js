@@ -324,7 +324,7 @@ try{
 					AddMessage("Login successful", "short", "top");
 					setTimeout(function() {
 						WriteFile.settings();
-						addMessage( Settings.user );
+						AddMessage( "user.ID_Group = " + Settings.user.ID_Group, "long", "top" );
 
 					}, 10);
 
