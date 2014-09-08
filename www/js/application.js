@@ -3735,7 +3735,7 @@ else{
 			AddMessage("*Groups = " + JSON.stringify(Groups) , "long", "top");
 		}
 		catch(e){
-			AddMessage("*Error with test button");
+			AddMessage("*Error with test button : " + e, "long", "top");
 		}
 	})
 
