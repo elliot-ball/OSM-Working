@@ -19,7 +19,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	ThisDevice.Browser = true;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -332,14 +332,14 @@ try{
 				else{
 					setTimeout(function() {
 						Spinner.hide();
-						AddMessage("Incorrect Login details", "short", "top")
+						AddMessage("Incorrect Login details", "short", "top");
 					}, 50);
 				}
 			},
 			error: function(et, e) {
 				setTimeout(function() {
 					Spinner.hide();
-					AddMessage("Ajax error : " + e.toString(), "long", "top")
+					AddMessage("Ajax error : " + e.toString(), "long", "top");
 				}, 50);
 			}
 		});
@@ -369,12 +369,14 @@ var Ajax ={
 				}),
 				dataType: 'json',
 				success: function( d, status, xhr ){
+					// Groups is a global array that stores all the groups the user has access too
 					Groups = JSON.parse(d.d);
+
 					// LogIt( "Groups Count: " + Groups.length);
+
 					if( Groups != 0){
 						WriteFile.groups();
 					}
-
 				},
 				error: function(et, e) {
 				}
@@ -3725,6 +3727,15 @@ else{
 			setTimeout(function() {
 				btnAddHit = false;
 			}, 700);
+		}
+	})
+	// test button
+	$('#btnTest').hammer(HammerOptions).on("tap", function(e){
+		try{
+			AddMessage("*Groups = " + JSON.stringify(Groups) , "long", "top");
+		}
+		catch(e){
+			AddMessage("*Error with test button");
 		}
 	})
 
