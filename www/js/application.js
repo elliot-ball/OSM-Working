@@ -82,7 +82,7 @@ try{
 			return address;
 		}
 	}
-	var URL = window.localStorage.getItem("serverAddress"), ServerURL = URL+"/mobile.asmx";
+	var URL = window.localStorage.getItem("serverAddress"), ServerURL = URL + "/mobile.asmx";
 	// http://192.168.100.109:1234
 
 
@@ -90,7 +90,8 @@ try{
 	if( ThisDevice.Browser == true ){
 		window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 		RequestSize = 0;
-	}else{
+	}
+	else{
 		RequestSize = 0;
 	}
 //Capitalise strings
@@ -232,7 +233,8 @@ try{
 					i.css({
 						"-webkit-transform": "matrix(1,0,0,1,"+1+","+y+")"
 					});
-				}else{
+				}
+				else{
 					var r = i.parent().height() / h, nh = h*r, nw = w*r;
 
 					if( nw > i.parent().width() ){
@@ -272,7 +274,8 @@ try{
 					img.css({
 						"-webkit-transform": "matrix(1,0,0,1,"+1+","+y+")"
 					});
-				}else{
+				}
+				else{
 					var r = img.parent().height() / h, nh = h*r, nw = w*r;
 					if( nw > img.parent().width() ){
 						r = img.parent().width() / nw, nw = nw*r, nh = nh*r;
@@ -308,24 +311,22 @@ try{
 			dataType: 'json',
 			success: function( d, status, xhr ){
 				console.log( d.d );
-				console.log("1");
 
 				User = JSON.parse(d.d);
-				console.log("2");
 
 				if(User != 0){
 					Settings.changes = 0;
 					Settings.logged = true;
 					Settings.logTime = GetToday();
 					Settings.user = User;
-				console.log("3");
 
 					AddMessage("Login successful", "short", "top");
 					setTimeout(function() {
 						WriteFile.settings();
 					}, 10);
 
-				}else{
+				}
+				else{
 					setTimeout(function() {
 						Spinner.hide();
 						AddMessage("Incorrect Login details", "short", "top")
@@ -344,7 +345,8 @@ try{
 function RequestLocalSystem(){
 	if( ThisDevice.Browser == true ){
 		return window.TEMPORARY;
-	}else{
+	}
+	else{
 		return LocalFileSystem.PERSISTENT;
 	}
 }
@@ -389,7 +391,8 @@ var Ajax ={
 				success: function( d, status, xhr ){
 					if( d.d == 0 ){
 						Maps.length = 0;
-					}else{
+					}
+					else{
 						Maps = JSON.parse(d.d);
 					}
 
@@ -416,7 +419,8 @@ var Ajax ={
 				success: function( d, status, xhr ){
 					if( d.d == 0){
 						Devices.length = 0;
-					}else{
+					}
+					else{
 						Devices = JSON.parse(d.d)
 					}
 					Settings.lastUpdate = GetToday();
@@ -624,7 +628,8 @@ var Ajax ={
 										}catch(e){
 											alert("Upload error: " + e.toString());
 										}
-									}else{
+									}
+									else{
 										// AddMessage("Unable to uplaod device image", "error-bad");
 										AddMessage("Unable to uplaod device image", "long", "top");
 									}
@@ -667,7 +672,6 @@ function ReturnBlob( data ){
 				fs.root.getDirectory("OSMobile", {create:true}, function ( de ){
 					de.getFile( fileName, {create: true}, function ( fe ){
 						fe.createWriter( function ( fw ) {
-
 							fw.onwritestart = function( event){
 								console.log("Writing File: " + fileName);
 							}
@@ -784,16 +788,19 @@ function ReturnBlob( data ){
 
 									if( Settings.logged == true){
 										console.log( Settings );
+										addMessage( Settings.user );
 										$('#inputPrevUsername').val( Settings.user.Name );
 										$('#inputLogTime').val( Settings.logTime );
-									}else{
+									}
+									else{
 										console.log("Not logged in");
 									}
 									//Start App
 									if( AppStarted == false){
 										StartApp();
 									}
-								}else{
+								}
+								else{
 									$('#inputPrevUsername').val( "No previous user" );
 									$('#inputLogTime').val( "  " );
 
@@ -814,7 +821,8 @@ function ReturnBlob( data ){
 							if( AppStarted == false){
 								StartApp();
 							}
-						}else{
+						}
+						else{
 							File.error(e);
 						}
 					});
@@ -861,7 +869,8 @@ function ReturnBlob( data ){
 								Spinner.hide();
 								AddMessage("Connection offline, Unable to download groups", "long", "bottom");
 								// alert("Unable to download groups. Please check your connection");
-						}else{
+						}
+						else{
 							File.error(e);
 						}
 					});
@@ -912,7 +921,8 @@ function ReturnBlob( data ){
 						if( e.code == 1){
 							if( GetConnection() == true ){
 								Ajax.maps()
-;							}else{
+;							}
+else{
 								Spinner.hide();
 								DrawAvalibleMaps();
 								DrawTotalDevices();
@@ -923,7 +933,8 @@ function ReturnBlob( data ){
 								AddMessage("Connection offline, Unable to download data", "long", "bottom");
 								// alert("Unable to download Data. Please check your connection");
 							}
-						}else{
+						}
+						else{
 							File.error(e);
 						}
 					});
@@ -943,7 +954,8 @@ function ReturnBlob( data ){
 										var result = JSON.parse(this.result);
 										alert( result.length );
 										Changes = result;
-									}else{
+									}
+									else{
 										alert("No Changes");
 									}
 								}
@@ -954,7 +966,8 @@ function ReturnBlob( data ){
 							if( e.code == 1){
 								Spinner.hide();
 								console.log("No chanegs file found");
-							}else{
+							}
+							else{
 								File.error(e);
 							}
 						});
@@ -976,12 +989,14 @@ function ReturnBlob( data ){
 						if( e.code == 1){
 							if( GetConnection() == true ){
 								Download.map( map, fullpath);
-							}else{
+							}
+							else{
 								ReadFile.forceMissingMap();
 								Spinner.hide();
 								AddMessage("Connection offline, Unable to download map", "long", "bottom");
 							}
-						}else{
+						}
+						else{
 							File.error(e);
 						}
 					});
@@ -1004,11 +1019,13 @@ function ReturnBlob( data ){
 						if( e.code == 1){
 							if( GetConnection() == true ){
 								Download.devimg( devimg, fullpath);
-							}else{
+							}
+							else{
 								Spinner.hide();
 								alert("Unable to download device image. Please check your connection");
 							}
-						}else{
+						}
+						else{
 							File.error(e);
 						}
 					});
@@ -1233,11 +1250,14 @@ function ReturnBlob( data ){
 				var rot = "";
 				if( y < 100 ){
 					rot = "1,0,0,-1"
-				}else if( x < 100){
+				}
+				else if( x < 100){
 					rot ="0,-1,-1,0"
-				}else if(  x > MAPWIDTH - 100){
+				}
+				else if(  x > MAPWIDTH - 100){
 					rot = "0,-1,1,0"
-				}else{
+				}
+				else{
 					rot ="1,0,0,1";
 				}
 
@@ -1362,7 +1382,8 @@ function ReturnBlob( data ){
 			if( $('#GroupsMasterGroup').children().length == 0){
 				console.log("Create Root");
 				GroupTree.RootGroup();
-			}else{
+			}
+			else{
 				var exists = false; var element = null;
 				$.each($('#GroupsMasterGroup>panel.group').children(), function(index, item){
 					if( $(item).attr("child") == id ){
@@ -1373,7 +1394,8 @@ function ReturnBlob( data ){
 				if( exists == false ){
 					console.log("Create SubGroup");
 					GroupTree.CreateSubGroup(id);
-				}else{
+				}
+				else{
 					setTimeout(function() {
 						$('#GroupsMasterGroup>panel.group').children('[open]').removeAttr("open").attr("left", "");
 						element.removeAttr("right").attr("open", "");
@@ -1533,18 +1555,21 @@ function ReturnBlob( data ){
 					Spinner.hide();
 					Spinner.show();
 					OnMapFunctions.RootGroup();
-				}else{
+				}
+				else{
 					OnMapFunctions.current++;
 					if( OnMapFunctions.current < (OnMapDevices.length)){
 						Spinner.hide();
 						Spinner.show();
 						OnMapFunctions.NextGroup();
 						$('a.button#btnforwards_On').prev('indicator').html( OffMapFunctions.current );
-					}else{
+					}
+					else{
 						OnMapFunctions.current--;
 					}
 				}
-			}else{
+			}
+			else{
 				OnMapFunctions.empty();
 			}
 		},
@@ -1552,7 +1577,8 @@ function ReturnBlob( data ){
 			OnMapFunctions.curernt--;
 			if( OnMapFunctions.current < 0){
 				OnMapFunctions.current = 0;
-			}else{
+			}
+			else{
 				Spinner.hide();
 				Spinner.show();
 				OnMapFunctions.PrevGroup();
@@ -1644,7 +1670,8 @@ function ReturnBlob( data ){
 					Spinner.hide();
 					Spinner.show();
 					OffMapFunctions.RootGroup();
-				}else{
+				}
+				else{
 					OffMapFunctions.current++;
 					if( OffMapFunctions.current < (OffMapDevices.length)){
 						Spinner.hide();
@@ -1652,11 +1679,13 @@ function ReturnBlob( data ){
 						OffMapFunctions.NextGroup();
 						$('a.button#btnforwards_Off').prev('indicator').html( OffMapFunctions.current );
 
-					}else{
+					}
+					else{
 						OffMapFunctions.current--;
 					}
 				}
-			}else{
+			}
+			else{
 				OffMapFunctions.empty();
 			}
 		},
@@ -1664,7 +1693,8 @@ function ReturnBlob( data ){
 			OffMapFunctions.current--;
 			if( OffMapFunctions.current < 0 ){
 				OffMapFunctions.current = 0;
-			}else{
+			}
+			else{
 				Spinner.hide();
 				Spinner.show();
 				OffMapFunctions.PrevGroup();
@@ -1715,7 +1745,7 @@ function ReturnBlob( data ){
 
 	function DrawAvalibleMaps(){
 		$('#infoMapNum').val("Number of Maps : " + Maps.length );
-
+		console.log("Number of Maps : " + Maps.length);
 		if( Maps.length > 0 ){
 			var MapsClone = Maps.slice(0);
 			MapsClone = SplitIntoGroups( MapsClone );
@@ -1746,7 +1776,8 @@ function ReturnBlob( data ){
 				$('#MapsMasterGroup>panel.group>panel:first-child').attr("open", "").removeAttr("left").removeAttr("right").show();
 			}, 1);
 			s.length = 0;
-		}else{
+		}
+		else{
 			var s = "";
 			s += "<row class='item none' id='none'><span><name>No Maps</name><serial>This group contains no maps</serial></span></row>";
 			console.log("Drawing");
@@ -1813,7 +1844,8 @@ function ReturnBlob( data ){
 				}, 1);
 				s.length = 0;
 			Spinner.hide();
-		}else{
+		}
+		else{
 			var s = "";
 			s += "<row class='item none' id='none'><span><name>No Devices</name><serial>This map has no devices</serial></span></row>";
 			console.log("Drawing");
@@ -1860,7 +1892,8 @@ function ReturnBlob( data ){
 				s.length = 0;
 
 			Spinner.hide();
-		}else{
+		}
+		else{
 			var s = "";
 			s += "<row class='item none' id='none'><span><name>No Devices</name><serial>This group has no missing devices</serial></span></row>";
 			console.log("Drawing");
@@ -1917,7 +1950,8 @@ function ReturnBlob( data ){
 				$('#DevicesonMapGroup>panel.group>panel:first-child').attr("open", "").removeAttr("left").removeAttr("right");
 			}, 1);
 			s.length = 0;
-		}else{
+		}
+		else{
 			var s = "";
 			s += "<row class='item none' id='none'><span><name>No Devices</name><serial>This map has no devices</serial></span></row>";
 			console.log("Drawing");
@@ -1955,7 +1989,8 @@ function ReturnBlob( data ){
 				$('#MissingDevicesGroups>panel.group>panel:first-child').attr("open", "").removeAttr("left").removeAttr("right");
 			}, 1);
 			s.length = 0;
-		}else{
+		}
+		else{
 			var s = "";
 			s += "<row class='item none' id='none'><span><name>No Devices</name><serial>This group has no missing devices</serial></span></row>";
 			console.log("Drawing");
@@ -2140,7 +2175,8 @@ function ReturnBlob( data ){
 
 			if( ThisDevice.Browser == true){
 				Connection.type = "WiFi";
-			}else{
+			}
+			else{
 				Connection.type = navigator.connection.type;
 			}
 
@@ -2296,11 +2332,13 @@ function ReturnBlob( data ){
 					if( $('messageHolder').children().length > 0){
 						console.log("Removing Message");
 						$('messageHolder').children().first().remove();
-					}else{
+					}
+					else{
 						RemoveManager( false );
 					}
 				}, timer);
-		}else{
+		}
+		else{
 			console.log("Stopping message removeal");
 			clearInterval( RemoveMessages );
 			RemoveMessages = null;
@@ -2323,11 +2361,13 @@ function ReturnBlob( data ){
 							RemoveManager( true );
 						}
 
-					}else{
+					}
+					else{
 						AddManager(false);
 					}
 				}, 210);
-		}else{
+		}
+		else{
 			console.log("Stopping message addition");
 			clearInterval( AddMessages );
 			AddMessages = null;
@@ -2373,16 +2413,15 @@ function ReturnBlob( data ){
 
 			// DrawTitle()
 			$('li.button.remove').removeClass("remove");
-			$('#btnBinSelected').html(Delete.length+" selected");
+			$('#btnBinSelected').html(Delete.length + " selected");
 			$('#deleteoptions').attr("novis", "");
 			$('#deleteoptions').prev().removeAttr("novis");
 			CurrentGroup = Groups[ num ];
 			console.log( CurrentGroup);
 
-			$('#inputselectGroup').val( CurrentGroup.ID_Group+" - "+CurrentGroup.Name );
+			$('#inputselectGroup').val( CurrentGroup.ID_Group + " - " + CurrentGroup.Name );
 
 			Spinner.show();
-			console.log("change group hit!");
 			ReadFile.data();
 
 		}catch(e){
@@ -2410,17 +2449,20 @@ function ReturnBlob( data ){
 
 		if( CurrentDevice.Location == "" || CurrentDevice.Location == null){
 			$('#infoDeviceLocation').val( "No Location" );
-		}else{
+		}
+		else{
 			$('#infoDeviceLocation').val( CurrentDevice.Location );
 		}
 		if( CurrentDevice.SerialNumber == '' || CurrentDevice.SerialNumber == null){
 			$('#infoDeviceSerialNumber').val( "No Serial" );
-		}else{
+		}
+		else{
 			$('#infoDeviceSerialNumber').val( CurrentDevice.SerialNumber);
 		}
 		if( CurrentDevice.AssetNumber == "" || CurrentDevice.AssetNumber == null){
 			$('#infoDeviceAssetNumber').val("No Asset Number");
-		}else{
+		}
+		else{
 		$('#infoDeviceAssetNumber').val( CurrentDevice.AssetNumber );
 
 		}
@@ -2429,7 +2471,8 @@ function ReturnBlob( data ){
 			//Remember to update devices on the map view
 			$('#infoDeviceLock').prop("checked", 1);
 
-		}else{
+		}
+		else{
 			$('#infoDeviceLock').prop("checked", 0);
 		}
 	}
@@ -2451,7 +2494,8 @@ function ReturnBlob( data ){
 				Changes.push({"ID":ID, "Tasks":[]});
 				Changes[Changes.length-1].Tasks.push( task );
 			}
-		}else{
+		}
+		else{
 			Changes.push({"ID":ID, "Tasks":[]});
 			Changes[Changes.length-1].Tasks.push( task );
 		}
@@ -2472,7 +2516,8 @@ function ReturnBlob( data ){
 				Changes.push({"ID":ID, "Tasks":[]});
 				Changes[Changes.length-1].Tasks.push( task );
 			}
-		}else{
+		}
+		else{
 			Changes.push({"ID":ID, "Tasks":[]});
 			Changes[Changes.length-1].Tasks.push( task );
 		}
@@ -2493,7 +2538,8 @@ function ReturnBlob( data ){
 				Changes.push({"ID":ID, "Tasks":[]});
 				Changes[Changes.length-1].Tasks.push( task );
 			}
-		}else{
+		}
+		else{
 			Changes.push({"ID":ID, "Tasks":[]});
 			Changes[Changes.length-1].Tasks.push( task );
 		}
@@ -2551,14 +2597,14 @@ function ReturnBlob( data ){
 		AppStarted = true;
 		 if( ThisDevice.Browser == true){
 			//Hiding SplashScreen
-		}else{
+		}
+		else{
 			navigator.splashscreen.hide();
 		}
 	}
 
 	// Bind phoengap events to the document.
 	document.addEventListener("deviceready", PhoneGap.ready, false);
-	// $(document).ready(PhoneGap.ready);
 	document.addEventListener("backbutton", PhoneGap.back, false);
 	document.addEventListener("pause", PhoneGap.pause, false);
 	document.addEventListener("resume", PhoneGap.resume, false);
@@ -2610,7 +2656,8 @@ function ReturnBlob( data ){
 					AjaxUserLogin( u, p);
 
 				}, 125);
-			}else{
+			}
+			else{
 				Spinner.hide();
 				// AddMessage("Connection is offline", "flag");
 				console.log("server address = " + URL);
@@ -2654,7 +2701,8 @@ function ReturnBlob( data ){
 			// 		AjaxUserLogin( u, p);
 
 			// 	}, 125);
-			// }else{
+			// }
+			// else{
 			// 	Spinner.hide();
 			// 	// AddMessage("Connection is offline", "flag");
 			// 	AddMessage("Connection is offline", "long", "top");
@@ -2675,12 +2723,14 @@ function ReturnBlob( data ){
 				LoginPage.hide();
 
 				Ajax.groups();
-			}else{
+			}
+			else{
 				LoginPage.hide();
 				// File.read.groups();
 				ReadFile.groups();
 			}
-		}else{
+		}
+		else{
 			// AddMessage("No previous user","flag");
 			AddMessage("No previous user","short", "center");
 		}
@@ -2717,7 +2767,8 @@ function ReturnBlob( data ){
 
 
 			Ajax.maps();
-		}else{
+		}
+		else{
 			Spinner.hide();
 
 			// AddMessage("Device offline. Unable to download data", "error-bad")
@@ -2778,7 +2829,8 @@ function ReturnBlob( data ){
 			$('#deleteoptions').prev().removeAttr("novis");
 			$('#btnBinSelected').html(" 0 ");
 			Delete.length = 0;
-		}else{
+		}
+		else{
 			AddMessage("Nothing to delete", "short", "top")
 		}
 	});
@@ -2801,7 +2853,8 @@ function ReturnBlob( data ){
 					Ajax.changes();
 				}, 100);
 
-			}else{
+			}
+			else{
 				// AddMessage("Saving changes to device", "long", "top");
 				Spinner.show();
 
@@ -2839,7 +2892,8 @@ function ReturnBlob( data ){
 											}, 100);
 
 
-										}else{
+										}
+										else{
 											alert("No Changes");
 										}
 									}
@@ -2861,7 +2915,8 @@ function ReturnBlob( data ){
 										AddMessage("Changes saved local", "short", "top");
 
 									}, 100);
-								}else{
+								}
+								else{
 									File.error(e);
 								}
 							});
@@ -2871,7 +2926,8 @@ function ReturnBlob( data ){
 					alert( e.toString() );
 				}
 			}
-		}else{
+		}
+		else{
 			// AddMessage("0 changes have been made");
 			AddMessage("0 changes have been made", "short", "top");
 		}
@@ -2918,7 +2974,8 @@ function ReturnBlob( data ){
 					}, 100);
 
 					DeviceChange = true;
-				}else{
+				}
+				else{
 					$('#DevicesOnMapPanel').removeAttr("right").removeAttr("left").attr("open", "");
 					$('#MissingDevicesPanel').removeAttr("right").removeAttr("left").removeAttr("open").attr("right", "");
 				}
@@ -2946,7 +3003,8 @@ function ReturnBlob( data ){
 						OffMapFunctions.MoveForward();
 					}, 100);
 					DeviceAdd = true;
-				}else{
+				}
+				else{
 					$('#DevicesOnMapPanel').removeAttr("right").removeAttr("left").attr("open", "");
 					$('#MissingDevicesPanel').removeAttr("right").removeAttr("left").removeAttr("open").attr("right", "");
 				}
@@ -2999,7 +3057,8 @@ function ReturnBlob( data ){
 					$('#DevicesOnMapPanel').removeAttr("left").attr("open", "");
 					Spinner.hide()
 				}, 1);
-			}else{
+			}
+			else{
 				Spinner.show();
 				ClearMap();
 				for (var i = 0; i < Maps.length; i++) {
@@ -3080,7 +3139,8 @@ function ReturnBlob( data ){
 					console.log("Timeout Scrolling");
 					prev.scrolltimeout = false;
 	           	}, 500);
-		}else{
+		}
+		else{
 			e.preventDefault();
 			e.gesture.stopDetect();
 
@@ -3151,7 +3211,8 @@ function ReturnBlob( data ){
 
 
 								$(prev.target).removeClass("remove");
-							}else{
+							}
+							else{
 								try{
 									$.each($('map>viewport>pog'), function(index, item){
 										if( $(item).attr("id") == $(prev.target).attr("id") ){
@@ -3170,7 +3231,8 @@ function ReturnBlob( data ){
 							if( Delete.length > 0){
 								$('#deleteoptions').removeAttr("novis");
 								$('#deleteoptions').prev().attr("novis", "");
-							}else{
+							}
+							else{
 								$('#deleteoptions').attr("novis", "");
 								$('#deleteoptions').prev().removeAttr("novis");
 							}
@@ -3182,7 +3244,8 @@ function ReturnBlob( data ){
 
 							prev.dist = 0;
 							prev.maxdist = 0;
-						}else{
+						}
+						else{
 							$(prev.target).css("-webkit-transform", "");
 							prev.target = null;
 						}
@@ -3203,7 +3266,8 @@ function ReturnBlob( data ){
 							"left" : e.gesture.center.pageX,
 							"top" : e.gesture.center.pageY,
 						});
-					}else{
+					}
+					else{
 						$('#ulFloat').attr("novis", "" );
 						$('#ulFloat').css({
 							"left" : 0,
@@ -3261,7 +3325,8 @@ function ReturnBlob( data ){
 								"top" : ""
 							});
 							$('#ulFloat').attr("value", null );
-						}else{
+						}
+						else{
 							$('#ulFloat').attr("novis", "" );
 							$('#ulFloat').css({
 								"left" :"",
