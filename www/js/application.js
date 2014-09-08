@@ -296,6 +296,8 @@ try{
 // AjaxUserLogin( "craig","password");
 
 	function AjaxUserLogin( login, pass ){
+		addMessage( Settings.user );
+		
 		console.log("server address = " + URL);
 		document.activeElement.blur();
 		$(document).blur();
@@ -781,14 +783,13 @@ function ReturnBlob( data ){
 					de.getFile( fileName , {create: false}, function (fe){
 						fe.file(function( file ){
 							var r = new FileReader();
-								r.onload = function(e){
+							r.onload = function(e){
 								if(this.result.length > 0){
 									var result = JSON.parse(this.result);
 									Settings = result;
 
 									if( Settings.logged == true){
 										console.log( Settings );
-										addMessage( Settings.user );
 										$('#inputPrevUsername').val( Settings.user.Name );
 										$('#inputLogTime').val( Settings.logTime );
 									}
