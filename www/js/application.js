@@ -19,7 +19,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = true;
+	ThisDevice.Browser = false;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -75,7 +75,9 @@ try{
 	
 	//Server URL's
 	var URL = window.localStorage.getItem("serverAddress");
+	// var URL = "http://192.168.100.106:1234";
 	var ServerURL = URL + "/mobile.asmx";
+
 	function updateServerAddress( newAddress ){
 		window.localStorage.setItem("serverAddress", newAddress);
 		URL = newAddress;
@@ -355,10 +357,10 @@ var Ajax ={
 	// returns all groups that the user group ID has access to based off the groupPath
 	// writes the avalible groups to the users Device.
 		groups: function( event ){
-			AddMessage("ServerUrl = " + window.localStorage.getItem("serverAddress") + "/mobile.asmx" ,"long", "top");
+			AddMessage("ServerUrl = " + URL + "/mobile.asmx" ,"long", "top");
 			$.ajax({
 				type: "POST",
-				url: URL + "/mobile.asmx" + "/GetAvalibleGroups",
+				url: ServerURL + "/GetAvalibleGroups",
 				contentType: "application/json; charset=utf-8",
 				async: true,
 				data: JSON.stringify({
