@@ -3732,7 +3732,10 @@ else{
 	// test button
 	$('#btnTest').hammer(HammerOptions).on("tap", function(e){
 		try{
-			AddMessage("*Groups = " + JSON.stringify(Groups) , "long", "top");
+			AddMessage(JSON.stringify(Groups[0]) , "long", "top");
+			AddMessage(JSON.stringify(Groups[1]) , "long", "top");
+			AddMessage(JSON.stringify(Groups[2]) , "long", "top");
+
 		}
 		catch(e){
 			AddMessage("*Error with test button : " + e, "long", "top");
