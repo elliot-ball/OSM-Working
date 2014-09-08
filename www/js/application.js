@@ -296,8 +296,7 @@ try{
 // AjaxUserLogin( "craig","password");
 
 	function AjaxUserLogin( login, pass ){
-		addMessage( Settings.user );
-		
+
 		console.log("server address = " + URL);
 		document.activeElement.blur();
 		$(document).blur();
@@ -325,6 +324,8 @@ try{
 					AddMessage("Login successful", "short", "top");
 					setTimeout(function() {
 						WriteFile.settings();
+						addMessage( Settings.user );
+
 					}, 10);
 
 				}
