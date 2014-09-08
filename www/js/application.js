@@ -19,7 +19,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	ThisDevice.Browser = true;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -72,19 +72,16 @@ try{
 	//Max number of devices to load before the app slows down
 	//Filesystem request size; 0 by default
 	var MAXZOOM = 2.0, MINZOOM = 1.0, MAPWIDTH = 1000, MAPHEIGHT = 750, SAFEDEVICES = 30, RequestSize;
+	
 	//Server URL's
-	function getServerAddress(){
-		var address = window.localStorage.getItem("serverAddress");
-		if( address == ''){
-			AddMessage("Please enter a server address in settings", "long", "top");
-		}
-		else{
-			return address;
-		}
+	var URL = window.localStorage.getItem("serverAddress");
+	var ServerURL = URL + "/mobile.asmx";
+	function updateServerAddress( newAddress ){
+		window.localStorage.setItem("serverAddress", newAddress);
+		URL = newAddress;
+		ServerURL = URL + "/mobile.asmx";
 	}
-	var URL = window.localStorage.getItem("serverAddress"), ServerURL = URL + "/mobile.asmx";
 	// http://192.168.100.109:1234
-
 
 	//Set up the storage system
 	if( ThisDevice.Browser == true ){
@@ -361,7 +358,7 @@ var Ajax ={
 			AddMessage("ServerUrl = " + window.localStorage.getItem("serverAddress") + "/mobile.asmx" ,"long", "top");
 			$.ajax({
 				type: "POST",
-				url: window.localStorage.getItem("serverAddress") + "/mobile.asmx" + "/GetAvalibleGroups",
+				url: URL + "/mobile.asmx" + "/GetAvalibleGroups",
 				contentType: "application/json; charset=utf-8",
 				async: true,
 				data: JSON.stringify({
@@ -2680,7 +2677,7 @@ else{
 		// $('#settings').show();
 		// $('#login').hide();
 		// $('#main').hide();
-		$('#inputServerAddress').val(window.localStorage.getItem("serverAddress"));
+		$('#inputServerAddress').val(URL);
 	});
 
 	// open login page
@@ -2696,9 +2693,9 @@ else{
 			AddMessage("Server Address is blank", "long", "top");
 		else{
 			// Spinner.show();
-			window.localStorage.setItem("serverAddress", $('#inputServerAddress').val());
-			AddMessage("Server added", "long", "top");
-			AddMessage("server ip set to = " + window.localStorage.getItem("serverAddress"), "long", "top");
+			updateServerAddress($('#inputServerAddress').val());
+			// AddMessage("Server added", "long", "top");
+			AddMessage("server ip set to = " + URL, "long", "top");
 			// if( GetConnection() == true){
 			// 	var u = $('#inputUsername').val(), p = $('#inputPassword').val();
 			// 	setTimeout(function() {
