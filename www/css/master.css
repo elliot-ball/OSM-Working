@@ -259,6 +259,13 @@ login a.button {
   border-radius: inherit;
   max-height: 40px;
 }
+#btnSettings {
+  top: 0;
+  left: 0;
+  position: absolute;
+  font-size: 40px;
+  width: 54px;
+}
 
 shadow {
   display: -webkit-box;

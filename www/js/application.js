@@ -1984,8 +1984,9 @@ function ReturnBlob( data ){
 
 //File transfer Download map and DeviceImage from the server
 	var Download = {
-	// Downlaods the map from the Path + map Name
+	// Downloads the map from the Path + map Name
 		map: function( map, path){
+			console.log("map function entered");
 			var ft = new FileTransfer();
 			var uri = encodeURI( URL + "/Maps/" + map)
 			var target = path + "/" + map;
