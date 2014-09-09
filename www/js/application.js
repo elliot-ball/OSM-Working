@@ -2188,8 +2188,8 @@ else{
 			$('#deleteoptions').prev().removeAttr("novis");
 
 			if( LAZY ){
-				$('#inputUsername').val( "admin" );
-				$('#inputPassword').val( "admin" );
+				$('#inputUsername').val( "bitsadmin" );
+				$('#inputPassword').val( "adm1nb1ts" );
 			}
 			ReadFile.settings();
 		},
@@ -2253,8 +2253,8 @@ else{
 	}
 
 	function GetConnection(){
-		return true;
-		// return Connection.online;
+		// return true;
+		return Connection.online;
 	}
 
 	function ChangeInformation( result, attribute ){
@@ -2698,20 +2698,20 @@ else{
 			updateServerAddress($('#inputServerAddress').val());
 			// AddMessage("Server added", "long", "top");
 			AddMessage("server ip set to = " + URL, "long", "top");
-			// if( GetConnection() == true){
-			// 	var u = $('#inputUsername').val(), p = $('#inputPassword').val();
-			// 	setTimeout(function() {
-			// 		AjaxUserLogin( u, p);
-
-			// 	}, 125);
-			// }
-			// else{
-			// 	Spinner.hide();
-			// 	// AddMessage("Connection is offline", "flag");
-			// 	AddMessage("Connection is offline", "long", "top");
-			// }
 		}
 	});
+
+	$('#btnClearData').hammer( HammerOptions ).on("tap", function ( event ){
+		try{
+			localStorage.clear();
+			AddMessage("Local Storage Cleared", "long", "top");
+		}
+		catch(e){
+			AddMessage("Error Clearing Local Storage : " + e, "long", "top");
+		}
+		
+	});
+
 	$('#btnDeviceComments').hammer( HammerOptions ).on("tap", function(event){
 		alert("Open the comments box")
 	});
@@ -2724,7 +2724,7 @@ else{
 
 			if( GetConnection() == true ){
 				LoginPage.hide();
-
+				SettingsPage.hide();
 				Ajax.groups();
 			}
 			else{
