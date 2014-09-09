@@ -305,7 +305,7 @@ try{
 			contentType: "application/json; charset=utf-8",
 			async: true,
 			data: JSON.stringify({
-				user: login,
+				login: login,
 				pass: pass
 			}),
 			dataType: 'json',
