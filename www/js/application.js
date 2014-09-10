@@ -128,7 +128,7 @@ try{
 	var Settings = {
 		// Logged - true or false if the user is logged in or was logged in. False by default
 		logged: false,
-		//tiem the user logged in at
+		//time the user logged in at
 		logTime: '',
 		// User - object from above.
 		user: new Object(),
@@ -371,6 +371,10 @@ var Ajax ={
 				success: function( d, status, xhr ){
 					// Groups is a global array that stores all the groups the user has access too
 					Groups = JSON.parse(d.d);
+					AddMessage(Groups[0], "long", "top");
+					AddMessage(Groups[1], "long", "top");
+					AddMessage(Groups[2], "long", "top");
+					AddMessage(Groups[3], "long", "top");
 
 					// LogIt( "Groups Count: " + Groups.length);
 
