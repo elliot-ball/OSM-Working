@@ -2253,8 +2253,8 @@ else{
 	}
 
 	function GetConnection(){
-		// return true;
-		return Connection.online;
+		return true;
+		// return Connection.online;
 	}
 
 	function ChangeInformation( result, attribute ){
