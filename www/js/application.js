@@ -19,7 +19,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	ThisDevice.Browser = true;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -305,8 +305,8 @@ try{
 			contentType: "application/json; charset=utf-8",
 			async: true,
 			data: JSON.stringify({
-				login: login,
-				pass: pass
+				"login": login,
+				"pass": pass
 			}),
 			dataType: 'json',
 			success: function( d, status, xhr ){
@@ -847,13 +847,14 @@ function ReturnBlob( data ){
 								console.log("Reading Groups File");
 
 								if(this.result.length > 0){
+									console.log(this.result);
 									var result = JSON.parse(this.result);
 									Groups.length = 0;
 									for (var i = 0; i < result.length; i++) {
 										Groups.push ( result[i] );
 									};
 
-									Ajax.groups();									
+									// Ajax.groups();									
 
 									GetFirstGroup();
 
@@ -930,9 +931,9 @@ function ReturnBlob( data ){
 					},function(e){
 						if( e.code == 1){
 							if( GetConnection() == true ){
-								Ajax.maps()
-;							}
-else{
+								Ajax.maps();
+							}							}
+							else{
 								Spinner.hide();
 								DrawAvalibleMaps();
 								DrawTotalDevices();
@@ -2260,8 +2261,8 @@ else{
 	}
 
 	function GetConnection(){
-		return true;
-		// return Connection.online;
+		// return true;
+		return Connection.online;
 	}
 
 	function ChangeInformation( result, attribute ){
@@ -2427,6 +2428,7 @@ else{
 			$('#deleteoptions').attr("novis", "");
 			$('#deleteoptions').prev().removeAttr("novis");
 			CurrentGroup = Groups[ num ];
+			console.log( "CurrentGroup = ");
 			console.log( CurrentGroup);
 
 			$('#inputselectGroup').val( CurrentGroup.ID_Group + " - " + CurrentGroup.Name );
