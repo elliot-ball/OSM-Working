@@ -188,8 +188,6 @@ try{
 		}
 	}
 
-	
-
 	var Spinner = {
 		show: function (e){
 			if( !ThisDevice.Browser ){
@@ -296,52 +294,56 @@ try{
 
 	function AjaxUserLogin( login, pass ){
 
-		console.log("server address = " + URL);
-		document.activeElement.blur();
-		$(document).blur();
-		$.ajax({
-			type: "POST",
-			url: ServerURL + "/UserLogin",
-			contentType: "application/json; charset=utf-8",
-			async: true,
-			data: JSON.stringify({
-				"login": login,
-				"pass": pass
-			}),
-			dataType: 'json',
-			success: function( d, status, xhr ){
-				console.log( d.d );
+		if(URL){
+			document.activeElement.blur();
+			$(document).blur();
+			$.ajax({
+				type: "POST",
+				url: ServerURL + "/UserLogin",
+				contentType: "application/json; charset=utf-8",
+				async: true,
+				data: JSON.stringify({
+					login: login,
+					pass: pass
+				}),
+				dataType: 'json',
+				success: function( d, status, xhr ){
+					console.log( d.d );
 
-				User = JSON.parse(d.d);
+					User = JSON.parse(d.d);
 
-				if(User != 0){
-					Settings.changes = 0;
-					Settings.logged = true;
-					Settings.logTime = GetToday();
-					Settings.user = User;
+					if(User != 0){
+						Settings.changes = 0;
+						Settings.logged = true;
+						Settings.logTime = GetToday();
+						Settings.user = User;
 
-					AddMessage("Login successful", "short", "top");
-					setTimeout(function() {
-						WriteFile.settings();
-						AddMessage( "user.ID_Group = " + Settings.user.ID_Group, "long", "top" );
+						AddMessage("Login successful", "short", "top");
+						setTimeout(function() {
+							WriteFile.settings();
+							AddMessage( "user.ID_Group = " + Settings.user.ID_Group, "long", "top" );
 
-					}, 10);
+						}, 10);
 
-				}
-				else{
+					}
+					else{
+						setTimeout(function() {
+							Spinner.hide();
+							AddMessage("Incorrect Login details", "short", "top");
+						}, 50);
+					}
+				},
+				error: function(et, e) {
 					setTimeout(function() {
 						Spinner.hide();
-						AddMessage("Incorrect Login details", "short", "top");
+						AddMessage("Ajax error : " + e.toString(), "long", "top");
 					}, 50);
 				}
-			},
-			error: function(et, e) {
-				setTimeout(function() {
-					Spinner.hide();
-					AddMessage("Ajax error : " + e.toString(), "long", "top");
-				}, 50);
-			}
-		});
+			});
+		}
+		else{
+			AddMessage("Please enter an IP address in the settings page", "long", "top");
+		}
 	}
 
 function RequestLocalSystem(){
@@ -357,7 +359,7 @@ var Ajax ={
 	// returns all groups that the user group ID has access to based off the groupPath
 	// writes the avalible groups to the users Device.
 		groups: function( event ){
-			AddMessage("ServerUrl = " + URL + "/mobile.asmx" ,"long", "top");
+			cnsole.log("Using AJAX to get groups");
 			$.ajax({
 				type: "POST",
 				url: ServerURL + "/GetAvalibleGroups",
@@ -370,10 +372,6 @@ var Ajax ={
 				success: function( d, status, xhr ){
 					// Groups is a global array that stores all the groups the user has access too
 					Groups = JSON.parse(d.d);
-					AddMessage(Groups[0], "long", "top");
-					AddMessage(Groups[1], "long", "top");
-					AddMessage(Groups[2], "long", "top");
-					AddMessage(Groups[3], "long", "top");
 
 					// LogIt( "Groups Count: " + Groups.length);
 
@@ -595,11 +593,6 @@ var Ajax ={
 								//Need to remove the old image if it exists
 								//then copy the new one to this directory
 
-
-
-								////
-								////
-
 								fe.copyTo( destination, name, function( ){
 									if(GetConnection() == true ){
 										try{
@@ -791,11 +784,13 @@ function ReturnBlob( data ){
 							var r = new FileReader();
 							r.onload = function(e){
 								if(this.result.length > 0){
+									console.log("JSON PARSE THIS! " + JSON.parse(this.result));
 									var result = JSON.parse(this.result);
 									Settings = result;
 
 									if( Settings.logged == true){
-										console.log( Settings );
+										console.log("setings = ");
+										console.log(Settings );
 										$('#inputPrevUsername').val( Settings.user.Name );
 										$('#inputLogTime').val( Settings.logTime );
 									}
@@ -845,7 +840,7 @@ function ReturnBlob( data ){
 							var r = new FileReader();
 							r.onload = function(e){
 								console.log("Reading Groups File");
-
+								
 								if(this.result.length > 0){
 									console.log(this.result);
 									var result = JSON.parse(this.result);
@@ -932,7 +927,7 @@ function ReturnBlob( data ){
 						if( e.code == 1){
 							if( GetConnection() == true ){
 								Ajax.maps();
-							}							}
+							}
 							else{
 								Spinner.hide();
 								DrawAvalibleMaps();
@@ -1057,13 +1052,18 @@ function ReturnBlob( data ){
 		},
 		groups: function(e){
 			var fileName = 'groups.json'
-			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
-				fs.root.getDirectory("OSMobile/data", {create:true}, function ( de ){
-					de.getFile( fileName , {create: false}, function (fe){
-						fe.remove(null,null);
-					},null);
+			try{
+				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
+					fs.root.getDirectory("OSMobile/data", {create:true}, function ( de ){
+						de.getFile( fileName , {create: false}, function (fe){
+							fe.remove(null,null);
+						},null);
+					},File.error);
 				},File.error);
-			},File.error);
+			}
+			catch(error){
+				AddMessage("error removing groups file : " + error, "long", "top");
+			}
 		},
 		data: function(e){
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
@@ -1318,7 +1318,6 @@ function ReturnBlob( data ){
 			DrawDevicesOnMap();
 		}
 	}
-
 
 	// function orientationFix(e){
 	// 	var orientRotation = window.orientation;
@@ -2196,8 +2195,8 @@ function ReturnBlob( data ){
 			$('#deleteoptions').prev().removeAttr("novis");
 
 			if( LAZY ){
-				$('#inputUsername').val( "bitsadmin" );
-				$('#inputPassword').val( "adm1nb1ts" );
+				$('#inputUsername').val( "admin" );
+				$('#inputPassword').val( "admin" );
 			}
 			ReadFile.settings();
 		},
@@ -2713,6 +2712,7 @@ function ReturnBlob( data ){
 	$('#btnClearData').hammer( HammerOptions ).on("tap", function ( event ){
 		try{
 			localStorage.clear();
+			RemoveFile.groups();
 			AddMessage("Local Storage Cleared", "long", "top");
 		}
 		catch(e){
