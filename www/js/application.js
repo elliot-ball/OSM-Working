@@ -992,6 +992,8 @@ function ReturnBlob( data ){
 		},
 		maps: function(e){
 			var map = CurrentMap.Path.substr( CurrentMap.Path.lastIndexOf('/')+1), fullpath = '';
+			AddMessage("map = " map, "long", "top");
+
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 				fs.root.getDirectory("OSMobile/maps", {create:true}, function ( de ){
 					fullpath = de.toURL();
