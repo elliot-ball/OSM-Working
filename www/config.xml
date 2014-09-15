@@ -47,6 +47,7 @@
 <preference name="SplashScreenDelay" value="10000"/>
 <preference name="InAppBrowserStorageEnabled" value="true"/>
 <!-- <preference name="ShowTitle" value="false"/> -->
+<uses-permission android:name="android.permission.INTERNET"/>
 
 <!-- IOS -->
 <preference name="detect-data-types" value="false" />
