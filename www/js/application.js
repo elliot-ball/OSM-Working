@@ -359,7 +359,7 @@ var Ajax ={
 	// returns all groups that the user group ID has access to based off the groupPath
 	// writes the avalible groups to the users Device.
 		groups: function( event ){
-			console.log("Using AJAX to get groups");
+			cnsole.log("Using AJAX to get groups");
 			$.ajax({
 				type: "POST",
 				url: ServerURL + "/GetAvalibleGroups",
@@ -370,16 +370,8 @@ var Ajax ={
 				}),
 				dataType: 'json',
 				success: function( d, status, xhr ){
-					// Groups is a global array that stores all the groups as objects the user has access too
-					var result = JSON.parse(d.d);
-
-					console.log("***groups =");
-					// 
-					Groups.length = 0;
-					for (var i = 0; i < result.length; i++) {
-						Groups.push ( result[i] );
-						console.log(result[i]);
-					};
+					// Groups is a global array that stores all the groups the user has access too
+					Groups = JSON.parse(d.d);
 
 					// LogIt( "Groups Count: " + Groups.length);
 
@@ -687,8 +679,7 @@ function ReturnBlob( data ){
 							fw.onwriteend = function ( event ) {
 								console.log("Write complete: " + fileName);
 								if (Groups.length == 0){
-									Ajax.groups(); // get groups from DB then write them to file								
-									// ReadFile.groups(); // no read the groups from that file
+									ReadFile.groups();
 								}
 							}
 							fw.write(  ReturnBlob(data)  );
@@ -857,6 +848,8 @@ function ReturnBlob( data ){
 									for (var i = 0; i < result.length; i++) {
 										Groups.push ( result[i] );
 									};
+
+									// Ajax.groups();									
 
 									GetFirstGroup();
 
