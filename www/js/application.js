@@ -19,7 +19,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	ThisDevice.Browser = true;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -1148,7 +1148,8 @@ function ReturnBlob( data ){
 		//Remove Pogs
 		$('viewport>pog').remove();
 
-		img.src = path;
+		// img.src = path;
+		img.src = "http://192.168.100.111:8023/Maps/1.jpg";
 		img.onload = function(){
 			var w = img.width, h = img.height, nw, nh;
 
