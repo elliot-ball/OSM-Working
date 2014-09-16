@@ -995,6 +995,7 @@ function ReturnBlob( data ){
 				alert( e.toString() );
 			}
 		},
+		// readfile.maps
 		maps: function(e){
 			var map = CurrentMap.Path.substr( CurrentMap.Path.lastIndexOf('/')+1), fullpath = '';
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
@@ -1008,9 +1009,11 @@ function ReturnBlob( data ){
 						if( e.code == 1){
 							if( GetConnection() == true ){
 								Download.map( map, fullpath);
+								console.log("download.map called from ReadFile.maps");
 							}
 							else{
 								ReadFile.forceMissingMap();
+								console.log("ReadFile.forceMissingMap called from ReadFile.maps");
 								Spinner.hide();
 								AddMessage("Connection offline, Unable to download map", "long", "bottom");
 							}
