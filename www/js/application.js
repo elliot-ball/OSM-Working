@@ -3516,6 +3516,7 @@ function ReturnBlob( data ){
 		for (var i = 0; i < Groups.length; i++) {
 			if( Groups[i].ID_Group == id){
 				ChangeGroup( i );
+				console.log("changeGroup called from GetFirstGroup");
 			}
 		};
 		// PanelTree.MoveForward( Groups[0] );
@@ -3578,6 +3579,7 @@ function ReturnBlob( data ){
 			for (var i = 0; i < Groups.length; i++) {
 				if( Groups[i].ID_Group == id ){
 					ChangeGroup(i);
+					console.log("changeGroup called from event");
 				}
 			};
 			movingGroup = true;
