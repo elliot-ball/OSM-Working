@@ -2052,6 +2052,8 @@ function ReturnBlob( data ){
 			ft.download(uri, target,
 				function(entry) {
 					ReadFile.maps();
+					console.log("ReadFile.maps first call");
+
 					Spinner.hide();
 				},
 				function( e ){
@@ -3126,6 +3128,7 @@ function ReturnBlob( data ){
 
 				//REMEMBER ME
 				ReadFile.maps();
+				console.log("ReadFile.maps second call");
 			}
 		}
 		setTimeout(function() {
@@ -3573,7 +3576,6 @@ function ReturnBlob( data ){
 	});
 
 	$(window ).hammer( HammerOptions ).on("tap",  ".isselected", function(e){
-
 		var id = $(this).parent().attr("groupid");
 		if( movingGroup == false){
 			for (var i = 0; i < Groups.length; i++) {
@@ -3587,8 +3589,6 @@ function ReturnBlob( data ){
 				$('float#GroupSelect').attr("novis", "");
 				Shadow.hide();
 			},100);
-
-
 		}
 		setTimeout(function() {
 			movingGroup = false;
