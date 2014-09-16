@@ -685,7 +685,13 @@ function ReturnBlob( data ){
 							fw.write(  ReturnBlob(data)  );
 						}, File.error);
 					}, File.error);
+
+
+
 				}, File.error);
+
+
+
 			}, File.error);
 		},
 		groups: function(e){
@@ -731,6 +737,8 @@ function ReturnBlob( data ){
 								console.log("Write complete: " + fileName);
 
 								DrawAvalibleMaps();
+								console.log("DrawAvalibleMaps - writefile.data");
+
 								// DrawAvalibleDevices();
 								DrawTotalDevices();
 								// DrawOnMapDevices();
@@ -909,6 +917,8 @@ function ReturnBlob( data ){
 									};
 
 									DrawAvalibleMaps();
+									console.log("DrawAvalibleMaps - readfile.data");
+
 									// DrawAvalibleDevices();
 									DrawTotalDevices();
 									// DrawOnMapDevices();
@@ -931,6 +941,8 @@ function ReturnBlob( data ){
 							else{
 								Spinner.hide();
 								DrawAvalibleMaps();
+								console.log("DrawAvalibleMaps - readfile.data - else");
+								
 								DrawTotalDevices();
 								// DrawAvalibleDevices();
 								// DrawOnMapDevices();
@@ -2174,6 +2186,7 @@ function ReturnBlob( data ){
 			Shadow.hide();
 			ResetDeviceInformation();
 			DrawAvalibleMaps()
+			console.log("DrawAvalibleMaps - PhoneGap.ready");
 			DrawTotalDevices();
 
 			OnMapFunctions.empty();
