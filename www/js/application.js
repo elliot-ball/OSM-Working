@@ -2054,6 +2054,9 @@ function ReturnBlob( data ){
 			var target = path + "/" + map;
 			ft.download(uri, target,
 				function(entry) {
+					console.log("entry = ");
+					console.log(entry);
+
 					ReadFile.maps();
 					console.log("ReadFile.maps first call");
 
