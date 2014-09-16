@@ -990,6 +990,7 @@ function ReturnBlob( data ){
 					fullpath = de.toURL();
 					de.getFile( map, {create: false}, function (fe){
 						var fileURL = fe.toURL();
+						console.log("fileURL = " + fileURL);
 						LoadMap( fileURL );
 					},function(e){
 						if( e.code == 1){
@@ -1148,8 +1149,8 @@ function ReturnBlob( data ){
 		//Remove Pogs
 		$('viewport>pog').remove();
 
-		// img.src = path;
-		img.src = "http://192.168.100.111:8023/Maps/1.jpg";
+		img.src = path;
+		// img.src = "http://192.168.100.128:8023/Maps/1.jpg";
 		img.onload = function(){
 			var w = img.width, h = img.height, nw, nh;
 
