@@ -259,13 +259,6 @@ login a.button {
   border-radius: inherit;
   max-height: 40px;
 }
-#btnSettings {
-  top: 0;
-  left: 0;
-  position: absolute;
-  font-size: 40px;
-  width: 54px;
-}
 
 shadow {
   display: -webkit-box;
@@ -816,6 +809,10 @@ a.settings:after {
   font-family: "FontAwesome";
   content: "\f013";
 }
+a.search:after {
+  font-family: "FontAwesome";
+  content: "\f002";
+}
 a.image {
   -webkit-box-align: center;
   -webkit-box-orient: horizontal;
@@ -1311,4 +1308,26 @@ spinner icon {
 spinner icon:not(:only-child) {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
+}
+
+#btnSettings {
+  top: 0;
+  left: 0;
+  position: absolute;
+  font-size: 40px;
+  width: 54px;
+}
+
+.autocomplete,
+.autocomplete input {
+  width: 100%;
+}
+
+.autocomplete .isselected {
+  position: relative;
+  float: left;
+}
+
+.autocomplete .isselected:after {
+  display: none;
 }

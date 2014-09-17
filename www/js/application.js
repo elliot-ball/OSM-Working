@@ -3762,6 +3762,17 @@ function ReturnBlob( data ){
 			}, 700);
 		}
 	})
+	// search button
+	$('#btnSearch').hammer(HammerOptions).on("tap", function(e){
+		if($('#GroupSearch').attr("novis") != null){
+			$('#GroupSearch').removeAttr("novis");
+			$('.autoComplete').focus();
+		}
+		else{
+			$('#GroupSearch').attr("novis", "");
+		}
+	})
+
 	// test button
 	$('#btnTest').hammer(HammerOptions).on("tap", function(e){
 		try{

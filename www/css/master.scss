@@ -37,7 +37,6 @@ body{
 	-webkit-box-pack: start;
 	-webkit-box-orient: horizontal;
 	white-space: nowrap;
-
 }
 page.landscape{
 	panel.master>swipe{
@@ -923,6 +922,20 @@ a{
 			content: "\f019";
 		}
 	}
+	&.settings{
+		&:after{
+	  font-family: "FontAwesome";
+	  content: "\f013";
+		}
+	}
+
+	&.search{
+		&:after{
+	  font-family: "FontAwesome";
+	  content: "\f002";
+		}
+	}
+
 	&.image{
 		-webkit-box-align: center;
 		-webkit-box-orient: horizontal;
@@ -1517,4 +1530,25 @@ spinner{
 	    border-radius: 5px;
 
 	}
+}
+
+#btnSettings {
+  top: 0;
+  left: 0;
+  position: absolute;
+  font-size: 40px;
+  width: 54px;
+}
+
+.autocomplete,
+.autocomplete input {
+	width: 100%;
+}
+.autocomplete .isselected {
+	position: relative;
+	float: left;
+
+}
+.autocomplete .isselected:after {
+	display: none;
 }
