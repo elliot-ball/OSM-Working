@@ -1326,6 +1326,7 @@ spinner icon:not(:only-child) {
 .autocomplete .isselected {
   position: relative;
   float: left;
+  margin: 5px 10px;
 }
 
 .autocomplete .isselected:after {
