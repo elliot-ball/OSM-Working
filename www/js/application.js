@@ -359,7 +359,7 @@ var Ajax ={
 	// returns all groups that the user group ID has access to based off the groupPath
 	// writes the avalible groups to the users Device.
 		groups: function( event ){
-			cnsole.log("Using AJAX to get groups");
+			console.log("Using AJAX to get groups");
 			$.ajax({
 				type: "POST",
 				url: ServerURL + "/GetAvalibleGroups",
@@ -3582,6 +3582,8 @@ function ReturnBlob( data ){
 	});
 
 	$(window ).hammer( HammerOptions ).on("tap",  ".isselected", function(e){
+		console.log("HAMMER TIME!");
+		console.log(this);
 		var id = $(this).parent().attr("groupid");
 		if( movingGroup == false){
 			for (var i = 0; i < Groups.length; i++) {
@@ -3860,6 +3862,22 @@ function ReturnBlob( data ){
 	$(window).hammer(HammerOptions).on("touch", "input", function(e){
 		e.preventDefault();
 	})
+
+	$('.autoComplete').tinyAutocomplete({
+      data: Groups,
+      // lastItemTemplate: '<li class="autocomplete-item autocomplete-item-last">Show all results for "{{Name}}"</li>',
+      onSelect: function(el, val) {
+        if(val == null) {
+          $('.autoCompleteResults').html('All results for "' + $(this).val() + '" would go here');
+        }
+        else {
+          $(this).val( val.Name );
+          console.log($(this).val( val.Name ));
+          $('.autoCompleteResults').html('<h1>' + val.Name + '</h1>');
+        }
+      }
+    });
+
 }catch(e){
 	alert(e.toString())
 	console.log(e.toString() );
