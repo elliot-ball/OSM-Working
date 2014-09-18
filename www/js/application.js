@@ -866,6 +866,7 @@ function ReturnBlob( data ){
 									setTimeout(function() {
 										LoginPage.hide();
 										SettingsPage.hide();
+										MainPage.show();
 										Spinner.hide();
 										$('#btnTogPanel').trigger("tap");
 									}, 50);
