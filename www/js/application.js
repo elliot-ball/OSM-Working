@@ -58,7 +58,7 @@ try{
 	}
 	//Android Style
 	if( ThisDevice.Android ){
-		$('#deviceStyle').attr("href", "css/android.css");
+		$('#deviceStyle').attr("href", "css/ios.css");
 	}
 	//Default Style
 	if( !ThisDevice.Android && !ThisDevice.IOS ){
