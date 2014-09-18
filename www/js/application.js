@@ -3772,7 +3772,9 @@ function ReturnBlob( data ){
 	$('#btnSearch').hammer(HammerOptions).on("tap", function(e){
 		if($('#GroupSearch').attr("novis") != null){
 			$('#GroupSearch').removeAttr("novis");
-			$('.autoComplete').trigger("tap");			
+			setTimeout(function() {
+				$('.autoComplete').trigger("tap");
+			}, 100);			
 			// $('.autoComplete').focus();
 		}
 		else{
