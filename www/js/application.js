@@ -181,6 +181,7 @@ try{
 
 	var MainPage = {
 		show: function(e){
+			console.log("***showing main page!");
 			$('#main').removeAttr("novis");
 		},
 		hide: function(e){
