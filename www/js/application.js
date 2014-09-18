@@ -680,7 +680,8 @@ function ReturnBlob( data ){
 							fw.onwriteend = function ( event ) {
 								console.log("Write complete: " + fileName);
 								if (Groups.length == 0){
-									ReadFile.groups();
+									Ajax.groups();
+									// ReadFile.groups();
 								}
 							}
 							fw.write(  ReturnBlob(data)  );
@@ -706,6 +707,8 @@ function ReturnBlob( data ){
 								console.log("Writing File: " + fileName);
 							}
 							fw.onwriteend = function ( event ) {
+								console.log("**Write complete");
+
 								console.log("Write complete: " + fileName);
 								GetFirstGroup();
 
