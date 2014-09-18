@@ -3781,15 +3781,7 @@ function ReturnBlob( data ){
 
 	// test button
 	$('#btnTest').hammer(HammerOptions).on("tap", function(e){
-		try{
-			AddMessage(JSON.stringify(Groups[0]) , "long", "top");
-			AddMessage(JSON.stringify(Groups[1]) , "long", "top");
-			AddMessage(JSON.stringify(Groups[2]) , "long", "top");
-
-		}
-		catch(e){
-			AddMessage("*Error with test button : " + e, "long", "top");
-		}
+		Ajax.groups();
 	})
 
 	$('shadow').hammer( HammerOptions ).on("touch release", function(e){
