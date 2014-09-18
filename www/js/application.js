@@ -3772,7 +3772,8 @@ function ReturnBlob( data ){
 	$('#btnSearch').hammer(HammerOptions).on("tap", function(e){
 		if($('#GroupSearch').attr("novis") != null){
 			$('#GroupSearch').removeAttr("novis");
-			$('.autoComplete').focus();
+			$('.autoComplete').trigger("tap");			
+			// $('.autoComplete').focus();
 		}
 		else{
 			$('#GroupSearch').attr("novis", "");
