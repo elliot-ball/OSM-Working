@@ -2751,8 +2751,7 @@ function ReturnBlob( data ){
 	});
 
 	$('#btnDeviceComments').hammer( HammerOptions ).on("tap", function(event){
-		// alert("Open the comments box");
-		$('#deviceComments').removeAttr("novis");
+		alert("Open the comments box")
 	});
 
 	$('#btnContinue').hammer( HammerOptions ).on("tap", function ( event ){
