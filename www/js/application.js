@@ -797,7 +797,7 @@ function ReturnBlob( data ){
 							var r = new FileReader();
 							r.onload = function(e){
 								if(this.result.length > 0){
-									console.log("JSON PARSE THIS! " + JSON.parse(this.result));
+									// console.log("JSON PARSE THIS! " + JSON.parse(this.result));
 									var result = JSON.parse(this.result);
 									Settings = result;
 
@@ -2750,8 +2750,9 @@ function ReturnBlob( data ){
 		
 	});
 
-	$('#btnDeviceComments').hammer( HammerOptions ).on("tap", function(event){
-		alert("Open the comments box")
+	$('#btnDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
+		// alert("Open the comments box");
+		$('#deviceComments').removeAttr("novis");
 	});
 
 	$('#btnContinue').hammer( HammerOptions ).on("tap", function ( event ){
