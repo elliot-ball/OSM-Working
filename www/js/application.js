@@ -428,13 +428,12 @@ var Ajax ={
 						Devices.length = 0;
 					}
 					else{
-						Devices = JSON.parse(d.d)
-						console.log("devices = ")
-						console.log(Devices);
+						Devices = JSON.parse(d.d);
+						AddMessage(Devices, "long", "top");
 					}
 					Settings.lastUpdate = GetToday();
 					WriteFile.data();
-					AddMessage("Data downloaded", "short", "top");
+					AddMessage("Data downloaded", "long", "top");
 				},
 				error: function(et, e) {
 				}
