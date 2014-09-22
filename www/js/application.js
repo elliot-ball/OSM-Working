@@ -429,6 +429,8 @@ var Ajax ={
 					}
 					else{
 						Devices = JSON.parse(d.d)
+						console.log("devices = ")
+						console.log(Devices);
 					}
 					Settings.lastUpdate = GetToday();
 					WriteFile.data();
@@ -707,8 +709,6 @@ function ReturnBlob( data ){
 								console.log("Writing File: " + fileName);
 							}
 							fw.onwriteend = function ( event ) {
-								console.log("**Write complete");
-
 								console.log("Write complete: " + fileName);
 								GetFirstGroup();
 
@@ -2751,8 +2751,17 @@ function ReturnBlob( data ){
 	});
 
 	$('#btnDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
-		// alert("Open the comments box");
-		$('#deviceComments').removeAttr("novis");
+		$('#DeviceComments').removeAttr("novis");
+	});
+
+	function saveDeviceComments( comments ){
+		console.log("your comment was : " + comments);
+		
+	}
+
+	$('#btnSaveDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
+		$('#DeviceComments').attr("novis");
+		saveDeviceComments($('#DeviceComments textarea').val());
 	});
 
 	$('#btnContinue').hammer( HammerOptions ).on("tap", function ( event ){
