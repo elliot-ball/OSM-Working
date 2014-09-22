@@ -921,7 +921,7 @@ function ReturnBlob( data ){
 									};
 
 									DrawAvalibleMaps();
-									console.log("DrawAvalibleMaps - readfile.data");
+									console.log("DrawAvalibleMaps : called from : readfile.data");
 
 									// DrawAvalibleDevices();
 									DrawTotalDevices();
@@ -1509,10 +1509,10 @@ function ReturnBlob( data ){
 			s += "<panel open class='child '><scroll class='y'><row class='content'>"
 
 			for (var j = 0; j < OnMapDevices[0].length; j++) {
-				var id = OnMapDevices[0][j].ID_Device, desc = OnMapDevices[0][j].Description, serial = OnMapDevices[0][j].SerialNumber;
+				var id = OnMapDevices[0][j].ID_Device, desc = OnMapDevices[0][j].Description, serial = OnMapDevices[0][j].SerialNumber, comments = OnMapDevices[0][j].Comments;
 				if( desc.length == 0) desc = "No Description";
 				if( serial.length == 0) serial = "No Serial Number";
-				s += "<row class='button item mDevice' id='"+id+"'><span><name>"+desc+"</name><serial>"+serial+"</serial></span></row>";
+				s += "<row class='button item mDevice' id='"+id+"'><span><name>"+desc+"</name><serial>"+serial+"</serial>"+comments+"</span></row>";
 			};
 
 			s +="</row></scroll></panel>"
@@ -2608,10 +2608,11 @@ function ReturnBlob( data ){
 		$('input').blur();
 		$('select').blur();
 	}
+	// why is there to of the same function?
 	//Converts object into a stringed version adn reutns it.
-	function StringMe( object ){
-		return JSON.stringify( object );
-	}
+	// function StringMe( object ){
+	// 	return JSON.stringify( object );
+	// }
 
 	// Using Phonegaps Notification system, alert the user to the issue.
 	// Requires a message, title, function to do after hitting the button, and a Button name
@@ -3596,8 +3597,6 @@ function ReturnBlob( data ){
 	});
 
 	$(window ).hammer( HammerOptions ).on("tap",  ".isselected", function(e){
-		console.log("HAMMER TIME!");
-		console.log(this);
 		var id = $(this).parent().attr("groupid");
 		if( movingGroup == false){
 			for (var i = 0; i < Groups.length; i++) {
