@@ -429,7 +429,6 @@ var Ajax ={
 					}
 					else{
 						Devices = JSON.parse(d.d);
-						AddMessage(Devices, "long", "top");
 					}
 					Settings.lastUpdate = GetToday();
 					WriteFile.data();
@@ -3793,7 +3792,8 @@ function ReturnBlob( data ){
 
 	// test button
 	$('#btnTest').hammer(HammerOptions).on("tap", function(e){
-		Ajax.groups();
+		// Ajax.groups();
+		AddMessage(Devices, "long", "top");
 	})
 
 	$('shadow').hammer( HammerOptions ).on("touch release", function(e){
