@@ -2516,9 +2516,9 @@ function ReturnBlob( data ){
 
 		// AddMessage("*CD = ", "long", "top");
 		// AddMessage(CurrentDevice, "long", "top");
-		
+
 		// if(CurrentDevice.Comments != ""){
-			$('#DeviceComments').val(CurrentDevice.Comments);
+			$('#DeviceComments textarea').val(CurrentDevice.Comments);
 		// }
 	}
 
