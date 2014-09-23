@@ -2909,7 +2909,7 @@ function ReturnBlob( data ){
 		$('map>viewport>.selecteddevice').removeClass("selecteddevice");
 	})
 
-	$('#btnSave').hammer( HammerOptions ).on("tap", function ( event ){
+	$('#btnSave, #btnSaveDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
 		if( Changes.length > 0){
 			if(GetConnection() == true ){
 
