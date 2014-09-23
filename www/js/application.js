@@ -2629,11 +2629,6 @@ function ReturnBlob( data ){
 		$('input').blur();
 		$('select').blur();
 	}
-	// why is there to of the same function?
-	//Converts object into a stringed version adn reutns it.
-	// function StringMe( object ){
-	// 	return JSON.stringify( object );
-	// }
 
 	// Using Phonegaps Notification system, alert the user to the issue.
 	// Requires a message, title, function to do after hitting the button, and a Button name
@@ -2771,22 +2766,14 @@ function ReturnBlob( data ){
 	});
 
 	$('#btnDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
-		// $('#DeviceComments').removeAttr("novis");
-		NotifyPrompt(
-					"Change the comments",
-					function(results){
-						if( results.buttonIndex == 1){
+		$('#DeviceComments').removeAttr("novis");
 
-							ChangeInformation( results.input1, "comments");
-						}
-					},
-					"Comments",
-					buttons,
-					CurrentDevice.Comments);
 	});
 
 	function saveDeviceComments( comments ){
 		console.log("your comment was : " + comments);
+		ChangeInformation( comments, "comments");
+
 
 		
 	}
@@ -3695,6 +3682,7 @@ function ReturnBlob( data ){
 		}, 10);
 	});
 
+	// Button event handlers for changing device details
 	$('row.item>label.text').hammer( HammerOptions ).on("tap", function(e){
 		console.log(" working ");
 		var target = $(this).children('input').attr("id");
@@ -3751,19 +3739,6 @@ function ReturnBlob( data ){
 					buttons,
 					CurrentDevice.SerialNumber);
 			break;
-			// case "infoDeviceComments":
-			// 		NotifyPrompt(
-			// 		"Change the comments",
-			// 		function(results){
-			// 			if( results.buttonIndex == 1){
-
-			// 				ChangeInformation( results.input1, "comments");
-			// 			}
-			// 		},
-			// 		"Comments",
-			// 		buttons,
-			// 		CurrentDevice.Comments);
-			// break;
 			case "infoDevicePosition":
 				return 0;
 			break;
