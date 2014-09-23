@@ -441,7 +441,8 @@ var Ajax ={
 		// Uploads changes made by the user ot the server to be processed
 		changes: function( event ){
 			//Sort changes data into groups
-
+			AddMessage("Changes = ", "short", "top");
+			AddMessage(JSON.stringify({todo: Changes}),"long","top");
 			if( Changes[Changes.length-1].Date){
 				Changes.splice( Changes.length-1, 1);
 			}
@@ -727,7 +728,9 @@ function ReturnBlob( data ){
 		},
 		data: function( e ){
 			var fileName = CurrentGroup.ID_Group + ".json", data = new Object();
-			data.Date = GetToday(); data.Maps = Maps; data.Devices = Devices;
+			data.Date = GetToday();
+			data.Maps = Maps;
+			data.Devices = Devices;
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 				fs.root.getDirectory("OSMobile/data", {create:true}, function ( de ){
 					de.getFile( fileName, {create: true}, function ( fe ){
@@ -740,7 +743,7 @@ function ReturnBlob( data ){
 								console.log("Write complete: " + fileName);
 
 								DrawAvalibleMaps();
-								console.log("DrawAvalibleMaps - writefile.data");
+								AddMessage("DrawAvalibleMaps : called from : writefile.data","long","top");
 
 								// DrawAvalibleDevices();
 								DrawTotalDevices();
@@ -2762,6 +2765,7 @@ function ReturnBlob( data ){
 
 	function saveDeviceComments( comments ){
 		console.log("your comment was : " + comments);
+
 		
 	}
 
