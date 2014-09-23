@@ -2513,6 +2513,13 @@ function ReturnBlob( data ){
 		else{
 			$('#infoDeviceLock').prop("checked", 0);
 		}
+
+		AddMessage("*CD = ", "long", "top");
+		AddMessage(CurrentDevice, "long", "top");
+		
+		// if(CurrentDevice.Comments != ""){
+		// 	$('#DeviceComments').val(CurrentDevice.Comments);
+		// }
 	}
 
 	function AddChanges( ID, attribute, value ){
