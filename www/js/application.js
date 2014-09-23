@@ -2514,12 +2514,12 @@ function ReturnBlob( data ){
 			$('#infoDeviceLock').prop("checked", 0);
 		}
 
-		AddMessage("*CD = ", "long", "top");
-		AddMessage(CurrentDevice, "long", "top");
+		// AddMessage("*CD = ", "long", "top");
+		// AddMessage(CurrentDevice, "long", "top");
 		
-		// if(CurrentDevice.Comments != ""){
-		// 	$('#DeviceComments').val(CurrentDevice.Comments);
-		// }
+		if(CurrentDevice.Comments != ""){
+			$('#DeviceComments').val(CurrentDevice.Comments);
+		}
 	}
 
 	function AddChanges( ID, attribute, value ){
