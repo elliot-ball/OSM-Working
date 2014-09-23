@@ -2771,7 +2771,18 @@ function ReturnBlob( data ){
 	});
 
 	$('#btnDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
-		$('#DeviceComments').removeAttr("novis");
+		// $('#DeviceComments').removeAttr("novis");
+		NotifyPrompt(
+					"Change the comments",
+					function(results){
+						if( results.buttonIndex == 1){
+
+							ChangeInformation( results.input1, "comments");
+						}
+					},
+					"Comments",
+					buttons,
+					CurrentDevice.Comments);
 	});
 
 	function saveDeviceComments( comments ){
@@ -3740,19 +3751,19 @@ function ReturnBlob( data ){
 					buttons,
 					CurrentDevice.SerialNumber);
 			break;
-			case "infoDeviceComments":
-					NotifyPrompt(
-					"Change the comments",
-					function(results){
-						if( results.buttonIndex == 1){
+			// case "infoDeviceComments":
+			// 		NotifyPrompt(
+			// 		"Change the comments",
+			// 		function(results){
+			// 			if( results.buttonIndex == 1){
 
-							ChangeInformation( results.input1, "comments");
-						}
-					},
-					"Comments",
-					buttons,
-					CurrentDevice.Comments);
-			break;
+			// 				ChangeInformation( results.input1, "comments");
+			// 			}
+			// 		},
+			// 		"Comments",
+			// 		buttons,
+			// 		CurrentDevice.Comments);
+			// break;
 			case "infoDevicePosition":
 				return 0;
 			break;
