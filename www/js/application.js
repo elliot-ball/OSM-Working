@@ -2294,6 +2294,7 @@ function ReturnBlob( data ){
 		return Connection.online;
 	}
 
+	// Changes device information
 	function ChangeInformation( result, attribute ){
 		for (var i = 0; i < Devices.length; i++) {
 			if( Devices[i].ID_Device == CurrentDevice.ID_Device){
@@ -2358,6 +2359,16 @@ function ReturnBlob( data ){
 					DeviceChange = true;
 				}
 
+				if( attribute == "comments"){
+					Devices[i].Comments = result;
+					AddChanges( CurrentDevice.ID_Device, 'comments', result );
+					$('#infoDeviceAssetNumber').val( CurrentDevice.Comments );
+
+					CurrentDevice = Devices[i];
+					// DrawAvalibleDevices();
+					DisplayDeviceInformation();
+					DeviceChange = true;
+				}
 
 				// DisplayDeviceInformation();
 			}
@@ -3728,6 +3739,19 @@ function ReturnBlob( data ){
 					"Serial Number",
 					buttons,
 					CurrentDevice.SerialNumber);
+			break;
+			case "infoDeviceComments":
+					NotifyPrompt(
+					"Change the comments",
+					function(results){
+						if( results.buttonIndex == 1){
+
+							ChangeInformation( results.input1, "comments");
+						}
+					},
+					"Comments",
+					buttons,
+					CurrentDevice.Comments);
 			break;
 			case "infoDevicePosition":
 				return 0;
