@@ -1,8 +1,14 @@
 Zepto(function($){
 try{
-
+	var HammerOptions = {
+		preventMouse:true,
+		transformMinScale: 1.1,
+	}
+	var mDeviceOptions = {
+		preventDefault: true,
+		preventMouse: true,
+	}
 	// window.onorientationchange = orientationFix;
-
 	var AppStarted = false;
 	//Object holding Users Device information
 	var ThisDevice= {
@@ -19,7 +25,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	ThisDevice.Browser = true;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -500,7 +506,7 @@ var Ajax ={
 					}, 100);
 				},
 				error: function( et, e ){
-					alert( e );
+					// alert( e );
 					$('#logbookLog').append("<p>"+e+"</p>");
 					Spinner.hide();
 					AddMessage("Upload failed", "short", "top")
@@ -524,11 +530,11 @@ var Ajax ={
 					}
 				);
 			}catch(e){
-				alert(e.toString());
+				// alert(e.toString());
 			}
 		},
 		getCameraroll: function( event ){
-			// alert("getting cameraroll")
+			alert("getting cameraroll")
 
 			try{
 				navigator.camera.getPicture(
@@ -542,7 +548,7 @@ var Ajax ={
 					}
 				);
 			}catch(e){
-				alert(e.toString());
+				// alert(e.toString());
 			}
 		},
 		pictureSuccess: function( imgdata ){
@@ -575,11 +581,11 @@ var Ajax ={
 					);
 				}, 10);
 			}catch(e){
-				alert(StringMe(e));
+				// alert(StringMe(e));
 			}
 		},
 		pictureFail: function( event ){
-			alert("Camera Fail: " + e.toString())
+			// alert("Camera Fail: " + e.toString())
 		},
 		copyImageToDir: function( imgdata, name ){
 			var dir = '';
@@ -624,12 +630,12 @@ var Ajax ={
 
 												},
 												function( e ){
-													alert("Upload Transfer error: " + StringMe(e));
+													// alert("Upload Transfer error: " + StringMe(e));
 												},
 												options
 											);
 										}catch(e){
-											alert("Upload error: " + e.toString());
+											// alert("Upload error: " + e.toString());
 										}
 									}
 									else{
@@ -639,10 +645,10 @@ var Ajax ={
 								}, function(e){
 									switch( e.code ){
 										case 12:
-											alert( "Copy Failure: Device image with that name already exists" );
+											// alert( "Copy Failure: Device image with that name already exists" );
 										break;
 										default:
-											alert(e.code);
+											// alert(e.code);
 										break;
 									}
 								});
@@ -889,7 +895,7 @@ function ReturnBlob( data ){
 							else
 								Spinner.hide();
 								AddMessage("Connection offline, Unable to download groups", "long", "bottom");
-								// alert("Unable to download groups. Please check your connection");
+								alert("Unable to download groups. Please check your connection");
 						}
 						else{
 							File.error(e);
@@ -899,7 +905,7 @@ function ReturnBlob( data ){
 			},File.error);
 		},
 		data: function(e){
-			// alert("reading data file")
+			alert("reading data file")
 			console.log("reading data file");
 			var fileName = CurrentGroup.ID_Group +".json";
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
@@ -956,7 +962,7 @@ function ReturnBlob( data ){
 								OnMapFunctions.empty();
 								OnMapFunctions.MoveForward();
 								AddMessage("Connection offline, Unable to download data", "long", "bottom");
-								// alert("Unable to download Data. Please check your connection");
+								alert("Unable to download Data. Please check your connection");
 							}
 						}
 						else{
@@ -977,11 +983,11 @@ function ReturnBlob( data ){
 								r.onload = function(e){
 									if( this.result.length > 0){
 										var result = JSON.parse(this.result);
-										alert( result.length );
+										// alert( result.length );
 										Changes = result;
 									}
 									else{
-										alert("No Changes");
+										// alert("No Changes");
 									}
 								}
 								r.readAsText(file);
@@ -999,7 +1005,7 @@ function ReturnBlob( data ){
 					},File.error);
 				},File.error);
 			}catch(e){
-				alert( e.toString() );
+				// alert( e.toString() );
 			}
 		},
 		// readfile.maps
@@ -1051,7 +1057,7 @@ function ReturnBlob( data ){
 							}
 							else{
 								Spinner.hide();
-								alert("Unable to download device image. Please check your connection");
+								// alert("Unable to download device image. Please check your connection");
 							}
 						}
 						else{
@@ -1150,7 +1156,7 @@ function ReturnBlob( data ){
 					msg = 'Unknown Error ';
 					break;
 			};
-			alert( msg + " " + e.code)
+			// alert( msg + " " + e.code)
 			console.log( msg + " " + e.code)
 		}
 	}
@@ -1347,19 +1353,19 @@ function ReturnBlob( data ){
 	// 	var orientRotation = window.orientation;
 	// 	switch( orientRotation ){
 	// 		case 0:
-	// 			alert("landscape 0")
+				alert("landscape 0")
 	// 			OrientLandscape();
 	// 		break;
 	// 		case 90:
-	// 			alert("portrait 90")
+				alert("portrait 90")
 	// 			OrientPortrait();
 	// 		break;
 	// 		case 180:
-	// 			alert("landscape 180")
+				alert("landscape 180")
 	// 			OrientLandscape();
 	// 		break;
 	// 		case 270:
-	// 			alert("portrait 270")
+				alert("portrait 270")
 	// 			OrientPortrait();
 	// 		break;
 	// 	}
@@ -1369,7 +1375,7 @@ function ReturnBlob( data ){
 	// 		try{
 	// 			$('page').removeClass("landscape").addClass("portrait", "");
 	// 		}catch(e){
-	// 			alert( "OrientERRROR: " + e.toString() );
+				alert( "OrientERRROR: " + e.toString() );
 	// 		}
 	// 		$('map>viewport').attr("novis", "");
 	// 		ClearDevices();
@@ -1383,7 +1389,7 @@ function ReturnBlob( data ){
 	// 			$('page').removeClass("portrait").addClass("landscape", "")
 
 	// 		}catch(e){
-	// 			alert( "OrientERRROR: " + e.toString() );
+				alert( "OrientERRROR: " + e.toString() );
 	// 		}
 	// 		$('map>viewport').attr("novis", "");
 	// 		ClearDevices();
@@ -1942,7 +1948,7 @@ function ReturnBlob( data ){
 
 
 	function DrawAvalibleDevices(){
-		alert("What are you doing? this takes way too long, remove it, but remember what you pressed to get here")
+		// alert("What are you doing? this takes way too long, remove it, but remember what you pressed to get here")
 /*		$('#infoDeviceNum').val("Number of Devices : " + Devices.length );
 		var OnMap = new Array(); OffMap = new Array();
 
@@ -2079,7 +2085,7 @@ function ReturnBlob( data ){
 
 						break;
 						case FileTransferError.INVALID_URL_ERR:
-							alert( "Server URL is incorrect." );
+							// alert( "Server URL is incorrect." );
 						break;
 						case FileTransferError.CONNECTION_ERR:
 							AddMessage("Cannot find connection path for Map Image", "long", "bottom");
@@ -2142,7 +2148,7 @@ function ReturnBlob( data ){
 				break;
 			}
 
-			alert(msg)
+			// alert(msg)
 
 			Spinner.hide();
 		}
@@ -2430,7 +2436,7 @@ function ReturnBlob( data ){
 		if( ThisDevice.Browser == false ){
 			window.plugins.toast.show( msg, duration, position, function(a){
 			}, function(a){
-				alert("Toast Error" + a);
+				// alert("Toast Error" + a);
 			})
 		}
 		else{
@@ -2477,7 +2483,7 @@ function ReturnBlob( data ){
 			ReadFile.data();
 
 		}catch(e){
-			alert("trying changeGroup with num " + num + " error: " + e.toString());
+			// alert("trying changeGroup with num " + num + " error: " + e.toString());
 		}
 
 	}
@@ -2632,9 +2638,9 @@ function ReturnBlob( data ){
 
 	// Using Phonegaps Notification system, alert the user to the issue.
 	// Requires a message, title, function to do after hitting the button, and a Button name
-	function NotifyAlert( msg, dothis, title, button ){
-		navigator.notification.alert(msg, dothis, title , button);
-	}
+	// function NotifyAlert( msg, dothis, title, button ){
+		// navigator.notification.alert(msg, dothis, title , button);
+	// }
 
 //Notify confirmation
 	function NotifyConfirm( msg, dothis, title, buttons){
@@ -2667,11 +2673,10 @@ function ReturnBlob( data ){
 	document.addEventListener("offline", PhoneGap.offline, false);
 	// window.addEventListener("orientationchange", orientationFix, false);
 
-	var HammerOptions = {
-		preventMouse:true,
-		transformMinScale: 1.1,
-
-	}
+	// var HammerOptions = {
+	// 	preventMouse:true,
+	// 	transformMinScale: 1.1,
+	// }
 
 	$('#btnLogbook').hammer( HammerOptions ).on("tap", function ( event ){
 		console.log("hizsdbgfhsdfhidbh");
@@ -2964,7 +2969,7 @@ function ReturnBlob( data ){
 
 										}
 										else{
-											alert("No Changes");
+											// alert("No Changes");
 										}
 									}
 									r.readAsText(file);
@@ -2993,7 +2998,7 @@ function ReturnBlob( data ){
 						},File.error);
 					},File.error);
 				}catch(e){
-					alert( e.toString() );
+					// alert( e.toString() );
 				}
 			}
 		}
@@ -3177,10 +3182,7 @@ function ReturnBlob( data ){
 		}, 200);
 	});
 
-	var mDeviceOptions = {
-		preventDefault: true,
-		preventMouse: true,
-	}
+	
 
 	var prev= {
 		event: null,
@@ -3277,7 +3279,7 @@ function ReturnBlob( data ){
 										}
 									});
 								}catch(e){
-									alert(e.toString() + " adding errror")
+									// alert(e.toString() + " adding errror")
 								}
 
 
@@ -3291,7 +3293,7 @@ function ReturnBlob( data ){
 										}
 									});
 								}catch(e){
-									alert(e.toString() + " removal errror")
+									// alert(e.toString() + " removal errror")
 								}
 
 								Delete.push($(prev.target).attr("id"));
@@ -3920,7 +3922,7 @@ function ReturnBlob( data ){
     });
 
 }catch(e){
-	alert(e.toString())
+	// alert(e.toString())
 	console.log(e.toString() );
 }
 });
