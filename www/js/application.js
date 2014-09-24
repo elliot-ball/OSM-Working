@@ -1,13 +1,6 @@
 Zepto(function($){
 try{
-	var HammerOptions = {
-		preventMouse:true,
-		transformMinScale: 1.1,
-	}
-	var mDeviceOptions = {
-		preventDefault: true,
-		preventMouse: true,
-	}
+	
 	// window.onorientationchange = orientationFix;
 	var AppStarted = false;
 	//Object holding Users Device information
@@ -2673,11 +2666,15 @@ function ReturnBlob( data ){
 	document.addEventListener("offline", PhoneGap.offline, false);
 	// window.addEventListener("orientationchange", orientationFix, false);
 
-	// var HammerOptions = {
-	// 	preventMouse:true,
-	// 	transformMinScale: 1.1,
-	// }
-
+	var HammerOptions = {
+		preventMouse:true,
+		transformMinScale: 1.1,
+	}
+	var mDeviceOptions = {
+		preventDefault: true,
+		preventMouse: true,
+	}
+	
 	$('#btnLogbook').hammer( HammerOptions ).on("tap", function ( event ){
 		console.log("hizsdbgfhsdfhidbh");
 		Shadow.show();
