@@ -1,5 +1,6 @@
 Zepto(function($){
 try{
+	AddMessage("msg works", "long", "top");
 	
 	// window.onorientationchange = orientationFix;
 	var AppStarted = false;
@@ -2674,7 +2675,7 @@ function ReturnBlob( data ){
 		preventDefault: true,
 		preventMouse: true,
 	}
-	
+
 	$('#btnLogbook').hammer( HammerOptions ).on("tap", function ( event ){
 		console.log("hizsdbgfhsdfhidbh");
 		Shadow.show();
