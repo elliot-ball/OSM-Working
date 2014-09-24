@@ -2678,7 +2678,6 @@ function ReturnBlob( data ){
 	}
 
 	$('#btnLogbook').hammer( HammerOptions ).on("tap", function ( event ){
-		console.log("hizsdbgfhsdfhidbh");
 		Shadow.show();
 		$('#logbook').removeAttr("novis");
 	});
@@ -2770,12 +2769,13 @@ function ReturnBlob( data ){
 	});
 
 	$('#btnDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
+		Shadow.show();
 		$('#DeviceComments').removeAttr("novis");
-
 	});
 
 	$('#btnSaveDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
 		$('#DeviceComments').attr("novis");
+		Shadow.hide();
 		ChangeInformation( $('#DeviceComments textarea').val(), "comments");
 		AddMessage("Comments saved","short","top");
 	});
@@ -3563,6 +3563,7 @@ function ReturnBlob( data ){
 
 
 	$("#inputselectGroup").parent().hammer( HammerOptions ).on("tap", function(e){
+		console.log("I felt your tap");
 		$('#MapTitle').empty().html("OneStop");
 
 		if( $('float#GroupSelect').attr("novis") != null){
