@@ -2670,11 +2670,11 @@ function ReturnBlob( data ){
 
 	var HammerOptions = {
 		preventMouse:true,
-		transformMinScale: 1.1
+		transformMinScale: 1.1,
 	}
 	var mDeviceOptions = {
 		preventDefault: true,
-		preventMouse: true
+		preventMouse: true,
 	}
 
 	$('#btnLogbook').hammer( HammerOptions ).on("tap", function ( event ){
@@ -3562,7 +3562,7 @@ function ReturnBlob( data ){
 	}
 
 
-	$("#inputselectGroup").parent().hammer( HammerOptions ).on("tap", function(e){
+	$("#inputselectGroup").parent().hammer({preventMouse:true, transformMinScale: 1.1}).on("tap", function(e){
 		$('#MapTitle').empty().html("OneStop");
 
 		if( $('float#GroupSelect').attr("novis") != null){
