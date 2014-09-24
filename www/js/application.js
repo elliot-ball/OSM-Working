@@ -2778,8 +2778,8 @@ function ReturnBlob( data ){
 	});
 
 	$('#btnSaveDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
-		$('#DeviceComments').attr("novis");
 		Shadow.hide();
+		$('#DeviceComments').attr("novis");
 		ChangeInformation( $('#DeviceComments textarea').val(), "comments");
 		AddMessage("Comments saved","short","top");
 	});
@@ -3588,7 +3588,7 @@ function ReturnBlob( data ){
 	});
 	console.log("inputselectGroup AFTER");
 
-	$(window).hammer( HammerOptions ).on("tap",'a.button.close',function(e){
+	$(window).hammer( HammerOptions ).on("tap",'a.button.close, .close-window',function(e){
 		Shadow.hide();
 		$(this).parents('float.master').attr("novis", "");
 		if( $(this).parents('float.master').attr("id") == "logbook" ){
