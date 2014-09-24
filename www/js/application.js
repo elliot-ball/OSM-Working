@@ -1,6 +1,5 @@
 Zepto(function($){
 try{
-	AddMessage("msg works", "long", "top");
 	
 	// window.onorientationchange = orientationFix;
 	var AppStarted = false;
@@ -2438,6 +2437,9 @@ function ReturnBlob( data ){
 		}
 	}
 
+	AddMessage("msg works", "long", "top");
+	
+	
 	function ChangeGroup( num ){
 		try{
 			ClearMap();
