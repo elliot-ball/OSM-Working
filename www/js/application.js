@@ -3562,7 +3562,7 @@ function ReturnBlob( data ){
 	}
 
 
-	$("#inputselectGroup").parent().hammer({preventMouse:true, transformMinScale: 1.1}).on("tap", function(e){
+	$("#inputselectGroup").parent().hammer( HammerOptions ).on("tap", function(e){
 		$('#MapTitle').empty().html("OneStop");
 
 		if( $('float#GroupSelect').attr("novis") != null){
