@@ -506,7 +506,7 @@ var Ajax ={
 					}, 100);
 				},
 				error: function( et, e ){
-					// alert( e );
+					alert( e );
 					$('#logbookLog').append("<p>"+e+"</p>");
 					Spinner.hide();
 					AddMessage("Upload failed", "short", "top")
@@ -530,7 +530,7 @@ var Ajax ={
 					}
 				);
 			}catch(e){
-				// alert(e.toString());
+				alert(e.toString());
 			}
 		},
 		getCameraroll: function( event ){
@@ -548,7 +548,7 @@ var Ajax ={
 					}
 				);
 			}catch(e){
-				// alert(e.toString());
+				alert(e.toString());
 			}
 		},
 		pictureSuccess: function( imgdata ){
@@ -581,11 +581,11 @@ var Ajax ={
 					);
 				}, 10);
 			}catch(e){
-				// alert(StringMe(e));
+				alert(StringMe(e));
 			}
 		},
 		pictureFail: function( event ){
-			// alert("Camera Fail: " + e.toString())
+			alert("Camera Fail: " + e.toString())
 		},
 		copyImageToDir: function( imgdata, name ){
 			var dir = '';
@@ -630,12 +630,12 @@ var Ajax ={
 
 												},
 												function( e ){
-													// alert("Upload Transfer error: " + StringMe(e));
+													alert("Upload Transfer error: " + StringMe(e));
 												},
 												options
 											);
 										}catch(e){
-											// alert("Upload error: " + e.toString());
+											alert("Upload error: " + e.toString());
 										}
 									}
 									else{
@@ -645,10 +645,10 @@ var Ajax ={
 								}, function(e){
 									switch( e.code ){
 										case 12:
-											// alert( "Copy Failure: Device image with that name already exists" );
+											alert( "Copy Failure: Device image with that name already exists" );
 										break;
 										default:
-											// alert(e.code);
+											alert(e.code);
 										break;
 									}
 								});
@@ -983,11 +983,11 @@ function ReturnBlob( data ){
 								r.onload = function(e){
 									if( this.result.length > 0){
 										var result = JSON.parse(this.result);
-										// alert( result.length );
+										alert( result.length );
 										Changes = result;
 									}
 									else{
-										// alert("No Changes");
+										alert("No Changes");
 									}
 								}
 								r.readAsText(file);
@@ -1005,7 +1005,7 @@ function ReturnBlob( data ){
 					},File.error);
 				},File.error);
 			}catch(e){
-				// alert( e.toString() );
+				alert( e.toString() );
 			}
 		},
 		// readfile.maps
@@ -1057,7 +1057,7 @@ function ReturnBlob( data ){
 							}
 							else{
 								Spinner.hide();
-								// alert("Unable to download device image. Please check your connection");
+								alert("Unable to download device image. Please check your connection");
 							}
 						}
 						else{
@@ -1156,7 +1156,7 @@ function ReturnBlob( data ){
 					msg = 'Unknown Error ';
 					break;
 			};
-			// alert( msg + " " + e.code)
+			alert( msg + " " + e.code)
 			console.log( msg + " " + e.code)
 		}
 	}
@@ -1948,7 +1948,7 @@ function ReturnBlob( data ){
 
 
 	function DrawAvalibleDevices(){
-		// alert("What are you doing? this takes way too long, remove it, but remember what you pressed to get here")
+		alert("What are you doing? this takes way too long, remove it, but remember what you pressed to get here")
 /*		$('#infoDeviceNum').val("Number of Devices : " + Devices.length );
 		var OnMap = new Array(); OffMap = new Array();
 
@@ -2085,7 +2085,7 @@ function ReturnBlob( data ){
 
 						break;
 						case FileTransferError.INVALID_URL_ERR:
-							// alert( "Server URL is incorrect." );
+							alert( "Server URL is incorrect." );
 						break;
 						case FileTransferError.CONNECTION_ERR:
 							AddMessage("Cannot find connection path for Map Image", "long", "bottom");
@@ -2148,7 +2148,7 @@ function ReturnBlob( data ){
 				break;
 			}
 
-			// alert(msg)
+			alert(msg)
 
 			Spinner.hide();
 		}
@@ -2436,7 +2436,7 @@ function ReturnBlob( data ){
 		if( ThisDevice.Browser == false ){
 			window.plugins.toast.show( msg, duration, position, function(a){
 			}, function(a){
-				// alert("Toast Error" + a);
+				alert("Toast Error" + a);
 			})
 		}
 		else{
@@ -2483,7 +2483,7 @@ function ReturnBlob( data ){
 			ReadFile.data();
 
 		}catch(e){
-			// alert("trying changeGroup with num " + num + " error: " + e.toString());
+			alert("trying changeGroup with num " + num + " error: " + e.toString());
 		}
 
 	}
@@ -2962,7 +2962,7 @@ function ReturnBlob( data ){
 
 										}
 										else{
-											// alert("No Changes");
+											alert("No Changes");
 										}
 									}
 									r.readAsText(file);
@@ -2991,7 +2991,7 @@ function ReturnBlob( data ){
 						},File.error);
 					},File.error);
 				}catch(e){
-					// alert( e.toString() );
+					alert( e.toString() );
 				}
 			}
 		}
@@ -3272,7 +3272,7 @@ function ReturnBlob( data ){
 										}
 									});
 								}catch(e){
-									// alert(e.toString() + " adding errror")
+									alert(e.toString() + " adding errror")
 								}
 
 
@@ -3286,7 +3286,7 @@ function ReturnBlob( data ){
 										}
 									});
 								}catch(e){
-									// alert(e.toString() + " removal errror")
+									alert(e.toString() + " removal errror")
 								}
 
 								Delete.push($(prev.target).attr("id"));
@@ -3915,7 +3915,7 @@ function ReturnBlob( data ){
     });
 
 }catch(e){
-	// alert(e.toString())
+	alert(e.toString())
 	console.log(e.toString() );
 }
 });
