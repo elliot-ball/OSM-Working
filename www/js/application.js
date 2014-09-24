@@ -787,6 +787,7 @@ function ReturnBlob( data ){
 			}, File.error);
 		}
 	}
+
 	var ReadFile = {
 		settings: function(e){
 			var fileName = 'settings.json'
@@ -1061,6 +1062,7 @@ function ReturnBlob( data ){
 			}, File.error);
 		}
 	}
+
 	var RemoveFile = {
 		settings: function(e){
 			var fileName = 'settings.json';
@@ -1514,7 +1516,7 @@ function ReturnBlob( data ){
 				var id = OnMapDevices[0][j].ID_Device, desc = OnMapDevices[0][j].Description, serial = OnMapDevices[0][j].SerialNumber, comments = OnMapDevices[0][j].Comments;
 				if( desc.length == 0) desc = "No Description";
 				if( serial.length == 0) serial = "No Serial Number";
-				s += "<row class='button item mDevice' id='"+id+"'><span><name>"+desc+"</name><serial>"+serial+"</serial>"+comments+"</span></row>";
+				s += "<row class='button item mDevice' id='"+id+"'><span><name>"+desc+"</name><serial>"+serial+"</serial></span></row>";
 			};
 
 			s +="</row></scroll></panel>"
@@ -1619,6 +1621,7 @@ function ReturnBlob( data ){
 			}
 		}
 	}
+
 	var OffMapFunctions = {
 		current: 0,
 		RootGroup: function(){
@@ -2669,12 +2672,12 @@ function ReturnBlob( data ){
 	// window.addEventListener("orientationchange", orientationFix, false);
 
 	var HammerOptions = {
-		preventMouse:true,
-		transformMinScale: 1.1,
+		preventMouse: true,
+		transformMinScale: 1.1
 	}
 	var mDeviceOptions = {
 		preventDefault: true,
-		preventMouse: true,
+		preventMouse: true
 	}
 
 	$('#btnLogbook').hammer( HammerOptions ).on("tap", function ( event ){
@@ -2779,6 +2782,7 @@ function ReturnBlob( data ){
 		ChangeInformation( $('#DeviceComments textarea').val(), "comments");
 		AddMessage("Comments saved","short","top");
 	});
+
 
 	$('#btnContinue').hammer( HammerOptions ).on("tap", function ( event ){
 		if( Settings.logged == true){
@@ -2906,7 +2910,7 @@ function ReturnBlob( data ){
 		$('map>viewport>.selecteddevice').removeClass("selecteddevice");
 	})
 
-	$('#btnSave, #btnSaveDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
+	$('#btnSave').hammer( HammerOptions ).on("tap", function ( event ){
 		if( Changes.length > 0){
 			if(GetConnection() == true ){
 
@@ -2999,6 +3003,7 @@ function ReturnBlob( data ){
 			AddMessage("0 changes have been made", "short", "top");
 		}
 	});
+	console.log("********************************");
 
 
 	// $(window).hammer( HammerOptions ).on("tap", 'a.button.back#btnPanelBack', function (event){
@@ -3424,7 +3429,6 @@ function ReturnBlob( data ){
 		DisplayDeviceInformation();
 
 	});
-
 	var DragEvent = {
 		startObj: null,
 		delta: {
@@ -3434,7 +3438,7 @@ function ReturnBlob( data ){
 		doubletap: false,
 	}
 
-	$( document.body ).hammer(  ).on("dragstart drag dragend", 'map>viewport>pog.unlocked', function(e){
+	$( document.body ).hammer().on("dragstart drag dragend", 'map>viewport>pog.unlocked', function(e){
 		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 
 		switch( e.type ){
@@ -3561,8 +3565,10 @@ function ReturnBlob( data ){
 		GroupTree.MoveForward();
 	}
 
+	console.log("inputselectGroup BEFORE");
 
 	$("#inputselectGroup").parent().hammer( HammerOptions ).on("tap", function(e){
+		console.log("inputselectGroup CLICKED");
 		$('#MapTitle').empty().html("OneStop");
 
 		if( $('float#GroupSelect').attr("novis") != null){
@@ -3580,6 +3586,7 @@ function ReturnBlob( data ){
 			}, 10);
 		}
 	});
+	console.log("inputselectGroup AFTER");
 
 	$(window).hammer( HammerOptions ).on("tap",'a.button.close',function(e){
 		Shadow.hide();
