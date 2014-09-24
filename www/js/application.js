@@ -18,7 +18,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = true;
+	ThisDevice.Browser = false;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -2228,8 +2228,6 @@ function ReturnBlob( data ){
 				$('#inputPassword').val( "admin" );
 			}
 			ReadFile.settings();
-	AddMessage("msg works", "long", "top");
-			
 		},
 		back: function( event ){
 			if( $('#login').hasClass("visible")){
