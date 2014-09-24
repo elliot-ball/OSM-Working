@@ -2770,17 +2770,10 @@ function ReturnBlob( data ){
 
 	});
 
-	function saveDeviceComments( comments ){
-		console.log("your comment was : " + comments);
-		ChangeInformation( comments, "comments");
-
-
-		
-	}
-
 	$('#btnSaveDeviceComments').hammer( HammerOptions ).on("tap", function ( event ){
 		$('#DeviceComments').attr("novis");
-		saveDeviceComments($('#DeviceComments textarea').val());
+		ChangeInformation( $('#DeviceComments textarea').val(), "comments");
+		AddMessage("Comments saved","short","top");
 	});
 
 	$('#btnContinue').hammer( HammerOptions ).on("tap", function ( event ){
