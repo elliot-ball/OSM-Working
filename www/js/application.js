@@ -905,7 +905,7 @@ function ReturnBlob( data ){
 			},File.error);
 		},
 		data: function(e){
-			alert("reading data file")
+			// alert("reading data file");
 			console.log("reading data file");
 			var fileName = CurrentGroup.ID_Group +".json";
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
@@ -1353,19 +1353,19 @@ function ReturnBlob( data ){
 	// 	var orientRotation = window.orientation;
 	// 	switch( orientRotation ){
 	// 		case 0:
-				alert("landscape 0")
+				// alert("landscape 0")
 	// 			OrientLandscape();
 	// 		break;
 	// 		case 90:
-				alert("portrait 90")
+				// alert("portrait 90")
 	// 			OrientPortrait();
 	// 		break;
 	// 		case 180:
-				alert("landscape 180")
+				// alert("landscape 180")
 	// 			OrientLandscape();
 	// 		break;
 	// 		case 270:
-				alert("portrait 270")
+				// alert("portrait 270")
 	// 			OrientPortrait();
 	// 		break;
 	// 	}
@@ -1375,7 +1375,7 @@ function ReturnBlob( data ){
 	// 		try{
 	// 			$('page').removeClass("landscape").addClass("portrait", "");
 	// 		}catch(e){
-				alert( "OrientERRROR: " + e.toString() );
+				// alert( "OrientERRROR: " + e.toString() );
 	// 		}
 	// 		$('map>viewport').attr("novis", "");
 	// 		ClearDevices();
@@ -1389,7 +1389,7 @@ function ReturnBlob( data ){
 	// 			$('page').removeClass("portrait").addClass("landscape", "")
 
 	// 		}catch(e){
-				alert( "OrientERRROR: " + e.toString() );
+				// alert( "OrientERRROR: " + e.toString() );
 	// 		}
 	// 		$('map>viewport').attr("novis", "");
 	// 		ClearDevices();
@@ -2148,7 +2148,7 @@ function ReturnBlob( data ){
 				break;
 			}
 
-			alert(msg)
+			// alert(msg);
 
 			Spinner.hide();
 		}
@@ -3272,7 +3272,7 @@ function ReturnBlob( data ){
 										}
 									});
 								}catch(e){
-									alert(e.toString() + " adding errror")
+									alert(e.toString() + " adding errror");
 								}
 
 
@@ -3286,7 +3286,7 @@ function ReturnBlob( data ){
 										}
 									});
 								}catch(e){
-									alert(e.toString() + " removal errror")
+									alert(e.toString() + " removal error");
 								}
 
 								Delete.push($(prev.target).attr("id"));
@@ -3915,7 +3915,7 @@ function ReturnBlob( data ){
     });
 
 }catch(e){
-	alert(e.toString())
+	// alert(e.toString());
 	console.log(e.toString() );
 }
 });
