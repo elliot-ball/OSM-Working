@@ -2228,6 +2228,8 @@ function ReturnBlob( data ){
 				$('#inputPassword').val( "admin" );
 			}
 			ReadFile.settings();
+	AddMessage("msg works", "long", "top");
+			
 		},
 		back: function( event ){
 			if( $('#login').hasClass("visible")){
@@ -2437,9 +2439,8 @@ function ReturnBlob( data ){
 		}
 	}
 
-	AddMessage("msg works", "long", "top");
-	
-	
+
+
 	function ChangeGroup( num ){
 		try{
 			ClearMap();
