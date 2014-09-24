@@ -1533,6 +1533,7 @@ function ReturnBlob( data ){
 			Spinner.hide();
 		},
 		NextGroup: function(){
+			console.log("next group function called")
 			var s = "";
 			s += "<panel right class='child '><scroll class='y'><row class='content'>"
 			console.log( OnMapFunctions.current );
@@ -3568,7 +3569,6 @@ function ReturnBlob( data ){
 	console.log("inputselectGroup BEFORE");
 
 	$("#inputselectGroup").parent().hammer( HammerOptions ).on("tap", function(e){
-		console.log("inputselectGroup CLICKED");
 		$('#MapTitle').empty().html("OneStop");
 
 		if( $('float#GroupSelect').attr("novis") != null){
