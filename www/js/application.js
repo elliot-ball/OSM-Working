@@ -3816,9 +3816,15 @@ function ReturnBlob( data ){
 		// Ajax.groups();
 		// AddMessage(Devices, "long", "top");
 
-		// tooltip
+		// tooltip to go here
+		$('#btnSave span').css("visibility","visible");
+		setTimeout(function(){
+		   $("#btnSave span").css("visibility","hidden");
+		},3000);
 	})
 
+	// When a small windows appears so does a shadow that sits under it
+	// When the shadow is tapped it removes itself and any of the windows that are currently visible
 	$('shadow').hammer( HammerOptions ).on("touch release", function(e){
 		if( !$('float#GroupSelect').attr("novis") )
 			$('float#GroupSelect').attr("novis", "");
@@ -3836,6 +3842,7 @@ function ReturnBlob( data ){
 
 		Shadow.hide();
 	})
+
 	$(window).hammer(HammerOptions).on("tap", "a.button#btnforwards_Off", function(e){
 		OffMapFunctions.MoveForward();
 	});
