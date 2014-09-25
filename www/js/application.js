@@ -3831,8 +3831,8 @@ function ReturnBlob( data ){
 		if( !$('#DeviceImageDisplay').attr("novis") )
 			DeviceImage.hide();
 
-		if( !$('DeviceComments').attr("novis") )
-			$('DeviceComments').attr("novis", "");
+		if( !$('#DeviceComments').attr("novis") )
+			$('#DeviceComments').attr("novis", "");
 
 		Shadow.hide();
 	})
