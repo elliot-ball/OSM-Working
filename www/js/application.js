@@ -1173,7 +1173,6 @@ function ReturnBlob( data ){
 		$('viewport>pog').remove();
 
 		img.src = path;
-		// img.src = "http://192.168.100.128:8023/Maps/1.jpg";
 		img.onload = function(){
 			var w = img.width, h = img.height, nw, nh;
 
@@ -3426,7 +3425,8 @@ function ReturnBlob( data ){
 			break;
 		}
 	})
-
+	
+	// On tap of a device on the map
 	$(window).hammer( HammerOptions ).on("tap", "map>viewport>pog",function(event){
 
 		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
@@ -3444,6 +3444,7 @@ function ReturnBlob( data ){
 		DisplayDeviceInformation();
 
 	});
+
 	var DragEvent = {
 		startObj: null,
 		delta: {
@@ -3760,8 +3761,9 @@ function ReturnBlob( data ){
 		}
 
 	})
-
+	
 	$('a.button.locate').hammer(HammerOptions).on("tap", function(e){
+		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 		$.each($('map>viewport>pog'), function(index, item){
 			if( $(item).attr("id") == CurrentDevice.ID_Device ){
 				$(item).addClass("selecteddevice");
