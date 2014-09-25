@@ -3814,12 +3814,15 @@ function ReturnBlob( data ){
 	// test button
 	$('#btnTest').hammer(HammerOptions).on("tap", function(e){
 		// Ajax.groups();
-		AddMessage(Devices, "long", "top");
+		// AddMessage(Devices, "long", "top");
+
+		// tooltip
 	})
 
 	$('shadow').hammer( HammerOptions ).on("touch release", function(e){
 		if( !$('float#GroupSelect').attr("novis") )
 			$('float#GroupSelect').attr("novis", "");
+		
 		if( !$('#logbook').attr("novis") ){
 			$('#logbook').attr("novis", "");
 			$('#logbookLog').children('.master').removeClass("expand").removeClass("collapse").addClass("expand");
@@ -3828,6 +3831,8 @@ function ReturnBlob( data ){
 		if( !$('#DeviceImageDisplay').attr("novis") )
 			DeviceImage.hide();
 
+		if( !$('DeviceComments').attr("novis") )
+			$('DeviceComments').attr("novis", "");
 
 		Shadow.hide();
 	})
