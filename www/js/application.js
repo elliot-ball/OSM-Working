@@ -872,8 +872,7 @@ function ReturnBlob( data ){
 										LoginPage.hide();
 										SettingsPage.hide();
 										MainPage.show();
-										Spinner.hide();
-										$('#btnTogPanel').trigger("tap");
+										Spinner.hide();										
 									}, 50);
 								}
 								else{
@@ -2759,6 +2758,12 @@ function ReturnBlob( data ){
 		// temp comment // there must be a better way to do this
 		SettingsPage.hide();
 		LoginPage.show();
+
+		// open sidebar now
+
+		
+
+
 	});
 
 	$('#btnSaveServerAddress').hammer( HammerOptions ).on("tap", function ( event ){
