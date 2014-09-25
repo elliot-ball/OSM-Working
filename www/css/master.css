@@ -1333,30 +1333,29 @@ spinner icon:not(:only-child) {
   display: none;
 }
 
-/*a.tooltips {
-		  position: relative;
-		  display: inline;
-		}*/
-a.tooltips span {
+.tooltip {
+  display: inline;
   position: absolute;
-  width: 140px;
+  /*width:140px;*/
   color: #000000;
   background: #FFFFFF;
   border: 2px solid #356AA0;
   height: 41px;
+  padding: 0 10px;
   line-height: 41px;
   text-align: center;
   border-radius: 5px;
-  box-shadow: 3px 5px 5px #7A7979;
+  box-shadow: 2px 2px 2px #7A7979;
   visibility: hidden;
   opacity: 0.8;
-  top: 30px;
-  left: 50%;
-  margin-left: -76px;
+  /*top: 0;
+  left: 0;*/
+  top: 38px;
+  left: 929px;
   z-index: 999;
 }
 
-a.tooltips span:before {
+.tooltip:before {
   content: '';
   position: absolute;
   bottom: 100%;
@@ -1369,7 +1368,7 @@ a.tooltips span:before {
   border-left: 12px solid transparent;
 }
 
-a.tooltips span:after {
+.tooltip:after {
   content: '';
   position: absolute;
   bottom: 100%;

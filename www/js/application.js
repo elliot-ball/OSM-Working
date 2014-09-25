@@ -18,7 +18,7 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	ThisDevice.Browser = true;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -3817,9 +3817,9 @@ function ReturnBlob( data ){
 		// AddMessage(Devices, "long", "top");
 
 		// tooltip to go here
-		$('#btnSave span').css("visibility","visible");
+		$('.tooltip').css("visibility","visible");
 		setTimeout(function(){
-		   $("#btnSave span").css("visibility","hidden");
+		   $(".tooltip").css("visibility","hidden");
 		},3000);
 	})
 
