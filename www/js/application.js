@@ -2635,6 +2635,19 @@ function ReturnBlob( data ){
 		$('select').blur();
 	}
 
+	// Creates a tooltip inside the desired element
+	// set the exact position with top and left
+	// The tooltip is given a unique ID based on its positioning
+	// icon sets the css class which positions an icon before the message, these must be defined in master.css
+	function addToolTip(element, top, left, message, icon){
+				
+		$(element).append('<span id="tooltip-'+top+'-'+left+'" class="tooltip" style="top:'+top+'; left:'+left+';"><a class="'+icon+'" href="#"></a>'+message+'</span>');
+		
+		setTimeout(function(){
+		   $("#tooltip-"+top+"-"+left).remove();
+		},5000);
+	}
+
 	// Using Phonegaps Notification system, alert the user to the issue.
 	// Requires a message, title, function to do after hitting the button, and a Button name
 	// function NotifyAlert( msg, dothis, title, button ){
@@ -2782,11 +2795,7 @@ function ReturnBlob( data ){
 		$('#DeviceComments').attr("novis");
 		ChangeInformation( $('#DeviceComments textarea').val(), "comments");
 		AddMessage("Comments saved","short","top");
-		// Show the tooltip for 3 seconds 
-		$('.tooltip').css("visibility","visible");
-		setTimeout(function(){
-		   $(".tooltip").css("visibility","hidden");
-		},3000);
+		addToolTip("#main actionbar","38px","909px","Tap here to commit all of your changes","warning");
 	});
 
 
@@ -3816,16 +3825,11 @@ function ReturnBlob( data ){
 		}
 	})
 
+	
+
 	// test button
 	$('#btnTest').hammer(HammerOptions).on("tap", function(e){
-		// Ajax.groups();
-		// AddMessage(Devices, "long", "top");
-
-		// Show the tooltip for 3 seconds 
-		$('.tooltip').css("visibility","visible");
-		setTimeout(function(){
-		   $(".tooltip").css("visibility","hidden");
-		},3000);
+		addToolTip("#main actionbar","38px","909px","Tap here to commit all of your changes","warning");
 	})
 
 	// When a small windows appears so does a shadow that sits under it

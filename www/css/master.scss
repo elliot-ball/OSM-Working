@@ -959,6 +959,17 @@ a{
 			content: "\f0c7";
 		}
 	}
+	&.warning{
+		float: left;
+		
+		&:after{
+		font-family: "FontAwesome";
+			content: "\f071";
+			color: rgb(214, 8, 8);
+			margin-left: -10px;
+			margin-right: 5px;
+		}
+	}
 	&.trash{
 		&:after{
 		font-family: "FontAwesome";
@@ -1562,18 +1573,18 @@ spinner{
   background: #FFFFFF;
   border: 2px solid #356AA0;
   height: 41px;
-  padding: 0 10px;
+  padding: 0 25px;
   line-height: 41px;
   text-align: center;
   border-radius: 5px;
   box-shadow: 2px 2px 2px #7A7979;
 
-  visibility: hidden;
+  /*visibility: hidden;*/
   opacity: 0.8;
   /*top: 0;
   left: 0;*/
-  top: 38px;
-  left: 929px;
+  /*top: 38px;
+  left: 929px;*/
   z-index: 999;
 }
 .tooltip:before {
