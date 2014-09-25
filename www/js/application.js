@@ -2782,6 +2782,11 @@ function ReturnBlob( data ){
 		$('#DeviceComments').attr("novis");
 		ChangeInformation( $('#DeviceComments textarea').val(), "comments");
 		AddMessage("Comments saved","short","top");
+		// Show the tooltip for 3 seconds 
+		$('.tooltip').css("visibility","visible");
+		setTimeout(function(){
+		   $(".tooltip").css("visibility","hidden");
+		},3000);
 	});
 
 
@@ -3816,7 +3821,7 @@ function ReturnBlob( data ){
 		// Ajax.groups();
 		// AddMessage(Devices, "long", "top");
 
-		// tooltip to go here
+		// Show the tooltip for 3 seconds 
 		$('.tooltip').css("visibility","visible");
 		setTimeout(function(){
 		   $(".tooltip").css("visibility","hidden");
