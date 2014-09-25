@@ -18,7 +18,8 @@ try{
 	}
 
 	//For testing on PC-Browser
-	ThisDevice.Browser = false;
+	// ThisDevice.Browser = false;
+	ThisDevice.Browser = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
 	//Set up scrolling elements
 	$.each( $('scroll.y'), function(index, item){
@@ -3763,7 +3764,7 @@ function ReturnBlob( data ){
 	})
 	
 	$('a.button.locate').hammer(HammerOptions).on("tap", function(e){
-		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
+		// $('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 		$.each($('map>viewport>pog'), function(index, item){
 			if( $(item).attr("id") == CurrentDevice.ID_Device ){
 				$(item).addClass("selecteddevice");
