@@ -605,6 +605,8 @@ var Ajax ={
 											options.mimeType = "image/jpeg";
 
 											var ft = new FileTransfer();
+											alert(imgdata);
+											alert(imgUrl);
 
 											ft.upload(
 												imgdata,
