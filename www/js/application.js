@@ -587,10 +587,18 @@ var Ajax ={
 			setTimeout(function() {
 				//copy image
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
+					alert("1");
+
 					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
+					alert("2");
+
 						dir = de.toURL();
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
+						alert("3");
+
 							window.resolveLocalFileSystemURI( dir, function( destination ){
+							alert("4");
+
 
 								//Need to remove the old image if it exists
 								//then copy the new one to this directory
