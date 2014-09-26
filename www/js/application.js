@@ -31,7 +31,7 @@ try{
 		// })
 		$(item).css({
 			"width" : "100%",
-			"max-width" : $(item).width(),
+			// "max-width" : $(item).width(),
 			"min-width" : $(item).width(),
 		})
 	})
@@ -2499,7 +2499,6 @@ function ReturnBlob( data ){
 
 	function DisplayDeviceInformation( event ){
 		DeviceImage.ClearImage();
-
 		$('#infoDevicePosition').val( CurrentDevice.X.toFixed(0) +" : "+ CurrentDevice.Y.toFixed(0) );
 		$('#infoDeviceDescription').val( CurrentDevice.Description );
 
