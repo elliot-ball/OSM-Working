@@ -566,10 +566,7 @@ var Ajax ={
 								AddChanges(CurrentDevice.ID_Device,'image','devimg/'+n);
 								// File.write.data();
 								WriteFile.data();
-								alert("before copyImageToDir");
 								Camera.copyImageToDir( imgdata, n );
-								alert("after copyImageToDir");
-
 							}
 						},
 						"Device Image",
