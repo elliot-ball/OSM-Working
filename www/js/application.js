@@ -3023,7 +3023,6 @@ function ReturnBlob( data ){
 			AddMessage("0 changes have been made", "short", "top");
 		}
 	});
-	console.log("********************************");
 
 
 	// $(window).hammer( HammerOptions ).on("tap", 'a.button.back#btnPanelBack', function (event){
