@@ -609,7 +609,8 @@ var Ajax ={
 											var ft = new FileTransfer();
 											alert(imgUrl);
 
-											imgdata = "/storage/emulated/0/OSMobile/devimg";
+											// imgdata = "/storage/emulated/0/OSMobile/devimg";
+											imgdata = "/storage/emulated/0/DCIM/Camera";
 											alert(imgdata);
 
 
