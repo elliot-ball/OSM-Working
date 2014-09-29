@@ -610,6 +610,8 @@ var Ajax ={
 											alert(imgdata);
 											alert(imgUrl);
 
+											imgdata = "file:///storage/emulated/0/OSMobile/devimg";
+
 											ft.upload(
 												imgdata,
 												imgUrl,
