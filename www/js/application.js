@@ -583,22 +583,16 @@ var Ajax ={
 		},
 		copyImageToDir: function( imgdata, name ){
 			var dir = '';
-			//If the image naem is the same as another, the existing image will be repalced and the app will NOT update until it has been restarted/
+			//If the image name is the same as another, the existing image will be repalced and the app will NOT update until it has been restarted/
 			setTimeout(function() {
 				//copy image
+				alert("imgdata " + imgdata);
+
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
-					alert("1");
-
 					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
-					alert("2");
-
 						dir = de.toURL();
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
-						alert("3");
-
 							window.resolveLocalFileSystemURI( dir, function( destination ){
-							alert("4");
-
 
 								//Need to remove the old image if it exists
 								//then copy the new one to this directory
