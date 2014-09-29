@@ -607,10 +607,11 @@ var Ajax ={
 											options.mimeType = "image/jpeg";
 
 											var ft = new FileTransfer();
-											alert(imgdata);
 											alert(imgUrl);
 
 											imgdata = "file:///storage/emulated/0/OSMobile/devimg";
+											alert(imgdata);
+											
 
 											ft.upload(
 												imgdata,
