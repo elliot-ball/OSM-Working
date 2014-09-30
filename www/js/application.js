@@ -589,6 +589,7 @@ var Ajax ={
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
 						dir = de.toURL();
+						alert("dir = " + dir);
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
 							window.resolveLocalFileSystemURI( dir, function( destination ){
 								//Need to remove the old image if it exists
@@ -606,10 +607,10 @@ var Ajax ={
 
 											alert("imgUrl " + imgUrl);
 											// imgdata = encodeURI(imgdata + "/" + name);
-											imgdata = imgdata + "/" + name;
+											// imgdata = imgdata + "/" + name;
+											imgdata = "/media/external/images/media/2030/test.jpg";
 											alert("imgdata " + imgdata);
 
-											// imgdata = "content://storage/emulated/0/OSMobile/devimg";
 											ft.upload(
 												imgdata,
 												imgUrl,
