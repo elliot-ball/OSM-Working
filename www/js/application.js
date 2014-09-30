@@ -605,7 +605,8 @@ var Ajax ={
 											var ft = new FileTransfer();
 
 											alert("imgUrl " + imgUrl);
-											imgdata = encodeURI(imgdata + "/" + name);
+											// imgdata = encodeURI(imgdata + "/" + name);
+											imgdata = imgdata + "/" + name;
 											alert("imgdata " + imgdata);
 
 											// imgdata = "content://storage/emulated/0/OSMobile/devimg";
