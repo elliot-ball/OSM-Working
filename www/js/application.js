@@ -607,7 +607,7 @@ var Ajax ={
 
 											alert("imgUrl " + imgUrl);
 											// imgdata = encodeURI(imgdata + "/" + name);
-											imgdata.substring(10);
+											imgdata = imgdata.substring(10);
 											imgdata = "file:///" + imgdata + "/" + name;
 											// imgdata = "file:///media/external/images/media/2030/test.jpg";
 											alert("imgdata " + imgdata);
