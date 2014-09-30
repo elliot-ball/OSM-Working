@@ -607,12 +607,12 @@ var Ajax ={
 
 											alert("imgUrl " + imgUrl);
 											// imgdata = encodeURI(imgdata + "/" + name);
-											// imgdata = imgdata + "/" + name;
-											imgdata = "file:///media/external/images/media/2030/test.jpg";
+											imgdata = imgdata + "/" + name;
+											// imgdata = "file:///media/external/images/media/2030/test.jpg";
 											alert("imgdata " + imgdata);
 
 											ft.upload(
-												imgdata,
+												dir,
 												imgUrl,
 												function(){
 													AddMessage("Image uploaded", "short", "top");
