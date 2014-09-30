@@ -588,8 +588,6 @@ var Ajax ={
 				//copy image
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
-					alert("fileSystem.name"+fileSystem.name);
-			        alert("fileSystem.root.name"+fileSystem.root.name);
 						dir = de.toURL();
 						alert("dir = " + dir);
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
@@ -604,13 +602,14 @@ var Ajax ={
 											options.fileKey = "file";
 											options.fileName = name;
 											options.mimeType = "image/jpeg";
+											options.chunkedMode = false;
 
 											var ft = new FileTransfer();
 
 											alert("imgUrl " + imgUrl);
 											// imgdata = encodeURI(imgdata + "/" + name);
 											// imgdata = imgdata.substring(10);
-											imgdata = imgdata + "/" + name;
+											// imgdata = imgdata + "/" + name;
 											// imgdata = "file:///media/external/images/media/2030/test.jpg";
 											alert("imgdata " + imgdata);
 
