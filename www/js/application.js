@@ -608,7 +608,7 @@ var Ajax ={
 											alert("imgUrl " + imgUrl);
 											// imgdata = encodeURI(imgdata + "/" + name);
 											// imgdata = imgdata + "/" + name;
-											imgdata = "/media/external/images/media/2030/test.jpg";
+											imgdata = "file:///media/external/images/media/2030/test.jpg";
 											alert("imgdata " + imgdata);
 
 											ft.upload(
