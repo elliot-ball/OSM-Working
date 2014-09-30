@@ -586,7 +586,7 @@ var Ajax ={
 			//If the image name is the same as another, the existing image will be repalced and the app will NOT update until it has been restarted/
 			setTimeout(function() {
 				//copy image
-				alert("imgdata " + imgdata);
+				// alert("imgdata " + imgdata);
 
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
@@ -609,7 +609,7 @@ var Ajax ={
 											var ft = new FileTransfer();
 											alert(imgUrl);
 
-											imgdata = "content://storage/emulated/0/OSMobile/devimg";
+											// imgdata = "content://storage/emulated/0/OSMobile/devimg";
 											// imgdata = "content://storage/emulated/0/DCIM/Camera";
 											alert(imgdata);
 
