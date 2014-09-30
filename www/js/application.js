@@ -603,10 +603,14 @@ var Ajax ={
 											options.mimeType = "image/jpeg";
 
 											var ft = new FileTransfer();
-											alert(imgUrl);
+
+											alert("imgUrl " + imgUrl);
+											imgdata = encodeURI(imgdata + "/" + name);
+											alert("imgdata " + imgdata);
+
 											// imgdata = "content://storage/emulated/0/OSMobile/devimg";
 											ft.upload(
-												encodeURI(imgdata),
+												imgdata,
 												imgUrl,
 												function(){
 													AddMessage("Image uploaded", "short", "top");
