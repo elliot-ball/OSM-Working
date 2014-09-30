@@ -587,9 +587,9 @@ var Ajax ={
 			setTimeout(function() {
 				//copy image
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
+					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
 					alert("fileSystem.name"+fileSystem.name);
 			        alert("fileSystem.root.name"+fileSystem.root.name);
-					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
 						dir = de.toURL();
 						alert("dir = " + dir);
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
