@@ -631,6 +631,7 @@ var Ajax ={
 												},
 												options
 											);
+											alert("it worked");
 										}catch(e){
 											alert("Upload error: " + e.toString());
 										}
