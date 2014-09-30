@@ -586,17 +586,13 @@ var Ajax ={
 			//If the image name is the same as another, the existing image will be repalced and the app will NOT update until it has been restarted/
 			setTimeout(function() {
 				//copy image
-				// alert("imgdata " + imgdata);
-
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
 						dir = de.toURL();
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
 							window.resolveLocalFileSystemURI( dir, function( destination ){
-
 								//Need to remove the old image if it exists
 								//then copy the new one to this directory
-
 								fe.copyTo( destination, name, function( ){
 									if(GetConnection() == true ){
 										try{
@@ -608,17 +604,11 @@ var Ajax ={
 
 											var ft = new FileTransfer();
 											alert(imgUrl);
-
 											// imgdata = "content://storage/emulated/0/OSMobile/devimg";
-											// imgdata = "content://storage/emulated/0/DCIM/Camera";
-											alert(imgdata);
-
-
 											ft.upload(
-												imgdata,
+												encodeURI(imgdata),
 												imgUrl,
 												function(){
-													// AddMessage("Image uploaded");
 													AddMessage("Image uploaded", "short", "top");
 
 													DisplayDeviceInformation();
@@ -641,7 +631,6 @@ var Ajax ={
 										}
 									}
 									else{
-										// AddMessage("Unable to uplaod device image", "error-bad");
 										AddMessage("Unable to uplaod device image", "long", "top");
 									}
 								}, function(e){
