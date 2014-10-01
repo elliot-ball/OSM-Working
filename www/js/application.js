@@ -636,13 +636,13 @@ var Ajax ={
 								fe.copyTo( destination, name, function( ){
 									if(GetConnection() == true ){
 										try{
-											// var imgUrl = ServerURL +"/SaveImage";
-											var imgUrl = URL + "/WebForm1.aspx";
+											var imgUrl = ServerURL +"/SaveImage";
+											// var imgUrl = URL + "/WebForm1.aspx";
 											var options = new FileUploadOptions();
 											options.fileKey = "file";
 											options.fileName = name;
 											options.mimeType = "image/jpeg";
-											options.chunkedMode = false;
+											// options.chunkedMode = false;
 
 											var ft = new FileTransfer();
 
