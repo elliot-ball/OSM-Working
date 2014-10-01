@@ -629,6 +629,7 @@ var Ajax ={
 							window.resolveLocalFileSystemURI( dir, function( destination ){
 								alert("fe.toURL = "+fe.toURL());
 								alert("destination.name = " + destination.name);
+								alert("destination.name = " + destination.fullPath);
 								var getKeys = function(destination){
 								   var keys = [];
 								   for(var key in destination){
