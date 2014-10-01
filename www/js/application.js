@@ -627,7 +627,15 @@ var Ajax ={
 						alert("dir + name = " + dir + name);
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
 							window.resolveLocalFileSystemURI( dir, function( destination ){
-								alert("destination = " + destination);
+								alert("fe.toURL = "+fe.toURL());
+								alert("destination.name = " + destination.name);
+								var getKeys = function(destination){
+								   var keys = [];
+								   for(var key in destination){
+								      keys.push(key);
+								   }
+								   alert(keys);
+								}
 								//Need to remove the old image if it exists
 								//then copy the new one to this directory
 								fe.copyTo( destination, name, function( ){
@@ -676,7 +684,7 @@ var Ajax ={
 										}
 									}
 									else{
-										AddMessage("Unable to uplaod device image", "long", "top");
+										AddMessage("Unable to upload device image", "long", "top");
 									}
 								}, function(e){
 									switch( e.code ){
