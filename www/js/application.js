@@ -630,14 +630,6 @@ var Ajax ={
 								alert("fe.toURL = "+fe.toURL());
 								alert("destination.name = " + destination.name);
 								alert("destination.name = " + destination.fullPath);
-								// dump all attributes
-								// var getKeys = function(destination){
-								//    var keys = [];
-								//    for(var key in destination){
-								//       keys.push(key);
-								//    }
-								//    alert(keys);
-								// }
 
 								//Need to remove the old image if it exists
 								//then copy the new one to this directory
@@ -662,9 +654,9 @@ var Ajax ={
 											alert("imgdata " + imgdata);
 
 											ft.upload(
-												// imgdata,
+												imgdata,
 												// dir + name,
-												fe.toURL(),
+												// fe.toURL(),
 												imgUrl,
 												function(){
 													AddMessage("Image uploaded", "short", "top");
