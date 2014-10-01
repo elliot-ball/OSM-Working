@@ -588,11 +588,11 @@ var Ajax ={
 			options.fileName = imgdata.substr(imgdata.lastIndexOf('/') + 1);
 			options.mimeType = "image/jpeg";
 
-			var params = {};
-			params.value1 = "test";
-			params.value2 = "param";
+			// var params = {};
+			// params.value1 = "test";
+			// params.value2 = "param";
 
-			options.params = params;
+			// options.params = params;
 
 			var ft = new FileTransfer();
 			ft.upload(
@@ -610,7 +610,7 @@ var Ajax ={
 				},
 				options
 			);
-		}
+		},
 
 
 		OriginalcopyImageToDir: function( imgdata, name ){
