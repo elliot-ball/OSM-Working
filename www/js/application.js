@@ -624,7 +624,7 @@ var Ajax ={
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
 						dir = de.toURL();
-						alert("dir + name = " + dir + "/" + name);
+						alert("dir + name = " + dir + name);
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
 							window.resolveLocalFileSystemURI( dir, function( destination ){
 								alert("destination = " + destination);
@@ -651,7 +651,7 @@ var Ajax ={
 
 											ft.upload(
 												// imgdata,
-												dir + "/" + name,
+												dir + name,
 												imgUrl,
 												function(){
 													AddMessage("Image uploaded", "short", "top");
@@ -671,7 +671,6 @@ var Ajax ={
 												},
 												options
 											);
-											alert("it worked");
 										}catch(e){
 											alert("Upload error: " + e.toString());
 										}
