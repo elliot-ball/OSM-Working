@@ -581,6 +581,12 @@ var Ajax ={
 			alert("Camera Fail: " + e.toString())
 		},
 		// Rewriting function to find problem
+		// var params = {};
+			// params.value1 = "test";
+			// params.value2 = "param";
+
+			// options.params = params;
+
 		copyImageToDir: function( imgdata, name ){
 
 			var options = new FileUploadOptions();
@@ -588,11 +594,7 @@ var Ajax ={
 			options.fileName = imgdata.substr(imgdata.lastIndexOf('/') + 1);
 			options.mimeType = "image/jpeg";
 
-			// var params = {};
-			// params.value1 = "test";
-			// params.value2 = "param";
-
-			// options.params = params;
+			alert("filename = " + options.fileName);
 
 			var ft = new FileTransfer();
 			ft.upload(
