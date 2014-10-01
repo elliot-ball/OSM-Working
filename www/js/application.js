@@ -587,7 +587,7 @@ var Ajax ={
 
 			// options.params = params;
 
-		copyImageToDir: function( imgdata, name ){
+		NewcopyImageToDir: function( imgdata, name ){
 
 			var options = new FileUploadOptions();
 			options.fileKey = "file";
@@ -616,7 +616,7 @@ var Ajax ={
 		},
 
 
-		OriginalcopyImageToDir: function( imgdata, name ){
+		copyImageToDir: function( imgdata, name ){
 			var dir = '';
 			//If the image name is the same as another, the existing image will be repalced and the app will NOT update until it has been restarted/
 			setTimeout(function() {
@@ -624,9 +624,10 @@ var Ajax ={
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
 						dir = de.toURL();
-						alert("dir = " + dir);
+						alert("dir + name = " + dir + "/" + name);
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
 							window.resolveLocalFileSystemURI( dir, function( destination ){
+								alert("destination = " + destination);
 								//Need to remove the old image if it exists
 								//then copy the new one to this directory
 								fe.copyTo( destination, name, function( ){
@@ -649,7 +650,8 @@ var Ajax ={
 											alert("imgdata " + imgdata);
 
 											ft.upload(
-												imgdata,
+												// imgdata,
+												dir + "/" + name,
 												imgUrl,
 												function(){
 													AddMessage("Image uploaded", "short", "top");
