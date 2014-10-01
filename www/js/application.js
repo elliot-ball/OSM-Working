@@ -644,7 +644,7 @@ var Ajax ={
 								fe.copyTo( destination, name, function( ){
 									if(GetConnection() == true ){
 										try{
-											var imgUrl = ServerURL+"/SaveImage";
+											var imgUrl = URL + "WebForm1.aspx" +"/SaveImage";
 											var options = new FileUploadOptions();
 											options.fileKey = "file";
 											options.fileName = name;
