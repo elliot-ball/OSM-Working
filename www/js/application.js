@@ -547,6 +547,40 @@ var Ajax ={
 		pictureSuccess: function( imgdata ){
 			try{
 				var n = imgdata.substr( imgdata.lastIndexOf('/') +1 );
+				alert("n = " + n);
+				setTimeout(function() {
+					NotifyPrompt(
+						"Give the image a name",
+						function( result ){
+							if( result.buttonIndex == 1){
+								n = result.input1 + ".jpg";
+
+									for (var i = 0; i < Devices.length; i++) {
+										if( Devices[i].ID_Device == CurrentDevice.ID_Device ){
+											Devices[i].Image = 'devimg/'+n;
+
+											CurrentDevice = Devices[i];
+										}
+									};
+
+								AddChanges(CurrentDevice.ID_Device,'image','devimg/'+n);
+								// File.write.data();
+								WriteFile.data();
+								Camera.copyImageToDir( imgdata, n );
+							}
+						},
+						"Device Image",
+						["Done","Cancel"],
+						CurrentDevice.Description
+					);
+				}, 10);
+			}catch(e){
+				alert(StringMe(e));
+			}
+		},
+		OldpictureSuccess: function( imgdata ){
+			try{
+				var n = imgdata.substr( imgdata.lastIndexOf('/') +1 );
 				setTimeout(function() {
 					NotifyPrompt(
 						"Give the image a name",
