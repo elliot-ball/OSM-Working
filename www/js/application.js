@@ -83,7 +83,6 @@ try{
 		URL = newAddress;
 		ServerURL = URL + "/mobile.asmx";
 	}
-	// http://192.168.100.109:1234
 
 	//Set up the storage system
 	if( ThisDevice.Browser == true ){
@@ -581,7 +580,40 @@ var Ajax ={
 		pictureFail: function( event ){
 			alert("Camera Fail: " + e.toString())
 		},
+		// Rewriting function to find problem
 		copyImageToDir: function( imgdata, name ){
+
+			var options = new FileUploadOptions();
+			options.fileKey = "file";
+			options.fileName = imgdata.substr(imgdata.lastIndexOf('/') + 1);
+			options.mimeType = "image/jpeg";
+
+			var params = {};
+			params.value1 = "test";
+			params.value2 = "param";
+
+			options.params = params;
+
+			var ft = new FileTransfer();
+			ft.upload(
+				imgdata,
+				encodeURI(ServerURL + "/SaveImage"),
+				function (r) {
+				    alert("Code = " + r.responseCode);
+				    alert("Response = " + r.response);
+				    alert("Sent = " + r.bytesSent);
+				},
+				function (error) {
+				    alert("An error has occurred: Code = " + error.code);
+				    alert("upload error source " + error.source);
+				    alert("upload error target " + error.target);
+				},
+				options
+			);
+		}
+
+
+		OriginalcopyImageToDir: function( imgdata, name ){
 			var dir = '';
 			//If the image name is the same as another, the existing image will be repalced and the app will NOT update until it has been restarted/
 			setTimeout(function() {
