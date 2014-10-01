@@ -591,14 +591,15 @@ var Ajax ={
 
 			var options = new FileUploadOptions();
 			options.fileKey = "file";
-			options.fileName = imgdata.substr(imgdata.lastIndexOf('/') + 1);
+			options.fileName = name;
 			options.mimeType = "image/jpeg";
 
 			alert("filename = " + options.fileName);
+			alert("imgdata = " + imgdata);
 
 			var ft = new FileTransfer();
 			ft.upload(
-				imgdata,
+				imgdata + "/" + name,
 				encodeURI(ServerURL + "/SaveImage"),
 				function (r) {
 				    alert("Code = " + r.responseCode);
