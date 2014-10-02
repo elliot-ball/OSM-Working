@@ -687,8 +687,9 @@ var Ajax ={
 													DeviceImage.hide();
 
 													setTimeout(function() {
-														deviceimage.loadImage(CurrentDevice.Image);
 														DeviceImage.show();
+														alert("CurrentDevice.image = "+CurrentDevice.Image);
+														deviceimage.loadImage(CurrentDevice.Image);
 														ReadFile.devImg();
 													}, 10);
 
