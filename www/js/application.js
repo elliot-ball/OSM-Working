@@ -204,12 +204,12 @@ try{
 	var DeviceImage = {
 		show: function(e){
 			$('#DeviceImageDisplay').removeAttr("novis");
-			try{
-				deviceimage.loadImage( CurrentDevice.Image);
-			}
-			catch(e){
-				alert("OMG " + e)
-			}
+			// try{
+			// 	deviceimage.loadImage( CurrentDevice.Image);
+			// }
+			// catch(e){
+			// 	alert("OMG " + e)
+			// }
 		},
 		hide: function(e){
 			$('#DeviceImageDisplay').attr("novis", "");
@@ -687,6 +687,7 @@ var Ajax ={
 													DeviceImage.hide();
 
 													setTimeout(function() {
+														deviceimage.loadImage(CurrentDevice.Image);
 														DeviceImage.show();
 														ReadFile.devImg();
 													}, 10);
