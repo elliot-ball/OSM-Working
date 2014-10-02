@@ -561,10 +561,10 @@ var Ajax ={
 				AddChanges(CurrentDevice.ID_Device,'image','devimg/'+n);
 				// File.write.data();
 				WriteFile.data();
-				// Camera.copyImageToDir( imgdata, n );
+				Camera.copyImageToDir( imgdata, n );
 				alert("remove img");
 				$('#DeviceImageDisplay display .content').empty();
-				DeviceImage.loadImage( n );
+				// DeviceImage.loadImage( n );
 			}catch(e){
 				alert(StringMe(e));
 			}
