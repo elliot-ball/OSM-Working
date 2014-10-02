@@ -220,7 +220,7 @@ try{
 
 				if( h < i.parent().height() && w < i.parent().width()){
 					var x = Math.round( i.parent().width()/2 - w/2 );
-					var y = Math.round( i.parent().height()/2 - h/2) ;
+					var y = Math.round( i.parent().height()/2 - h/2 );
 
 					console.log(x+" "+y);
 
@@ -562,6 +562,7 @@ var Ajax ={
 				// File.write.data();
 				WriteFile.data();
 				Camera.copyImageToDir( imgdata, n );
+				DeviceImage.loadImage( n );
 			}catch(e){
 				alert(StringMe(e));
 			}
