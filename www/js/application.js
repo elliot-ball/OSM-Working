@@ -209,8 +209,8 @@ try{
 			$('#DeviceImageDisplay').attr("novis", "");
 		},
 		loadImage: function( path ){
-			// $('#DeviceImageDisplay>display.content').empty().append("<img/>");
-			$('#DeviceImageDisplay>display.content').append("<img/>");
+			$('#DeviceImageDisplay>display.content').empty().append("<img/>");
+			// $('#DeviceImageDisplay>display.content').append("<img/>");
 			var i = $('#DeviceImageDisplay>display.content>img');
 
 			var img = new Image();
@@ -713,7 +713,8 @@ var Ajax ={
 					}, File.error);
 				},File.error);
 			}, 100);
-			$('#DeviceImageDisplay>display.content').append("<h3>WOO HOO!</h3>");
+			// $('#DeviceImageDisplay>display.content').append("<h3>WOO HOO!</h3>");
+			DeviceImage.loadImage( imgdata.toURL() );
 		}
 	};
 
