@@ -546,34 +546,22 @@ var Ajax ={
 		},
 		pictureSuccess: function( imgdata ){
 			try{
-				var n = imgdata.substr( imgdata.lastIndexOf('/') +1 );
-				alert("n = " + n);
-				setTimeout(function() {
-					NotifyPrompt(
-						"Give the image a name",
-						function( result ){
-							if( result.buttonIndex == 1){
-								n = result.input1 + ".jpg";
+				// var n = imgdata.substr( imgdata.lastIndexOf('/') +1 );
+							
+				n = CurrentDevice.Description + "-" + CurrentDevice.ID_Device + ".jpg";
+				alert("n = " + n);	
+				for (var i = 0; i < Devices.length; i++) {
+					if( Devices[i].ID_Device == CurrentDevice.ID_Device ){
+						Devices[i].Image = 'devimg/'+n;
 
-									for (var i = 0; i < Devices.length; i++) {
-										if( Devices[i].ID_Device == CurrentDevice.ID_Device ){
-											Devices[i].Image = 'devimg/'+n;
+						CurrentDevice = Devices[i];
+					}
+				};
 
-											CurrentDevice = Devices[i];
-										}
-									};
-
-								AddChanges(CurrentDevice.ID_Device,'image','devimg/'+n);
-								// File.write.data();
-								WriteFile.data();
-								Camera.copyImageToDir( imgdata, n );
-							}
-						},
-						"Device Image",
-						["Done","Cancel"],
-						CurrentDevice.Description
-					);
-				}, 10);
+				AddChanges(CurrentDevice.ID_Device,'image','devimg/'+n);
+				// File.write.data();
+				WriteFile.data();
+				Camera.copyImageToDir( imgdata, n );
 			}catch(e){
 				alert(StringMe(e));
 			}
