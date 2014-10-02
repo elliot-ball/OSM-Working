@@ -9,13 +9,13 @@ try{
 		Android: !!$.os.android,
 		Version: $.os.version,
 		Browser: false
-	}
+	};
 	// Holds somehting about the connection status of the app
 	var Connection = {
 		status: "offline",
 		type: "none",
 		online: false,
-	}
+	};
 
 	//For testing on PC-Browser
 	// ThisDevice.Browser = false;
@@ -33,8 +33,8 @@ try{
 			"width" : "100%",
 			// "max-width" : $(item).width(),
 			"min-width" : $(item).width(),
-		})
-	})
+		});
+	});
 
 	//Used for controlling Map Zoom
 	var transform = {
@@ -45,7 +45,7 @@ try{
 		oldScale: 1,
 		scale: 1,
 		matrix: null,
-	}
+	};
 	//Change CSS based on devcie type
 	//IOS Style
 	if( ThisDevice.IOS ){
@@ -85,7 +85,7 @@ try{
 	}
 
 	//Set up the storage system
-	if( ThisDevice.Browser == true ){
+	if( ThisDevice.Browser === true ){
 		window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 		RequestSize = 0;
 	}
@@ -151,14 +151,14 @@ try{
 	// Show / Hide functions
 	var Shadow = {
 		show: function(e){
-			if( $('shadow').attr("novis") == ""){
+			if( $('shadow').attr("novis") === ""){
 				$('shadow').removeAttr("novis");
 			}
 		},
 		hide: function(e){
 			$('shadow').attr("novis", "");
 		}
-	}
+	};
 
 	var LoginPage = {
 		show: function(e){
@@ -167,7 +167,7 @@ try{
 		hide: function(e){
 			$('#login').attr("novis", "");
 		}
-	}
+	};
 
 	var SettingsPage = {
 		show: function(e){
@@ -176,17 +176,16 @@ try{
 		hide: function(e){
 			$('#settings').attr("novis", "");
 		}
-	}
+	};
 
 	var MainPage = {
 		show: function(e){
-			console.log("***showing main page!");
 			$('#main').removeAttr("novis");
 		},
 		hide: function(e){
 			$('#main').attr("novis", "");
 		}
-	}
+	};
 
 	var Spinner = {
 		show: function (e){
@@ -199,14 +198,15 @@ try{
 				window.plugins.spinnerDialog.hide();
 			}
 		}
-	}
+	};
+
 
 	var DeviceImage = {
 		show: function(e){
-			$('#DeviceImageDisplay').removeAttr("novis")
+			$('#DeviceImageDisplay').removeAttr("novis");
 		},
 		hide: function(e){
-			$('#DeviceImageDisplay').attr("novis", "")
+			$('#DeviceImageDisplay').attr("novis", "");
 		},
 		loadImage: function( path ){
 			$('#DeviceImageDisplay>display.content').empty().append("<img/>");
@@ -233,12 +233,11 @@ try{
 				}
 				else{
 					var r = i.parent().height() / h, nh = h*r, nw = w*r;
-
 					if( nw > i.parent().width() ){
 						r = i.parent().width() / nw, nw = r*nw, nh = r*nh;
 					}
 					var x = Math.round( i.parent().width()/2 - nw/2 );
-					var y = Math.round( i.parent().height()/2 - nh/2) ;
+					var y = Math.round( i.parent().height()/2 - nh/2 );
 
 					console.log(x+" "+y);
 
@@ -249,13 +248,13 @@ try{
 						"-webkit-transform": "matrix(1,0,0,1,"+1+","+y+")"
 					});
 				}
-			}
+			};
 		},
 		ClearImage: function(e){
 			$('#DeviceImageDisplay>display.content').empty();
 		},
 		Resizemage: function(){
-			if( $('#DeviceImageDisplay').attr("novis") == null) {
+			if( $('#DeviceImageDisplay').attr("novis") === null) {
 				console.log("Resizing");
 				console.log(  $('#DeviceImageDisplay').attr("novis") );
 
@@ -288,7 +287,7 @@ try{
 				}
 			}
 		}
-	}
+	};
 
 // AjaxUserLogin( "craig","password");
 
@@ -312,7 +311,7 @@ try{
 
 					User = JSON.parse(d.d);
 
-					if(User != 0){
+					if(User !== 0){
 						Settings.changes = 0;
 						Settings.logged = true;
 						Settings.logTime = GetToday();
@@ -347,7 +346,7 @@ try{
 	}
 
 function RequestLocalSystem(){
-	if( ThisDevice.Browser == true ){
+	if( ThisDevice.Browser === true ){
 		return window.TEMPORARY;
 	}
 	else{
@@ -375,7 +374,7 @@ var Ajax ={
 
 					// LogIt( "Groups Count: " + Groups.length);
 
-					if( Groups != 0){
+					if( Groups !== 0){
 						WriteFile.groups();
 					}
 				},
@@ -395,7 +394,7 @@ var Ajax ={
 				}),
 				dataType: 'json',
 				success: function( d, status, xhr ){
-					if( d.d == 0 ){
+					if( d.d === 0 ){
 						Maps.length = 0;
 					}
 					else{
@@ -423,7 +422,7 @@ var Ajax ={
 				}),
 				dataType: 'json',
 				success: function( d, status, xhr ){
-					if( d.d == 0){
+					if( d.d === 0){
 						Devices.length = 0;
 					}
 					else{
@@ -475,10 +474,10 @@ var Ajax ={
 								if( Devices[i].ID_Map == CurrentMap.ID_Map ){
 									OnMapDevices.push( Devices[i] );
 								}
-								if( Devices[i].ID_Map == 0 ){
+								if( Devices[i].ID_Map === 0 ){
 									OffMapDevices.push( Devices[i] );
 								}
-							};
+							}
 							OnMapDevices = SplitIntoGroups( OnMapDevices );
 							OffMapDevices = SplitIntoGroups( OffMapDevices );
 
@@ -502,11 +501,11 @@ var Ajax ={
 					alert( e );
 					$('#logbookLog').append("<p>"+e+"</p>");
 					Spinner.hide();
-					AddMessage("Upload failed", "short", "top")
+					AddMessage("Upload failed", "short", "top");
 				}
 			});
 		}
-	}
+	};
 
 	var Camera = {
 		getPicture: function( event ){
@@ -527,7 +526,7 @@ var Ajax ={
 			}
 		},
 		getCameraroll: function( event ){
-			alert("getting cameraroll")
+			alert("getting cameraroll");
 
 			try{
 				navigator.camera.getPicture(
@@ -556,7 +555,7 @@ var Ajax ={
 
 						CurrentDevice = Devices[i];
 					}
-				};
+				}
 
 				AddChanges(CurrentDevice.ID_Device,'image','devimg/'+n);
 				// File.write.data();
@@ -583,7 +582,7 @@ var Ajax ={
 
 											CurrentDevice = Devices[i];
 										}
-									};
+									}
 
 								AddChanges(CurrentDevice.ID_Device,'image','devimg/'+n);
 								// File.write.data();
@@ -601,7 +600,7 @@ var Ajax ={
 			}
 		},
 		pictureFail: function( event ){
-			alert("Camera Fail: " + e.toString())
+			alert("Camera Fail: " + e.toString());
 		},
 		// Rewriting function to find problem
 		// var params = {};
@@ -657,7 +656,7 @@ var Ajax ={
 								//Need to remove the old image if it exists
 								//then copy the new one to this directory
 								fe.copyTo( destination, name, function( ){
-									if(GetConnection() == true ){
+									if(GetConnection() === true ){
 										try{
 											var imgUrl = ServerURL +"/SaveImage";
 											// var imgUrl = URL + "/WebForm1.aspx";
@@ -722,17 +721,17 @@ var Ajax ={
 				},File.error);
 			}, 100);
 		}
-	}
+	};
 
 
 function ReturnBlob( data ){
-	if( ThisDevice.Browser == true){
+	if( ThisDevice.Browser === true){
 		var d = StringMe( data );
-		var blob = new Blob([d], {type:'text/plain'});
+		blob = new Blob([d], {type:'text/plain'});
 		return blob;
 	}
 	else{
-		var blob = StringMe( data )
+		blob = StringMe( data );
 		return blob;
 	}
 }
@@ -747,14 +746,14 @@ function ReturnBlob( data ){
 						fe.createWriter( function ( fw ) {
 							fw.onwritestart = function( event){
 								console.log("Writing File: " + fileName);
-							}
+							};
 							fw.onwriteend = function ( event ) {
 								console.log("Write complete: " + fileName);
-								if (Groups.length == 0){
+								if (Groups.length === 0){
 									Ajax.groups();
 									// ReadFile.groups();
 								}
-							}
+							};
 							fw.write(  ReturnBlob(data)  );
 						}, File.error);
 					}, File.error);
@@ -776,7 +775,7 @@ function ReturnBlob( data ){
 
 							fw.onwritestart = function( event){
 								console.log("Writing File: " + fileName);
-							}
+							};
 							fw.onwriteend = function ( event ) {
 								console.log("Write complete: " + fileName);
 								GetFirstGroup();
@@ -787,7 +786,7 @@ function ReturnBlob( data ){
 									MainPage.show();
 									Spinner.hide();
 								}, 50);
-							}
+							};
 
 							fw.write(  ReturnBlob(data)  );
 
@@ -808,7 +807,7 @@ function ReturnBlob( data ){
 
 							fw.onwritestart = function( event){
 								console.log("Writing File: " + fileName);
-							}
+							};
 							fw.onwriteend = function ( event ) {
 								console.log("Write complete: " + fileName);
 
@@ -824,7 +823,7 @@ function ReturnBlob( data ){
 
 								Spinner.hide();
 								// OnMapFunctions.MoveForward();
-							}
+							};
 
 							fw.write(  ReturnBlob(data)  );
 
@@ -845,10 +844,10 @@ function ReturnBlob( data ){
 
 							fw.onwritestart = function( event){
 								console.log("Writing File: " + fileName);
-							}
+							};
 							fw.onwriteend = function ( event ) {
 								Changes.length = 0;
-							}
+							};
 
 							fw.write(  ReturnBlob(data)  );
 
@@ -857,11 +856,11 @@ function ReturnBlob( data ){
 				}, File.error);
 			}, File.error);
 		}
-	}
+	};
 
 	var ReadFile = {
 		settings: function(e){
-			var fileName = 'settings.json'
+			var fileName = 'settings.json';
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 				fs.root.getDirectory("OSMobile", {create:true}, function ( de ){
 					de.getFile( fileName , {create: false}, function (fe){
@@ -873,7 +872,7 @@ function ReturnBlob( data ){
 									var result = JSON.parse(this.result);
 									Settings = result;
 
-									if( Settings.logged == true){
+									if( Settings.logged === true){
 										console.log("setings = ");
 										console.log(Settings );
 										$('#inputPrevUsername').val( Settings.user.Name );
@@ -883,7 +882,7 @@ function ReturnBlob( data ){
 										console.log("Not logged in");
 									}
 									//Start App
-									if( AppStarted == false){
+									if( AppStarted === false){
 										StartApp();
 									}
 								}
@@ -891,7 +890,7 @@ function ReturnBlob( data ){
 									$('#inputPrevUsername').val( "No previous user" );
 									$('#inputLogTime').val( "  " );
 
-									if( AppStarted == false){
+									if( AppStarted === false){
 										StartApp();
 									}
 								}
@@ -905,7 +904,7 @@ function ReturnBlob( data ){
 							$('#inputPrevUsername').val( "No previous user" );
 							$('#inputLogTime').val( "  " );
 
-							if( AppStarted == false){
+							if( AppStarted === false){
 								StartApp();
 							}
 						}
@@ -932,7 +931,7 @@ function ReturnBlob( data ){
 									Groups.length = 0;
 									for (var i = 0; i < result.length; i++) {
 										Groups.push ( result[i] );
-									};
+									}
 
 									// Ajax.groups();									
 
@@ -954,7 +953,7 @@ function ReturnBlob( data ){
 					},
 					function(e){
 						if( e.code == 1){
-							if( GetConnection() == true )
+							if( GetConnection() === true )
 								Ajax.groups();
 							else
 								Spinner.hide();
@@ -988,10 +987,10 @@ function ReturnBlob( data ){
 
 									for (var i = 0; i < result.Maps.length; i++) {
 										Maps.push ( result.Maps[i] );
-									};
-									for (var i = 0; i < result.Devices.length; i++) {
+									}
+									for (i = 0; i < result.Devices.length; i++) {
 										Devices.push ( result.Devices[i] );
-									};
+									}
 
 									DrawAvalibleMaps();
 									console.log("DrawAvalibleMaps : called from : readfile.data");
@@ -1007,12 +1006,12 @@ function ReturnBlob( data ){
 										Spinner.hide();
 									}, 250);
 								}
-							}
+							};
 							r.readAsText(file);
 						},File.error);
 					},function(e){
 						if( e.code == 1){
-							if( GetConnection() == true ){
+							if( GetConnection() === true ){
 								Ajax.maps();
 							}
 							else{
@@ -1053,7 +1052,7 @@ function ReturnBlob( data ){
 									else{
 										alert("No Changes");
 									}
-								}
+								};
 								r.readAsText(file);
 
 							},File.error);
@@ -1084,7 +1083,7 @@ function ReturnBlob( data ){
 						LoadMap( fileURL );
 					},function(e){
 						if( e.code == 1){
-							if( GetConnection() == true ){
+							if( GetConnection() === true ){
 								Download.map( map, fullpath);
 								console.log("download.map called from ReadFile.maps");
 							}
@@ -1116,7 +1115,7 @@ function ReturnBlob( data ){
 						DeviceImage.loadImage( fileURL );
 					},function(e){
 						if( e.code == 1){
-							if( GetConnection() == true ){
+							if( GetConnection() === true ){
 								Download.devimg( devimg, fullpath);
 							}
 							else{
@@ -1131,7 +1130,7 @@ function ReturnBlob( data ){
 				}, File.error);
 			}, File.error);
 		}
-	}
+	};
 
 	var RemoveFile = {
 		settings: function(e){
@@ -1145,7 +1144,7 @@ function ReturnBlob( data ){
 			},File.error);
 		},
 		groups: function(e){
-			var fileName = 'groups.json'
+			var fileName = 'groups.json';
 			try{
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 					fs.root.getDirectory("OSMobile/data", {create:true}, function ( de ){
@@ -1172,7 +1171,7 @@ function ReturnBlob( data ){
 			},File.error);
 		},
 		changes: function(e){
-			var fileName = 'changes.json'
+			var fileName = 'changes.json';
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 				fs.root.getDirectory("OSMobile", {create:true}, function ( de ){
 					de.getFile( fileName , {create: false}, function (fe){
@@ -1181,7 +1180,7 @@ function ReturnBlob( data ){
 				},File.error);
 			},File.error);
 		}
-	}
+	};
 
 	var File = {
 		error: function( e ){
@@ -1220,25 +1219,25 @@ function ReturnBlob( data ){
 				default:
 					msg = 'Unknown Error ';
 					break;
-			};
-			alert( msg + " " + e.code)
-			console.log( msg + " " + e.code)
+			}
+			alert( msg + " " + e.code);
+			console.log( msg + " " + e.code);
 		}
-	}
+	};
 
 	function LoadMap( path ){
 		MapImage = true;
 		var img = new Image();
 		$('map>viewport').css({
 			'-webkit-transform': "matrix(1,0,0,1,0,0)",
-		})
+		});
 		$('map>viewport>img').attr({
 			"src" : " ",
 			"width" : "0",
 			"height" : "0",
 		}).css({
 			'-webkit-transform': "matrix(1,0,0,1,0,0)",
-		})
+		});
 		//Remove Pogs
 		$('viewport>pog').remove();
 
@@ -1250,7 +1249,7 @@ function ReturnBlob( data ){
 			if( nw > $('map').width() ){
 				r = $('map').width()/nw, nw = r*nw, nh = r*nh;
 			}
-			var x = ( $('map').width() / 2 )- (nw / 2 )
+			var x = ( $('map').width() / 2 )- (nw / 2 );
 			var y = ( $('map').height() / 2 )- (nh / 2 );
 
 			$('map>viewport>img').attr({
@@ -1274,7 +1273,7 @@ function ReturnBlob( data ){
 				Spinner.hide();
 
 			}, 10);
-		}
+		};
 	}
 
 	function AddDeviceOnMap( x, y){
@@ -1312,7 +1311,7 @@ function ReturnBlob( data ){
 				s += false+"";
 				InsertChanges(Devices[i].ID_Device, s.toString());
 			}
-		};
+		}
 
 		$('#MissingDevicesPanel').removeAttr("open").attr("right", "");
 		// $('#DevicesOnMapPanel').removeAttr("left").attr("right", "");
@@ -1354,39 +1353,39 @@ function ReturnBlob( data ){
 
 				var rot = "";
 				if( y < 100 ){
-					rot = "1,0,0,-1"
+					rot = "1,0,0,-1";
 				}
 				else if( x < 100){
-					rot ="0,-1,-1,0"
+					rot ="0,-1,-1,0";
 				}
 				else if(  x > MAPWIDTH - 100){
-					rot = "0,-1,1,0"
+					rot = "0,-1,1,0";
 				}
 				else{
 					rot ="1,0,0,1";
 				}
 
 				var style = "-webkit-transform: matrix("+rot+","+x+","+y+"); top:"+top+"; left:"+left+";";
-				var c = Devices[i].Locked == true ? "locked" : "unlocked";
+				var c = Devices[i].Locked === true ? "locked" : "unlocked";
 				console.log( c );
 
 				d+="<pog style='"+style+"' class='"+c+"'id='"+Devices[i].ID_Device+"'></pog>";
 			}
-		};
+		}
 
 		$('map>viewport').append(d);
 	}
 
 	function ResizeMap(){
-		if( MapImage == true ){
+		if( MapImage === true ){
 			ClearDevices();
 
 			$('map>viewport').css({
 				'-webkit-transform': "matrix(1,0,0,1,0,0)",
-			})
+			});
 			$('map>viewport>img').css({
 				'-webkit-transform': "matrix(1,0,0,1,0,0)",
-			})
+			});
 			var w = $('map>viewport>img').width(), h = $('map>viewport>img').height(), nw, nh;
 			console.log( w +" "+ h);
 			var r = $('map').height()/h; nh = r*h; nw = r* w;
@@ -1471,19 +1470,19 @@ function ReturnBlob( data ){
 		MapImage = false;
 		$('map>viewport').css({
 			'-webkit-transform': "matrix(1,0,0,1,0,0)",
-		})
+		});
 		$('map>viewport>img').attr({
 			"src" : "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",
 			"width" : "0",
 			"height" : "0",
 		}).css({
 			'-webkit-transform': "matrix(1,0,0,1,0,0)",
-		})
+		});
 	}
 
 	var GroupTree = {
 		MoveForward: function( id ){
-			if( $('#GroupsMasterGroup').children().length == 0){
+			if( $('#GroupsMasterGroup').children().length === 0){
 				console.log("Create Root");
 				GroupTree.RootGroup();
 			}
@@ -1495,7 +1494,7 @@ function ReturnBlob( data ){
 						element = $(item);
 					}
 				});
-				if( exists == false ){
+				if( exists === false ){
 					console.log("Create SubGroup");
 					GroupTree.CreateSubGroup(id);
 				}
@@ -1510,14 +1509,14 @@ function ReturnBlob( data ){
 			}
 		},
 		RootGroup: function(e){
-			$('#GroupsMasterGroup').empty()
+			$('#GroupsMasterGroup').empty();
 			var s = "";
 			s+= "<panel class='group'>";
 
 			var root = Groups[0];
 			var kids = "hasKids";
-			if(GroupTree.CheckForChildren( root ) == 0){
-					kids+=" hide"
+			if(GroupTree.CheckForChildren( root ) === 0){
+					kids+=" hide";
 			}
 
 			s+= "<panel open class='child' root><scroll class='y'><row class='content'>";
@@ -1540,24 +1539,24 @@ function ReturnBlob( data ){
 				if( groupClone[i].FullPath == id+""+groupClone[i].ID_Group+"."){
 					children.push( groupClone[i] );
 				}
-			};
+			}
 
-			for (var i = 0; i < children.length; i++) {
+			for (i = 0; i < children.length; i++) {
 
 				var kids = "haskids";
-				if(GroupTree.CheckForChildren( children[i] ) == 0){
-					kids+=" hide"
+				if(GroupTree.CheckForChildren( children[i] ) === 0){
+					kids+=" hide";
 				}
 
 				s+= "<row class='item' groupid='"+children[i].ID_Group+"' fullpath='"+children[i].FullPath+"' groupPath='"+children[i].GroupPath+"'' ><span><name>"+children[i].ID_Group+" - "+children[i].Name+"</name></span><a class='button "+kids+" ' href='#'></a><a class='button isselected' href='#'></a></row>";
-			};
+			}
 
 			s += "</row></scroll></panel>";
 			$(rootElem).append(s);
 			setTimeout(function() {
 				$(rootElem).children("[open]").removeAttr("open").attr("left", "");
 				$(rootElem).children(":last-child").removeAttr("right").attr("open", "");
-				$('#GroupsMasterGroup').parent().next().removeAttr("novis")
+				$('#GroupsMasterGroup').parent().next().removeAttr("novis");
 				Spinner.hide();
 			}, 10);
 		},
@@ -1568,10 +1567,10 @@ function ReturnBlob( data ){
 				if( groupClone[i].GroupPath == item.GroupPath + "."+item.ID_Group){
 					childrenNumber++;
 				}
-			};
+			}
 			return childrenNumber;
 		}
-	}
+	};
 
 	var OnMapFunctions = {
 		current: 0,
@@ -1579,16 +1578,16 @@ function ReturnBlob( data ){
 			$('#DevicesonMapGroup').empty();
 			var s = "";
 			s += "<panel class='group'>";
-			s += "<panel open class='child '><scroll class='y'><row class='content'>"
+			s += "<panel open class='child '><scroll class='y'><row class='content'>";
 
 			for (var j = 0; j < OnMapDevices[0].length; j++) {
 				var id = OnMapDevices[0][j].ID_Device, desc = OnMapDevices[0][j].Description, serial = OnMapDevices[0][j].SerialNumber, comments = OnMapDevices[0][j].Comments;
 				if( desc.length == 0) desc = "No Description";
 				if( serial.length == 0) serial = "No Serial Number";
 				s += "<row class='button item mDevice' id='"+id+"'><span><name>"+desc+"</name><serial>"+serial+"</serial></span></row>";
-			};
+			}
 
-			s +="</row></scroll></panel>"
+			s +="</row></scroll></panel>";
 			s += "</panel>";
 
 			s += '<row class="master" style="-webkit-box-flex: 1; min-height: 40px;max-height: 40px;">'+
@@ -1602,18 +1601,18 @@ function ReturnBlob( data ){
 			Spinner.hide();
 		},
 		NextGroup: function(){
-			console.log("next group function called")
+			console.log("next group function called");
 			var s = "";
-			s += "<panel right class='child '><scroll class='y'><row class='content'>"
+			s += "<panel right class='child '><scroll class='y'><row class='content'>";
 			console.log( OnMapFunctions.current );
 			for (var j = 0; j < OnMapFunctions[OnMapFunctions.current].length; j++) {
 				var id = OnMapFunctions[OnMapFunctions.current][j].ID_Device, desc = OnMapFunctions[OnMapFunctions.current][j].Description, serial = OnMapFunctions[OnMapFunctions.current][j].SerialNumber;
 				if( desc.length == 0) desc = "No Description";
 				if( serial.length == 0) serial = "No Serial Number";
 				s += "<row class='button item mDevice' id='"+id+"'><span><name>"+desc+"</name><serial>"+serial+"</serial></span></row>";
-			};
+			}
 
-			s +="</row></scroll></panel>"
+			s +="</row></scroll></panel>";
 			$('#DevicesonMapGroup>panel.group').append(s);
 			$('#DevicesonMapGroup>panel.group>panel.child').attr("left", "").removeAttr("open").removeAttr("right");
 			$('#DevicesonMapGroup>panel.group>panel.child:last-child').attr("open", "").removeAttr("left").removeAttr("right");
@@ -3752,8 +3751,8 @@ function ReturnBlob( data ){
 	
 	$('#btnDeviceImage').hammer( HammerOptions ).on("tap", function (event){
 		Shadow.show();
-		ReadFile.devImg();
 		DeviceImage.show();
+		ReadFile.devImg();
 	});
 
 	$('#btnUsePhoto').hammer( HammerOptions ).on("tap", function (event){
