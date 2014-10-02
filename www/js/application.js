@@ -3749,14 +3749,11 @@ function ReturnBlob( data ){
 		$(this).parents('display.master').attr("novis", "");
 
 	})
-	var dumbVariable = true;
+	
 	$('#btnDeviceImage').hammer( HammerOptions ).on("tap", function (event){
 		Shadow.show();
+		ReadFile.devImg();
 		DeviceImage.show();
-		if(dumbVariable){
-			ReadFile.devImg();
-			dumbVariable = false;
-		}
 	});
 
 	$('#btnUsePhoto').hammer( HammerOptions ).on("tap", function (event){
