@@ -721,7 +721,6 @@ var Ajax ={
 					}, File.error);
 				},File.error);
 			}, 100);
-		DeviceImage.loadImage( imgdata );
 		}
 	}
 
@@ -3750,11 +3749,14 @@ function ReturnBlob( data ){
 		$(this).parents('display.master').attr("novis", "");
 
 	})
-
+	var dumbVariable = true;
 	$('#btnDeviceImage').hammer( HammerOptions ).on("tap", function (event){
 		Shadow.show();
 		DeviceImage.show();
-		ReadFile.devImg();
+		if(dumbVariable){
+			ReadFile.devImg();
+			dumbVariable = false;
+		}
 	});
 
 	$('#btnUsePhoto').hammer( HammerOptions ).on("tap", function (event){
