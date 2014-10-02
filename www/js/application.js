@@ -659,26 +659,18 @@ var Ajax ={
 									if(GetConnection() === true ){
 										try{
 											var imgUrl = ServerURL +"/SaveImage";
-											// var imgUrl = URL + "/WebForm1.aspx";
 											var options = new FileUploadOptions();
 											options.fileKey = "file";
 											options.fileName = name;
 											options.mimeType = "image/jpeg";
-											// options.chunkedMode = false;
 
 											var ft = new FileTransfer();
 
 											alert("imgUrl " + imgUrl);
-											// imgdata = encodeURI(imgdata + "/" + name);
-											// imgdata = imgdata.substring(10);
-											// imgdata = imgdata + "/" + name;
-											// imgdata = "file:///media/external/images/media/2030/test.jpg";
 											alert("imgdata " + imgdata);
 
 											ft.upload(
 												imgdata,
-												// dir + name,
-												// fe.toURL(),
 												imgUrl,
 												function(){
 													AddMessage("Image uploaded", "short", "top");
@@ -2196,6 +2188,7 @@ function ReturnBlob( data ){
 			);
 		},
 		error: function(e){
+			alert(e);
 			var msg = '';
 			switch (e.code){
 				case FileTransferError.FILE_NOT_FOUND_ERR:
