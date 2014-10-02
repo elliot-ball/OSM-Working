@@ -204,6 +204,12 @@ try{
 	var DeviceImage = {
 		show: function(e){
 			$('#DeviceImageDisplay').removeAttr("novis");
+			try{
+				deviceimage.loadImage( CurrentDevice.Image);
+			}
+			catch(e){
+				alert("OMG " + e)
+			}
 		},
 		hide: function(e){
 			$('#DeviceImageDisplay').attr("novis", "");
