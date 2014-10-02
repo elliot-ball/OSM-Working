@@ -563,7 +563,7 @@ var Ajax ={
 				WriteFile.data();
 				// Camera.copyImageToDir( imgdata, n );
 				alert("remove img");
-				$('#DeviceImageDisplay>display.content').empty();
+				$('#DeviceImageDisplay display .content').empty();
 				DeviceImage.loadImage( n );
 			}catch(e){
 				alert(StringMe(e));
