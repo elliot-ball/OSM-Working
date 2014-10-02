@@ -2213,7 +2213,7 @@ function ReturnBlob( data ){
 				break;
 			}
 
-			// alert(msg);
+			alert(msg);
 
 			Spinner.hide();
 		}
