@@ -3503,7 +3503,8 @@ function ReturnBlob( data ){
 		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 		var device = GetDevice($(this).attr("id"));
 		CurrentDevice = device;
-		$(this).addClass("selecteddevice");
+		alert("awh hell no");
+		// $(this).addClass("selecteddevice");
 
 		setTimeout(function() {
 			$('#DevicesOnMapPanel').removeAttr("open").attr("right", "");
