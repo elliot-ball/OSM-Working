@@ -653,12 +653,12 @@ var Ajax ={
 				window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 					fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
 						dir = de.toURL();
-						alert("dir + name = " + dir + name);
+						// alert("dir + name = " + dir + name);
 						window.resolveLocalFileSystemURI( imgdata, function(fe){
 							window.resolveLocalFileSystemURI( dir, function( destination ){
-								alert("fe.toURL = "+fe.toURL());
-								alert("destination.name = " + destination.name);
-								alert("destination.name = " + destination.fullPath);
+								// alert("fe.toURL = "+fe.toURL());
+								// alert("destination.name = " + destination.name);
+								// alert("destination.name = " + destination.fullPath);
 
 								//Need to remove the old image if it exists
 								//then copy the new one to this directory
@@ -673,8 +673,8 @@ var Ajax ={
 
 											var ft = new FileTransfer();
 
-											alert("imgUrl " + imgUrl);
-											alert("imgdata " + imgdata);
+											// alert("imgUrl " + imgUrl);
+											// alert("imgdata " + imgdata);
 
 											ft.upload(
 												imgdata,
@@ -722,7 +722,7 @@ var Ajax ={
 				},File.error);
 			}, 100);
 			// $('#DeviceImageDisplay>display.content').append("<h3>WOO HOO!</h3>");
-			DeviceImage.loadImage( imgdata.toURL() );
+			// DeviceImage.loadImage( imgdata.toURL() );
 		}
 	};
 
