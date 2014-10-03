@@ -204,12 +204,6 @@ try{
 	var DeviceImage = {
 		show: function(e){
 			$('#DeviceImageDisplay').removeAttr("novis");
-			try{
-				DeviceImage.loadImage( CurrentDevice.Image);
-			}
-			catch(error){
-				alert("OMG " + error);
-			}
 		},
 		hide: function(e){
 			$('#DeviceImageDisplay').attr("novis", "");
@@ -1108,6 +1102,7 @@ function ReturnBlob( data ){
 		},
 		devImg: function(e){
 			var devimg = CurrentDevice.Image.substr(CurrentDevice.Image.lastIndexOf("/")+1), fullpath = '';
+			alert("devimg = "+devimg);
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 				fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
 					fullpath = de.toURL();
