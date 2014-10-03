@@ -1,6 +1,6 @@
 Zepto(function($){
 try{
-	var recentDeviceImagePath;
+	var recentDeviceImagePath = "";
 	// window.onorientationchange = orientationFix;
 	var AppStarted = false;
 	//Object holding Users Device information
@@ -1115,12 +1115,12 @@ function ReturnBlob( data ){
 						var fileURL = fe.toURL();
 						// alert("fileURL = "+fileURL);
 						// alert("CurrentDevice.Image = "+CurrentDevice.Image);
-						if(recentDeviceImagePath !== ""){
-							DeviceImage.loadImage( recentDeviceImagePath );
-							alert("recentDeviceImagePath used");
+						if(recentDeviceImagePath === ""){
+							DeviceImage.loadImage( fileURL );
 						}
 						else{
-							DeviceImage.loadImage( fileURL );
+							DeviceImage.loadImage( recentDeviceImagePath );
+							alert("recentDeviceImagePath used");
 						}
 
 
