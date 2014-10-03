@@ -1102,17 +1102,16 @@ function ReturnBlob( data ){
 		},
 		devImg: function(e){
 			var devimg = CurrentDevice.Image.substr(CurrentDevice.Image.lastIndexOf("/")+1), fullpath = '';
-			alert("devimg = "+devimg);
+			// alert("devimg = "+devimg);
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
 				fs.root.getDirectory("OSMobile/devimg", {create:true}, function ( de ){
 					fullpath = de.toURL();
 					de.getFile( devimg, {create: false}, function (fe){
 						var fileURL = fe.toURL();
-						alert("fileURL = "+fileURL);
-						alert("CurrentDevice.Image = "+CurrentDevice.Image);
+						// alert("fileURL = "+fileURL);
+						// alert("CurrentDevice.Image = "+CurrentDevice.Image);
 
-						// DeviceImage.loadImage( fileURL );
-						DeviceImage.loadImage( CurrentDevice.Image );
+						DeviceImage.loadImage( fileURL );
 
 					},function(e){
 						if( e.code == 1){
