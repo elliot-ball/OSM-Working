@@ -1109,7 +1109,9 @@ function ReturnBlob( data ){
 					de.getFile( devimg, {create: false}, function (fe){
 						var fileURL = fe.toURL();
 						alert("fileURL = "+fileURL);
-						DeviceImage.loadImage( fileURL );
+						// DeviceImage.loadImage( fileURL );
+						DeviceImage.loadImage( CurrentDevice.Image );
+						
 					},function(e){
 						if( e.code == 1){
 							if( GetConnection() === true ){
