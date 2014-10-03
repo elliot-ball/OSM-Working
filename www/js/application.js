@@ -1108,6 +1108,7 @@ function ReturnBlob( data ){
 					fullpath = de.toURL();
 					de.getFile( devimg, {create: false}, function (fe){
 						var fileURL = fe.toURL();
+						alert("fileURL = "+fileURL);
 						DeviceImage.loadImage( fileURL );
 					},function(e){
 						if( e.code == 1){
