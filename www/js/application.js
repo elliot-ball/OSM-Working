@@ -3312,7 +3312,7 @@ function ReturnBlob( data ){
 
 				$.each($('map>viewport>pog'), function(index, item){
 					if( $(item).attr("id") == CurrentDevice.ID_Device ){
-						$(item).addClass("selecteddevice");
+						// $(item).addClass("selecteddevice");
 					}
 				});
 
