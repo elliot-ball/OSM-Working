@@ -205,7 +205,7 @@ try{
 		show: function(e){
 			$('#DeviceImageDisplay').removeAttr("novis");
 			try{
-				deviceimage.loadImage( CurrentDevice.Image);
+				DeviceImage.loadImage( CurrentDevice.Image);
 			}
 			catch(error){
 				alert("OMG " + error);
