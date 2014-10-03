@@ -1,6 +1,6 @@
 Zepto(function($){
 try{
-	
+	var recentDeviceImagePath;
 	// window.onorientationchange = orientationFix;
 	var AppStarted = false;
 	//Object holding Users Device information
@@ -670,16 +670,21 @@ var Ajax ={
 											// alert("imgUrl " + imgUrl);
 											// alert("imgdata " + imgdata);
 
+											recentDeviceImagePath = imgdata;
+
 											ft.upload(
 												imgdata,
 												imgUrl,
 												function(){
-													AddMessage("Image uploaded", "short", "top");
 
 													DisplayDeviceInformation();
 
 													DeviceImage.hide();
 													Shadow.hide();
+
+													// commented out the setTimeout function because I dont want to show the device image again
+													// instead display this confimation
+													AddMessage("Image saved", "short", "top");
 													// setTimeout(function() {
 													// 	DeviceImage.show();
 													// 	ReadFile.devImg();
@@ -1110,8 +1115,14 @@ function ReturnBlob( data ){
 						var fileURL = fe.toURL();
 						// alert("fileURL = "+fileURL);
 						// alert("CurrentDevice.Image = "+CurrentDevice.Image);
+						if(recentDeviceImagePath !== ""){
+							DeviceImage.loadImage( recentDeviceImagePath );
+							alert("recentDeviceImagePath used");
+						}
+						else{
+							DeviceImage.loadImage( fileURL );
+						}
 
-						DeviceImage.loadImage( fileURL );
 
 					},function(e){
 						if( e.code == 1){
