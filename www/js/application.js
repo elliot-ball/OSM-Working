@@ -679,11 +679,11 @@ var Ajax ={
 													DisplayDeviceInformation();
 
 													DeviceImage.hide();
-
-													setTimeout(function() {
-														DeviceImage.show();
-														ReadFile.devImg();
-													}, 10);
+													Shadow.hide();
+													// setTimeout(function() {
+													// 	DeviceImage.show();
+													// 	ReadFile.devImg();
+													// }, 10);
 
 												},
 												function( e ){
