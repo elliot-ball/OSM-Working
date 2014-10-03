@@ -204,12 +204,12 @@ try{
 	var DeviceImage = {
 		show: function(e){
 			$('#DeviceImageDisplay').removeAttr("novis");
-			// try{
-			// 	deviceimage.loadImage( CurrentDevice.Image);
-			// }
-			// catch(e){
-			// 	alert("OMG " + e)
-			// }
+			try{
+				deviceimage.loadImage( CurrentDevice.Image);
+			}
+			catch(error){
+				alert("OMG " + error);
+			}
 		},
 		hide: function(e){
 			$('#DeviceImageDisplay').attr("novis", "");
@@ -555,7 +555,7 @@ var Ajax ={
 				// var n = imgdata.substr( imgdata.lastIndexOf('/') +1 );
 							
 				n = CurrentDevice.Description + "-" + CurrentDevice.ID_Device + ".jpg";
-				alert("n = " + n);	
+				// alert("n = " + n);	
 				for (var i = 0; i < Devices.length; i++) {
 					if( Devices[i].ID_Device == CurrentDevice.ID_Device ){
 						Devices[i].Image = 'devimg/'+n;
@@ -688,8 +688,6 @@ var Ajax ={
 
 													setTimeout(function() {
 														DeviceImage.show();
-														alert("CurrentDevice.image = "+CurrentDevice.Image);
-														deviceimage.loadImage(CurrentDevice.Image);
 														ReadFile.devImg();
 													}, 10);
 
