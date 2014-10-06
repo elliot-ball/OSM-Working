@@ -669,7 +669,7 @@ var Ajax ={
 											// alert("imgUrl " + imgUrl);
 											// alert("imgdata " + imgdata);
 
-											recentDeviceImagePath = imgdata + "/" + name;
+											recentDeviceImagePath = imgdata;
 
 											ft.upload(
 												imgdata,
