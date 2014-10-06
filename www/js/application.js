@@ -1,6 +1,5 @@
 Zepto(function($){
 try{
-	var recentDeviceImagePath = "";
 	// window.onorientationchange = orientationFix;
 	var AppStarted = false;
 	//Object holding Users Device information
@@ -687,7 +686,7 @@ var Ajax ={
 													AddMessage("Image saved", "short", "top");
 													// setTimeout(function() {
 													// 	DeviceImage.show();
-													// 	ReadFile.devImg();
+													ReadFile.devImg(imgdata);
 													// }, 10);
 
 												},
@@ -1105,7 +1104,9 @@ function ReturnBlob( data ){
 			LoadMap("missing.jpg");
 			Spinner.hide();
 		},
-		devImg: function(e){
+		// On first call this function doesn't take recentDeviceImagePath
+		// This is why there is a check to see if it is defined
+		devImg: function(recentDeviceImagePath, e){
 			var devimg = CurrentDevice.Image.substr(CurrentDevice.Image.lastIndexOf("/")+1), fullpath = '';
 			// alert("devimg = "+devimg);
 			window.requestFileSystem( RequestLocalSystem(), RequestSize, function ( fs ){
@@ -1115,12 +1116,12 @@ function ReturnBlob( data ){
 						var fileURL = fe.toURL();
 						// alert("fileURL = "+fileURL);
 						// alert("CurrentDevice.Image = "+CurrentDevice.Image);
-						if(recentDeviceImagePath === ""){
-							DeviceImage.loadImage( fileURL );
-						}
-						else{
+						if(typeof recentDeviceImagePath !== "undefined"){
 							DeviceImage.loadImage( recentDeviceImagePath );
 							alert("recentDeviceImagePath used");
+						}
+						else{
+							DeviceImage.loadImage( fileURL );
 						}
 
 
