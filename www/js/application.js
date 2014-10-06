@@ -1116,12 +1116,13 @@ function ReturnBlob( data ){
 						var fileURL = fe.toURL();
 						// alert("fileURL = "+fileURL);
 						// alert("CurrentDevice.Image = "+CurrentDevice.Image);
-						if(typeof recentDeviceImagePath !== "undefined"){
-							DeviceImage.loadImage( recentDeviceImagePath );
-							alert("recentDeviceImagePath used");
+						if(typeof recentDeviceImagePath === "undefined"){
+							DeviceImage.loadImage( fileURL );
 						}
 						else{
-							DeviceImage.loadImage( fileURL );
+							DeviceImage.loadImage( recentDeviceImagePath );
+							alert("recentDeviceImagePath used");
+							alert("recentDeviceImagePath = " + recentDeviceImagePath);
 						}
 
 
