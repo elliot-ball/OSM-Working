@@ -2619,12 +2619,14 @@ function ReturnBlob( data ){
 			$('#DeviceComments textarea').val(CurrentDevice.Comments);
 		// }
 	}
-
+	
 	function AddChanges( ID, attribute, value ){
 		var task = {"Type":"save", "Attribute":attribute, "Value":value};
-					var changesCounter = $('#btnSave span').html();
-					$('#btnSave span').html(changesCounter++);
-					alert("change added! CC = " + changesCounter);
+					// changesCounter = $('#btnSave span').html();
+					// $('#btnSave span').html(changesCounter++);
+					// alert("change added! CC = " + changesCounter);
+					$('#btnSave span').html("!");
+
 
 		if( Changes.length > 0){
 			var exists = false;
@@ -3023,9 +3025,11 @@ function ReturnBlob( data ){
 				// Spinner.AddMessage("Saving changes to server.");
 				// AddMessage("Saving changes to server", "long", "top");
 				Spinner.show();
+				$('#btnSave span').html(" ");
 
 				setTimeout(function() {
 					Ajax.changes();
+
 				}, 100);
 
 			}
