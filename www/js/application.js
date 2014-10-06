@@ -1123,6 +1123,7 @@ function ReturnBlob( data ){
 							DeviceImage.loadImage( recentDeviceImagePath );
 							alert("recentDeviceImagePath used");
 							alert("recentDeviceImagePath = " + recentDeviceImagePath);
+							CurrentDevice.Image = recentDeviceImagePath;
 						}
 
 
