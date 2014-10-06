@@ -2622,6 +2622,9 @@ function ReturnBlob( data ){
 
 	function AddChanges( ID, attribute, value ){
 		var task = {"Type":"save", "Attribute":attribute, "Value":value};
+					var changesCounter = $('#btnSave span').html();
+					$('#btnSave span').html(changesCounter++);
+					alert("change added! CC = " + changesCounter);
 
 		if( Changes.length > 0){
 			var exists = false;
@@ -2630,9 +2633,6 @@ function ReturnBlob( data ){
 					exists = true;
 					Changes[i].Tasks.push( task );
 					
-					alert("change added!");
-					var changesCounter = $('#btnSave span').html();
-					$('#btnSave span').html(changesCounter++);
 				}
 			};
 
