@@ -1120,7 +1120,7 @@ function ReturnBlob( data ){
 						}
 						else{
 							DeviceImage.loadImage( recentDeviceImagePath );
-							alert("recentDeviceImagePath used");
+							// alert("recentDeviceImagePath used");
 						}
 
 
