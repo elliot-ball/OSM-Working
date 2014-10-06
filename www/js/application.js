@@ -684,10 +684,10 @@ var Ajax ={
 													// commented out the setTimeout function because I dont want to show the device image again
 													// instead display this confimation
 													AddMessage("Image saved", "short", "top");
-													setTimeout(function() {
+													// setTimeout(function() {
 													// 	DeviceImage.show();
-														ReadFile.devImg(imgdata);
-													}, 10);
+													ReadFile.devImg(imgdata);
+													// }, 10);
 
 												},
 												function( e ){
