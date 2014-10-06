@@ -2629,6 +2629,10 @@ function ReturnBlob( data ){
 				if( Changes[i].ID == ID ){
 					exists = true;
 					Changes[i].Tasks.push( task );
+					
+					alert("change added!");
+					var changesCounter = $('#btnSave span').html();
+					$('#btnSave span').html(changesCounter++);
 				}
 			};
 
