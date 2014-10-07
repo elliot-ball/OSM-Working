@@ -1609,3 +1609,19 @@ spinner{
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
 }
+
+// Millers columns group selector window
+
+#GroupSelect {
+	-webkit-transform: translate3d(1%, -50%, 0);
+	max-width: 98%;
+	width: 98%;
+
+	panel.child {
+		width: 33.3%;
+		position: static;
+	}
+	panel.child[left] {
+		-webkit-transform: translate3d(0%, 0, 0);
+	}
+}
