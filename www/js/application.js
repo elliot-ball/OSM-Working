@@ -2625,7 +2625,10 @@ function ReturnBlob( data ){
 					// changesCounter = $('#btnSave span').html();
 					// $('#btnSave span').html(changesCounter++);
 					// alert("change added! CC = " + changesCounter);
-					$('#btnSave span').html("!");
+					// $('#btnSave span').html("!");
+
+				    changesCounter = $('#btnSave span').html();
+				    $('#btnSave span').html(++changesCounter);
 
 
 		if( Changes.length > 0){
@@ -2728,9 +2731,9 @@ function ReturnBlob( data ){
 				
 		$(element).append('<span id="tooltip-'+top+'-'+left+'" class="tooltip" style="top:'+top+'; left:'+left+';"><a class="'+icon+'" href="#"></a>'+message+'</span>');
 		
-		setTimeout(function(){
-		   $("#tooltip-"+top+"-"+left).remove();
-		},5000);
+		// setTimeout(function(){
+		//    $("#tooltip-"+top+"-"+left).remove();
+		// },5000);
 	}
 
 	// Using Phonegaps Notification system, alert the user to the issue.
