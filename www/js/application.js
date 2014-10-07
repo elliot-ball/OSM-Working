@@ -3634,7 +3634,10 @@ function ReturnBlob( data ){
 			break;
 		}
 	})
-
+	
+	$('#InformationPanel btnBack').hammer(HammerOptions).on("tap", function(e){
+		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
+	});
 
 //Nothing to see here
 	$('map>viewport').hammer(HammerOptions).on("transformstart transform transformend", function(e){
