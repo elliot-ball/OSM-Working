@@ -3636,7 +3636,6 @@ function ReturnBlob( data ){
 	})
 	
 	$('#InformationPanel #btnBack').hammer(HammerOptions).on("tap", function(e){
-		alert("remove selected device class")
 		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 	});
 
