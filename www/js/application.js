@@ -3635,9 +3635,9 @@ function ReturnBlob( data ){
 		}
 	})
 	
-	$('#InformationPanel btnBack').hammer(HammerOptions).on("tap", function(e){
+	$('#InformationPanel #btnBack').hammer(HammerOptions).on("tap", function(e){
 		alert("remove selected device class")
-		$('map>viewport>pog').removeClass("selecteddevice");
+		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 	});
 
 //Nothing to see here
