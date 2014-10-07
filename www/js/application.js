@@ -3334,7 +3334,7 @@ function ReturnBlob( data ){
 
 				$.each($('map>viewport>pog'), function(index, item){
 					if( $(item).attr("id") == CurrentDevice.ID_Device ){
-						// $(item).addClass("selecteddevice");
+						$(item).addClass("selecteddevice");
 					}
 				});
 
@@ -3525,8 +3525,8 @@ function ReturnBlob( data ){
 		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 		var device = GetDevice($(this).attr("id"));
 		CurrentDevice = device;
-		alert("awh hell no");
-		// $(this).addClass("selecteddevice");
+		// alert("awh hell no");
+		$(this).addClass("selecteddevice");
 
 		setTimeout(function() {
 			$('#DevicesOnMapPanel').removeAttr("open").attr("right", "");
