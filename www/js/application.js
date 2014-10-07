@@ -3526,7 +3526,6 @@ function ReturnBlob( data ){
 		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 		var device = GetDevice($(this).attr("id"));
 		CurrentDevice = device;
-		// alert("awh hell no");
 		$(this).addClass("selecteddevice");
 
 		setTimeout(function() {
@@ -3550,7 +3549,7 @@ function ReturnBlob( data ){
 	}
 
 	$( document.body ).hammer().on("dragstart drag dragend", 'map>viewport>pog.unlocked', function(e){
-		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
+		// $('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 
 		switch( e.type ){
 			case "dragstart":
