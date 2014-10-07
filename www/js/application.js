@@ -3130,6 +3130,7 @@ function ReturnBlob( data ){
 			if( $(this).parents('panel.child').attr("id") == "InformationPanel"){
 
 				$('#InformationPanel').removeAttr("open").attr("left", "");
+				$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
 
 
 				if( DeviceChange == true ){
@@ -3634,10 +3635,6 @@ function ReturnBlob( data ){
 			break;
 		}
 	})
-	
-	$('#InformationPanel #btnBack').hammer(HammerOptions).on("tap", function(e){
-		$('map>viewport>pog.selecteddevice').removeClass("selecteddevice");
-	});
 
 //Nothing to see here
 	$('map>viewport').hammer(HammerOptions).on("transformstart transform transformend", function(e){
