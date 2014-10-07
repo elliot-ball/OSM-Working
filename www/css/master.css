@@ -1399,6 +1399,8 @@ spinner icon:not(:only-child) {
 #GroupSelect panel.child {
   width: 33.3%;
   position: static;
+  border-left: none;
+  border-right: none;
 }
 #GroupSelect panel.child[left] {
   -webkit-transform: translate3d(0%, 0, 0);

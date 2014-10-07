@@ -1620,6 +1620,8 @@ spinner{
 	panel.child {
 		width: 33.3%;
 		position: static;
+		border-left: none;
+		border-right: none;
 	}
 	panel.child[left] {
 		-webkit-transform: translate3d(0%, 0, 0);
