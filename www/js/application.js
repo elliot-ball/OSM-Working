@@ -1531,7 +1531,7 @@ function ReturnBlob( data ){
 			}
 
 			s+= "<panel open class='child' root><scroll class='y'><row class='content'>";
-			s+= "<row class='item' groupid='"+root.ID_Group+"' fullpath='"+root.FullPath+"' groupPath='"+root.GroupPath+"'' ><span><name>"+root.ID_Group+" - "+root.Name+"</name></span><a class='button "+kids+" ' href='#'></a><a class='button isselected' href='#'></a></row>";
+			s+= "<row class='item' groupid='"+root.ID_Group+"' fullpath='"+root.FullPath+"' groupPath='"+root.GroupPath+"'' ><a class='button "+kids+" ' href='#'><span><name>"+root.ID_Group+" - "+root.Name+"</name></span></a><a class='button isselected' href='#'></a></row>";
 			s+= "</row></scroll></panel></panel>";
 
 			$('#GroupsMasterGroup').append(s);
@@ -1556,10 +1556,10 @@ function ReturnBlob( data ){
 
 				var kids = "haskids";
 				if(GroupTree.CheckForChildren( children[i] ) === 0){
-					kids+=" hide";
+					kids+=" nokids";
 				}
 
-				s+= "<row class='item' groupid='"+children[i].ID_Group+"' fullpath='"+children[i].FullPath+"' groupPath='"+children[i].GroupPath+"'' ><span><name>"+children[i].ID_Group+" - "+children[i].Name+"</name></span><a class='button "+kids+" ' href='#'></a><a class='button isselected' href='#'></a></row>";
+				s+= "<row class='item' groupid='"+children[i].ID_Group+"' fullpath='"+children[i].FullPath+"' groupPath='"+children[i].GroupPath+"'' ><a class='button "+kids+" ' href='#'><span><name>"+children[i].ID_Group+" - "+children[i].Name+"</name></span></a><a class='button isselected' href='#'></a></row>";
 			}
 
 			s += "</row></scroll></panel>";
@@ -2782,6 +2782,10 @@ function ReturnBlob( data ){
 		preventMouse: true
 	}
 
+	$('.nokids').hammer( HammerOptions ).on("tap", function ( event ){
+		alert("Group has no kids");
+	});
+
 	$('#btnLogbook').hammer( HammerOptions ).on("tap", function ( event ){
 		Shadow.show();
 		$('#logbook').removeAttr("novis");
@@ -3122,8 +3126,9 @@ function ReturnBlob( data ){
 	// });
 
 	var backButton = false;
-
+	// On tap of back button, each if represents an instance of the back button in a different window
 	$( window ).hammer( HammerOptions ).on("tap", 'a.button.back#btnBack', function ( event ){
+
 		if( backButton == false ){
 			backButton = true;
 			if( $(this).parents('panel.child').attr("id") == "MissingDevicesPanel"){
@@ -3196,13 +3201,18 @@ function ReturnBlob( data ){
 				$('#DevicesOnMapPanel').removeAttr("open").attr("left", "");
 				$('#MapsMasterPanel').removeAttr("right").removeAttr("left").attr("open", "");
 			}
+			// If the Select Group back button has been tapped
 			if( $(this).parents('float.master').attr("id") == "GroupSelect"){
 				var parentId = $(this).parents('row.master').prev().find("panel[open]")
-				if( parentId.prev().attr("root") != null )
+				// If the panel is the last before the root
+				if( parentId.prev().attr("root") != null ){
 					$('#GroupsMasterGroup').parent().next().attr("novis","");
+				}
+				// If the panel isn't the last
 				$.each($('#GroupsMasterGroup>panel.group').find('row.item'), function(index, item){
 					if( $(item).attr("fullpath") == parentId.attr("child")){
-						parentId.removeAttr("open").attr("right", "");
+						// parentId.removeAttr("open").attr("right", "");
+						parentId.remove();
 						$(item).parents('panel.child').removeAttr("left").removeAttr("right").attr("open", "");
 					}
 				});
@@ -3712,6 +3722,7 @@ function ReturnBlob( data ){
 	})
 	var movingGroup = false;
 	$( window ).hammer( HammerOptions ).on("tap",  "a.button.hasKids", function(e){
+		alert("here");
 		Spinner.show();
 		if( movingGroup == false){
 			var id = $(this).parent().attr("fullPath");

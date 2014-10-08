@@ -884,17 +884,12 @@ a.r:after {
   right: -10px !important;
   -webkit-transform: rotate(180deg) !important;
 }
-a.haskids:after {
-  font-family: "FontAwesome";
-  content: "\f196";
-  zoom: 1.2;
-}
 a.haskids.hide {
   visibility: hidden;
 }
 a.isselected:after {
   font-family: "FontAwesome";
-  content: "\f096  ";
+  content: "\f06e";
   zoom: 1.2;
 }
 a.isselected:active:after {
@@ -1396,12 +1391,31 @@ spinner icon:not(:only-child) {
   max-width: 98%;
   width: 98%;
 }
+#GroupSelect panel.group {
+  overflow-x: auto;
+}
+#GroupSelect panel.group::-webkit-scrollbar {
+  height: 5px;
+  background-color: whitesmoke;
+}
+#GroupSelect panel.group::-webkit-scrollbar-thumb {
+  background-color: rgba(53, 106, 160, 0.8);
+  border-radius: 25px;
+}
 #GroupSelect panel.child {
-  width: 33.3%;
+  max-width: 300px;
+  min-width: 300px;
+  width: 300px;
   position: static;
   border-left: none;
   border-right: none;
 }
 #GroupSelect panel.child[left] {
   -webkit-transform: translate3d(0%, 0, 0);
+}
+#GroupSelect .haskids {
+  width: 220px;
+}
+#GroupSelect .isselected {
+  width: 50px;
 }
