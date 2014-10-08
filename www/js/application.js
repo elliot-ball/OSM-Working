@@ -3722,7 +3722,7 @@ function ReturnBlob( data ){
 	})
 	var movingGroup = false;
 	$( window ).hammer( HammerOptions ).on("tap",  "a.button.hasKids", function(e){
-		alert("here");
+		alert("here!");
 		Spinner.show();
 		if( movingGroup == false){
 			var id = $(this).parent().attr("fullPath");
@@ -3739,7 +3739,8 @@ function ReturnBlob( data ){
 		}, 700);
 	});
 
-	$(window ).hammer( HammerOptions ).on("tap",  ".isselected", function(e){
+	$(window ).hammer( HammerOptions ).on("tap",  ".isselected, .nokids", function(e){
+		alert("WOO");
 		var id = $(this).parent().attr("groupid");
 		if( movingGroup == false){
 			for (var i = 0; i < Groups.length; i++) {
