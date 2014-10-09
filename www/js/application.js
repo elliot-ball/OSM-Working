@@ -3738,9 +3738,12 @@ function ReturnBlob( data ){
 			movingGroup = false;
 		}, 700);
 	});
-
+	// On tap of open map button in the Select Group window
 	$(window ).hammer( HammerOptions ).on("tap",  ".isselected, .nokids", function(e){
-		alert("WOO");
+		// alert(".isselected / .nokids tapped - movingGroup = " + movingGroup);
+		if($(this).hasClass("nokids")){
+			movingGroup = false;
+		}
 		var id = $(this).parent().attr("groupid");
 		if( movingGroup == false){
 			for (var i = 0; i < Groups.length; i++) {
