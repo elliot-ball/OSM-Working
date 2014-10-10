@@ -3720,24 +3720,51 @@ function ReturnBlob( data ){
 			// $('float#GroupSelect').attr("novis", "");
 		}, 10);
 	})
+
+	function nextAll(thisPanel) {
+		alert(thisPanel);
+		var next = thisPanel.nextElementSibling;
+		alert(next);
+		next.remove();
+    }
+
 	var movingGroup = false;
 	$( window ).hammer( HammerOptions ).on("tap",  "a.button.hasKids", function(e){
-		alert("here!");
+		// The panel the tap came from
+		var thisPanel = $(this).parent().parent().parent().parent();
+		var rootAttr = thisPanel.attr("root");
+		// Check if the panel is NOT the root panel
+		if (typeof rootAttr === typeof undefined || rootAttr === false || rootAttr === null) {
+			console.log("1");
+			var openAttr = thisPanel.attr("open");
+			// Ensure the panel tapped is not the last one 
+			if (typeof openAttr === typeof undefined || openAttr === false || openAttr === null) {
+				// Close panels after the one tapped
+				console.log("2");
+				console.log("next panel length = " + thisPanel.next().length);
+				while(thisPanel.next().length !== 0){
+					thisPanel.next().remove();
+				}
+			}
+		}
+
 		Spinner.show();
 		if( movingGroup == false){
 			var id = $(this).parent().attr("fullPath");
-
 
 			GroupTree.MoveForward( id );
 			// Spinner.show();
 			// var id = $(this).attr("value");
 			// PanelTree.MoveForward( id );
 			movingGroup = true;
+			
 		}
 		setTimeout(function() {
 			movingGroup = false;
 		}, 700);
+
 	});
+
 	// On tap of open map button in the Select Group window
 	$(window ).hammer( HammerOptions ).on("tap",  ".isselected, .nokids", function(e){
 		// alert(".isselected / .nokids tapped - movingGroup = " + movingGroup);
