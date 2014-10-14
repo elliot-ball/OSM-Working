@@ -1044,7 +1044,8 @@ a{
 	&.isselected{
 		&:after{
 			font-family: "FontAwesome";
-			content: "\f06e";
+			// content: "\f06e";
+			content:url(icons/map25.png);
 			zoom: 1.2;
 		}
 		&:active{
@@ -1653,4 +1654,9 @@ spinner{
 		width: 220px;
 	}
 	.isselected { width: 50px; }
+}
+
+.selectedGroup {
+	background-color: rgb(53, 106, 160);
+	color: #fff !important;
 }

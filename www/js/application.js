@@ -3737,14 +3737,30 @@ function ReturnBlob( data ){
 		if (typeof rootAttr === typeof undefined || rootAttr === false || rootAttr === null) {
 			console.log("1");
 			var openAttr = thisPanel.attr("open");
-			// Ensure the panel tapped is not the last one 
+			// Check if the user is trying to jump back one or more groups
 			if (typeof openAttr === typeof undefined || openAttr === false || openAttr === null) {
-				// Close panels after the one tapped
+				// Close all panels to the right of the one tapped
 				console.log("2");
-				console.log("next panel length = " + thisPanel.next().length);
+				// console.log("next panel length = " + thisPanel.next().length);
+
 				while(thisPanel.next().length !== 0){
 					thisPanel.next().remove();
 				}
+
+				// ToDo: more effecient soution?
+				// var allPanels = $("panel.group>panel.child"); // All the panels
+				// var removePanels = []; // Hold elements to be removed
+				// childAttr = thisPanel.attr("child"); // This panels unique identifier
+				// console.log("pl " + allPanels.size());
+
+				// for(var i=1; i < allPanels.size(); i++){
+				// 	var xxx = allPanels[i];
+				// 	if(allPanels[i].attr("child") === childAttr){
+				// 		removePanels = allPanels.slice([i]);
+				// 		console.log("match made");
+				// 	}
+				// }
+				// removePanels.remove();
 			}
 		}
 
@@ -3752,7 +3768,18 @@ function ReturnBlob( data ){
 		if( movingGroup == false){
 			var id = $(this).parent().attr("fullPath");
 
+			thisPanel.find(".selectedGroup").removeClass(".selectedGroup");
+			$(this).addClass("selectedGroup");
 			GroupTree.MoveForward( id );
+
+			// var scrollMe = $("#GroupPanel>panel.group");
+			// var scrollMe = $("body");
+			// scrollMe.scrollLeft(250);
+
+			// $('#GroupSelect panel.group').animate({
+			    // left: "-=50"   
+			// },200);
+
 			// Spinner.show();
 			// var id = $(this).attr("value");
 			// PanelTree.MoveForward( id );

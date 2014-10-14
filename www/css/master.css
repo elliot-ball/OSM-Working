@@ -889,7 +889,7 @@ a.haskids.hide {
 }
 a.isselected:after {
   font-family: "FontAwesome";
-  content: "\f06e";
+  content: url(icons/map25.png);
   zoom: 1.2;
 }
 a.isselected:active:after {
@@ -1419,4 +1419,9 @@ spinner icon:not(:only-child) {
 }
 #GroupSelect .isselected {
   width: 50px;
+}
+
+.selectedGroup {
+  background-color: #356aa0;
+  color: #fff !important;
 }
