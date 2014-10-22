@@ -1018,10 +1018,10 @@ a{
 		width: 50%;
 
 		&:before{
-		font-family: "FontAwesome";
+			font-family: "FontAwesome";
 			content: "\f0d9";
 			position: relative;
-
+			margin-right: 5px;
 		}
 	}
 	&.r{

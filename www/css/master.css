@@ -878,6 +878,7 @@ a.back:before {
   font-family: "FontAwesome";
   content: "\f0d9";
   position: relative;
+  margin-right: 5px;
 }
 a.r:after {
   left: 0 !important;
