@@ -1341,7 +1341,7 @@ spinner icon:not(:only-child) {
 
 .tooltip {
   display: inline;
-  position: absolute;
+  position: fixed;
   /*width:140px;*/
   color: #000000;
   background: #FFFFFF;
@@ -1353,7 +1353,6 @@ spinner icon:not(:only-child) {
   border-radius: 5px;
   box-shadow: 2px 2px 2px #7A7979;
   /*visibility: hidden;*/
-  opacity: 0.8;
   /*top: 0;
   left: 0;*/
   /*top: 38px;

@@ -2729,7 +2729,7 @@ function ReturnBlob( data ){
 	// icon sets the css class which positions an icon before the message, these must be defined in master.css
 	function addToolTip(element, top, left, message, icon){
 				
-		$(element).append('<span id="tooltip-'+top+'-'+left+'" class="tooltip" style="top:'+top+'; left:'+left+';"><a class="'+icon+'" href="#"></a>'+message+'</span>');
+		$(element).append('<span id="tooltip-'+top+'-'+left+'" class="tooltip" style="margin-top:'+top+'; margin-left:'+left+';"><a class="'+icon+'" href="#"></a>'+message+'</span>');
 		
 		// setTimeout(function(){
 		//    $("#tooltip-"+top+"-"+left).remove();
@@ -3768,9 +3768,13 @@ function ReturnBlob( data ){
 		if( movingGroup == false){
 			var id = $(this).parent().attr("fullPath");
 
-			thisPanel.find(".selectedGroup").removeClass(".selectedGroup");
+			// var tempTest = thisPanel.find(".selectedGroup");
+			// tempTest.removeClass(".selectedGroup");
+			thisPanel.find(".selectedGroup").removeClass("selectedGroup");
 			$(this).addClass("selectedGroup");
+			
 			GroupTree.MoveForward( id );
+
 
 			// var scrollMe = $("#GroupPanel>panel.group");
 			// var scrollMe = $("body");
@@ -3789,6 +3793,15 @@ function ReturnBlob( data ){
 		setTimeout(function() {
 			movingGroup = false;
 		}, 700);
+		// if there is a highlighted group in the panel already, un-highlight it
+		// if(thisPanel.find(".selectedGroup").length >= 1) {
+		// 	thisPanel.find(".selectedGroup").removeClass("selectedGroup");
+		// 	console.log("remove selected group");
+		// }
+		// else {
+		// 	$(this).addClass("selectedGroup");
+		// 	console.log("added selected group");
+		// }
 
 	});
 
@@ -3996,7 +4009,8 @@ function ReturnBlob( data ){
 
 	// test button
 	$('#btnTest').hammer(HammerOptions).on("tap", function(e){
-		addToolTip("#main actionbar","38px","909px","Tap here to commit all of your changes","warning");
+		addToolTip("#btnSave","31px","-164px","Tap here to commit all of your changes","warning");
+		addToolTip(".select","41px","-223px","Tap here to view groups","");
 	})
 
 	// When a small windows appears so does a shadow that sits under it
