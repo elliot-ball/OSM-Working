@@ -1700,23 +1700,23 @@ function ReturnBlob( data ){
 				$('a.button#btnforwards_On').prev('indicator').html( OffMapFunctions.current );
 			}
 		}
-	}
+	};
 
 	var OffMapFunctions = {
 		current: 0,
 		RootGroup: function(){
 			var s = "";
 			s += "<panel class='group'>";
-			s += "<panel open class='child '><scroll class='y'><row class='content'>"
+			s += "<panel open class='child '><scroll class='y'><row class='content'>";
 
 			for (var j = 0; j < OffMapDevices[0].length; j++) {
 				var id = OffMapDevices[0][j].ID_Device, desc = OffMapDevices[0][j].Description, serial = OffMapDevices[0][j].SerialNumber;
-				if( desc.length == 0) desc = "No Description";
-				if( serial.length == 0) serial = "No Serial Number";
+				if( desc.length === 0) desc = "No Description";
+				if( serial.length === 0) serial = "No Serial Number";
 				s += "<row class='button item uDevice' id='"+id+"'><span><name>"+desc+"</name><serial>"+serial+"</serial></span></row>";
-			};
+			}
 
-			s +="</row></scroll></panel>"
+			s +="</row></scroll></panel>";
 			s += "</panel>";
 
 			s += '<row class="master" style="-webkit-box-flex: 1; min-height: 40px;max-height: 40px;">'+
@@ -1731,16 +1731,16 @@ function ReturnBlob( data ){
 		},
 		NextGroup: function(){
 			var s = "";
-			s += "<panel right class='child '><scroll class='y'><row class='content'>"
+			s += "<panel right class='child '><scroll class='y'><row class='content'>";
 			console.log( OffMapFunctions.current );
 			for (var j = 0; j < OffMapDevices[OffMapFunctions.current].length; j++) {
 				var id = OffMapDevices[OffMapFunctions.current][j].ID_Device, desc = OffMapDevices[OffMapFunctions.current][j].Description, serial = OffMapDevices[OffMapFunctions.current][j].SerialNumber;
-				if( desc.length == 0) desc = "No Description";
-				if( serial.length == 0) serial = "No Serial Number";
+				if( desc.length === 0) desc = "No Description";
+				if( serial.length === 0) serial = "No Serial Number";
 				s += "<row class='button item uDevice' id='"+id+"'><span><name>"+desc+"</name><serial>"+serial+"</serial></span></row>";
-			};
+			}
 
-			s +="</row></scroll></panel>"
+			s +="</row></scroll></panel>";
 			$('#MissingDevicesGroups>panel.group').append(s);
 			$('#MissingDevicesGroups>panel.group>panel.child').attr("left", "").removeAttr("open").removeAttr("right");
 			$('#MissingDevicesGroups>panel.group>panel.child:last-child').attr("open", "").removeAttr("left").removeAttr("right");
@@ -1752,16 +1752,16 @@ function ReturnBlob( data ){
 		},
 		PrevGroup: function(){
 			var s = "";
-			s += "<panel left class='child '><scroll class='y'><row class='content'>"
+			s += "<panel left class='child '><scroll class='y'><row class='content'>";
 			console.log( OffMapFunctions.current );
 			for (var j = 0; j < OffMapDevices[OffMapFunctions.current].length; j++) {
 				var id = OffMapDevices[OffMapFunctions.current][j].ID_Device, desc = OffMapDevices[OffMapFunctions.current][j].Description, serial = OffMapDevices[OffMapFunctions.current][j].SerialNumber;
-				if( desc.length == 0) desc = "No Description";
-				if( serial.length == 0) serial = "No Serial Number";
+				if( desc.length === 0) desc = "No Description";
+				if( serial.length === 0) serial = "No Serial Number";
 				s += "<row class='button item uDevice' id='"+id+"'><span><name>"+desc+"</name><serial>"+serial+"</serial></span></row>";
-			};
+			}
 
-			s +="</row></scroll></panel>"
+			s +="</row></scroll></panel>";
 			$('#MissingDevicesGroups>panel.group').append(s);
 			$('#MissingDevicesGroups>panel.group>panel.child').attr("right", "").removeAttr("open").removeAttr("left");
 			$('#MissingDevicesGroups>panel.group>panel.child:last-child').attr("open", "").removeAttr("left").removeAttr("right");
