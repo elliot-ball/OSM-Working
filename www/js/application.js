@@ -45,6 +45,8 @@ try{
 		oldScale: 1,
 		scale: 1,
 		matrix: null,
+		x: 0,
+		y: 0
 	};
 	//Change CSS based on devcie type
 	//IOS Style
@@ -3668,8 +3670,10 @@ function ReturnBlob( data ){
 				transform.end = e.gesture.center;
 			break;
 			case "drag":
-				alert(e.gesture.deltaX);
-				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+e.gesture.deltaX+","+e.gesture.deltaY+")");
+				// alert(e.gesture.deltaX);
+				transform.x += e.gesture.deltaX;
+				transform.y += e.gesture.deltaY;
+				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
 			break;
 		}
 	});
