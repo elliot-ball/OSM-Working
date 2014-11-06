@@ -3654,6 +3654,7 @@ function ReturnBlob( data ){
 		switch( e.type ){
 			case "transformstart":
 				transform.start = e.gesture.center;
+				AddMessage("map touch","long","top");
 			break;
 			case "transform":
 
