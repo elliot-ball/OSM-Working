@@ -3572,53 +3572,53 @@ function ReturnBlob( data ){
 				DragEvent.startObj = $(this);
 			break;
 			case "drag":
-				var offset = $('map').position();
-				var image = {
-					w: $('map>viewport>img').width(),
-					h: $('map>viewport>img').height(),
-				}
-				var left = $('map>viewport>img').attr("offset").split(" ")[0];
-				var top = $('map>viewport>img').attr("offset").split(" ")[1];
-				var buffer = 10;
-				var maxX = parseFloat(image.w) - (buffer*2);
-				var maxY = parseFloat(image.h) - buffer;
+					var offset = $('map').position();
+					var image = {
+						w: $('map>viewport>img').width(),
+						h: $('map>viewport>img').height(),
+					}
+					var left = $('map>viewport>img').attr("offset").split(" ")[0];
+					var top = $('map>viewport>img').attr("offset").split(" ")[1];
+					var buffer = 10;
+					var maxX = parseFloat(image.w) - (buffer*2);
+					var maxY = parseFloat(image.h) - buffer;
 
-				DragEvent.delta.x = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
-				DragEvent.delta.y = e.gesture.center.pageY - parseFloat( offset.top) - parseFloat(top);
+					DragEvent.delta.x = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
+					DragEvent.delta.y = e.gesture.center.pageY - parseFloat( offset.top) - parseFloat(top);
 
-				DragEvent.delta.x = Math.max(buffer,DragEvent.delta.x);
-				DragEvent.delta.y = Math.max(buffer,DragEvent.delta.y);
-				DragEvent.delta.x = Math.min(maxX, DragEvent.delta.x);
-				DragEvent.delta.y = Math.min(maxY, DragEvent.delta.y);
+					DragEvent.delta.x = Math.max(buffer,DragEvent.delta.x);
+					DragEvent.delta.y = Math.max(buffer,DragEvent.delta.y);
+					DragEvent.delta.x = Math.min(maxX, DragEvent.delta.x);
+					DragEvent.delta.y = Math.min(maxY, DragEvent.delta.y);
 
-				var rot = "";
-				var n = "1,0,0,-1";
-				var s = "1,0, 0, 1";
-				var e = "0,-1, 1, 0";
-				var w = "0, 1, -1, 0";
-				var se = "1,-0.5,0.5,1";
-				var sw = "1,-0.5,-0.5,1";
-				var ne = "-1,-0.5,0.5,-1";
-				var nw = "-1,0.5,-0.5,-1";
+					var rot = "";
+					var n = "1,0,0,-1";
+					var s = "1,0, 0, 1";
+					var e = "0,-1, 1, 0";
+					var w = "0, 1, -1, 0";
+					var se = "1,-0.5,0.5,1";
+					var sw = "1,-0.5,-0.5,1";
+					var ne = "-1,-0.5,0.5,-1";
+					var nw = "-1,0.5,-0.5,-1";
 
-				//make this a percentage of the map width & height
-				rot = s;
-				if( DragEvent.delta.x < 70)
-					rot = w;
-				if( DragEvent.delta.x > parseFloat( image.w ) - 70)
-					rot = e;
-				if( DragEvent.delta.y < 70 )
-					rot = n;
+					//make this a percentage of the map width & height
+					rot = s;
+					if( DragEvent.delta.x < 70)
+						rot = w;
+					if( DragEvent.delta.x > parseFloat( image.w ) - 70)
+						rot = e;
+					if( DragEvent.delta.y < 70 )
+						rot = n;
 
-				$(DragEvent.startObj).css({
-					"-webkit-transform" : "matrix("+rot+","+DragEvent.delta.x+","+DragEvent.delta.y+")",
-				});
+					$(DragEvent.startObj).css({
+						"-webkit-transform" : "matrix("+rot+","+DragEvent.delta.x+","+DragEvent.delta.y+")",
+					});
 				for (var i = 0; i < Devices.length; i++) {
 					if( Devices[i].ID_Device == $(DragEvent.startObj).attr('id') ){
 						Devices[i].X = DragEvent.delta.x / parseFloat( $('map>viewport>img').width()) * MAPWIDTH;
 						Devices[i].Y = DragEvent.delta.y / parseFloat( $('map>viewport>img').height()) * MAPHEIGHT;
 						if( CurrentDevice.ID_Device == Devices[i].ID_Device) {
-							$('#infoDevicePosition').val( Devices[i].X.toFixed(0)+" : "+ Devices[i].Y.toFixed(0) );
+								$('#infoDevicePosition').val( Devices[i].X.toFixed(0)+" : "+ Devices[i].Y.toFixed(0) );
 						}
 					}
 				};
@@ -3771,12 +3771,9 @@ function ReturnBlob( data ){
 			// var tempTest = thisPanel.find(".selectedGroup");
 			// tempTest.removeClass(".selectedGroup");
 			thisPanel.find(".selectedGroup").removeClass("selectedGroup");
-			
-			
 			$(this).addClass("selectedGroup");
-			GroupTree.MoveForward( id );
-			movingGroup = true;
 			
+			GroupTree.MoveForward( id );
 
 
 			// var scrollMe = $("#GroupPanel>panel.group");
@@ -3790,7 +3787,7 @@ function ReturnBlob( data ){
 			// Spinner.show();
 			// var id = $(this).attr("value");
 			// PanelTree.MoveForward( id );
-			
+			movingGroup = true;
 			
 		}
 		setTimeout(function() {
