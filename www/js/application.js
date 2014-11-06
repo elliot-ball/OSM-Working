@@ -3674,8 +3674,8 @@ function ReturnBlob( data ){
 				// e.gesture contains a value that is equal to the speed and distance of the drag event,
 				// it is divided by 10 to make a slower drag
 				// transform.x/transform.y hold the current coords of the map
-				posX = transform.x + e.gesture.deltaX/10; 
-				posY = transform.y + e.gesture.deltaY/10;
+				posX = transform.x + e.gesture.deltaX; 
+				posY = transform.y + e.gesture.deltaY;
 
 				// Limit the coords the map can reach thus keeping the map on screen at all times
 				// TODO: this limit should be improportion to the map size? and not a fixed value?
