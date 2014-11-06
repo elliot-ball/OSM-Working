@@ -3669,6 +3669,7 @@ function ReturnBlob( data ){
 			break;
 			case "drag":
 				alert(e.gesture.deltaX);
+				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+e.gesture.deltaX+","+e.gesture.deltaY+")");
 			break;
 		}
 	});
