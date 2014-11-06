@@ -46,7 +46,9 @@ try{
 		scale: 1,
 		matrix: null,
 		x: 0,
-		y: 0
+		y: 0,
+		lastX: 0,
+		lastY: 0
 	};
 	//Change CSS based on devcie type
 	//IOS Style
@@ -3674,8 +3676,8 @@ function ReturnBlob( data ){
 				// e.gesture contains a value that is equal to the speed and distance of the drag event,
 				// it is divided by 10 to make a slower drag
 				// transform.x/transform.y hold the current coords of the map
-				posX = transform.x + e.gesture.deltaX; 
-				posY = transform.y + e.gesture.deltaY;
+				transform.x = e.gesture.deltaX + transform.lastX; 
+				transform.y = e.gesture.deltaY + transform.lastY;
 
 				// Limit the coords the map can reach thus keeping the map on screen at all times
 				// TODO: this limit should be improportion to the map size? and not a fixed value?
@@ -3693,12 +3695,12 @@ function ReturnBlob( data ){
 				// }
 			break;
 			case 'dragend':
-				transform.x = posX;
-				transform.y = posY;
+				lastX = transform.x;
+				lastY = transform.y;
 			break;
 		}
 		// Apply the drag operation on the map
-		$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+posX+","+posY+")");
+		$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
 	});
 
 
