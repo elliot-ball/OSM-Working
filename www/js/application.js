@@ -3651,7 +3651,7 @@ function ReturnBlob( data ){
 //Nothing to see here
 	$('map>viewport').hammer(HammerOptions).on("transformstart transform transformend", function(e){
 		e.preventDefault();
-		AddMessage(e.type,"long","top");
+		AddMessage(e.type,"short","top");
 		switch( e.type ){
 			case "transformstart":
 				transform.start = e.gesture.center;
