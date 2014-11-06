@@ -35,7 +35,7 @@
 <!-- <preference name="BackgroundColor" value="0xff0000ff"/> -->
 <preference name="HideKeyboardFormAccessoryBar" value="true"/>
 <preference name="AutoHideSplashScreen" value="false"/>
-<uses-permission android:name="android.permission.INTERNET"/>
+
 
 
 
