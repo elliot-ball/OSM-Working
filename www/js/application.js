@@ -3668,17 +3668,12 @@ function ReturnBlob( data ){
 				transform.end = e.gesture.center;
 			break;
 			case "drag":
-				alert("here");
+				alert(e.gesture.deltaX);
 			break;
 		}
 	});
-	alert("made it");
 
-// pan view on map
-	// $('map>viewport').hammer(HammerOptions).on("drag", function(e){
-	// 	// e.preventDefault();
-	// 	// alert(e.type);
-	// });
+
 
 	function GetFirstGroup(){
 		console.log("getting first group");
