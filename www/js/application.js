@@ -3673,7 +3673,7 @@ function ReturnBlob( data ){
 	});
 
 // pan view on map
-	$('map>viewport').hammer(HammerOptions).on("pan", function(e){
+	$('map>viewport').hammer(HammerOptions).on("drag", function(e){
 		e.preventDefault();
 		alert(e.type);
 	});
