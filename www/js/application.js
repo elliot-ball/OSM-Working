@@ -3649,7 +3649,7 @@ function ReturnBlob( data ){
 	})
 
 // pinch to zoom on map
-	$('map>viewport').hammer(HammerOptions).on("transformstart transform transformend", function(e){
+	$('map>viewport').hammer(HammerOptions).on("transformstart transform transformend drag", function(e){
 		e.preventDefault();
 		// AddMessage(e.type,"short","top");
 		switch( e.type ){
@@ -3662,21 +3662,23 @@ function ReturnBlob( data ){
 				transform.scale = Math.min( 5, transform.scale);
 				transform.matrix = $(this).css("-webkit-transform").replace(/(matrix)|([\()])/g, " ").split(",");
 				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+",0,0)");
-
-
 			break;
 			case "transformend":
 				transform.oldScale = transform.scale;
 				transform.end = e.gesture.center;
 			break;
+			case "drag":
+				alert("here");
+			break;
 		}
 	});
+	alert("made it");
 
 // pan view on map
-	$('map>viewport').hammer(HammerOptions).on("drag", function(e){
-		e.preventDefault();
-		alert(e.type);
-	});
+	// $('map>viewport').hammer(HammerOptions).on("drag", function(e){
+	// 	// e.preventDefault();
+	// 	// alert(e.type);
+	// });
 
 	function GetFirstGroup(){
 		console.log("getting first group");
