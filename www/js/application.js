@@ -3671,8 +3671,8 @@ function ReturnBlob( data ){
 			break;
 			case "drag":
 				// alert(e.gesture.deltaX);
-				transform.x += e.gesture.deltaX;
-				transform.y += e.gesture.deltaY;
+				transform.x -= e.gesture.deltaX;
+				transform.y -= e.gesture.deltaY;
 				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
 			break;
 		}
