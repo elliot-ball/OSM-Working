@@ -3650,7 +3650,8 @@ function ReturnBlob( data ){
 		}
 	})
 
-// pinch to zoom on map
+// pinch to zoom on map and dragging of the map
+// transform is an object that holds the position and scale of the current map
 	$('map>viewport').hammer(HammerOptions).on("transformstart transform transformend drag", function(e){
 		e.preventDefault();
 		// AddMessage(e.type,"short","top");
@@ -3670,9 +3671,14 @@ function ReturnBlob( data ){
 				transform.end = e.gesture.center;
 			break;
 			case "drag":
-				// alert(e.gesture.deltaX);
-				transform.x += e.gesture.deltaX/10;
-				transform.y += e.gesture.deltaY/10;
+				// e.gesture contains a value that is equal to the speed and distance of the drag event,
+				// it is divided by 10 to make a slower drag
+				// transform.x/transform.y hold the current coords of the map
+				posX = transform.x + e.gesture.deltaX/10; 
+				posY = transform.y + e.gesture.deltaY/10;
+
+				// Limit the coords the map can reach thus keeping the map on screen at all times
+				// TODO: this limit should be improportion to the map size? and not a fixed value?
 				if (transform.x > 200) {
 					transform.x = 200;
 				}
@@ -3685,9 +3691,14 @@ function ReturnBlob( data ){
 				if (transform.y < -200) {
 					transform.y = -200;
 				}
-				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
+			break;
+			case 'dragend':
+				transform.x = posX;
+				transform.y = posY;
 			break;
 		}
+		// Apply the drag operation on the map
+		$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+posX+","+posY+")");
 	});
 
 
