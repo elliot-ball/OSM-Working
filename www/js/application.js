@@ -3671,8 +3671,20 @@ function ReturnBlob( data ){
 			break;
 			case "drag":
 				// alert(e.gesture.deltaX);
-				transform.x -= e.gesture.deltaX;
-				transform.y -= e.gesture.deltaY;
+				transform.x -= e.gesture.deltaX/2;
+				transform.y -= e.gesture.deltaY/2;
+				if (transform.x > 200) {
+					transform.x = 200;
+				}
+				if (transform.x < -200) {
+					transform.x = -200;
+				}
+				if (transform.y > 200) {
+					transform.y = 200;
+				}
+				if (transform.y < -200) {
+					transform.y = -200;
+				}
 				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
 			break;
 		}
