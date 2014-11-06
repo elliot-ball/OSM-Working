@@ -3648,10 +3648,10 @@ function ReturnBlob( data ){
 		}
 	})
 
-//Nothing to see here
+// pinch to zoom on map
 	$('map>viewport').hammer(HammerOptions).on("transformstart transform transformend", function(e){
 		e.preventDefault();
-		AddMessage(e.type,"short","top");
+		// AddMessage(e.type,"short","top");
 		switch( e.type ){
 			case "transformstart":
 				transform.start = e.gesture.center;
@@ -3670,6 +3670,12 @@ function ReturnBlob( data ){
 				transform.end = e.gesture.center;
 			break;
 		}
+	});
+
+// pan view on map
+	$('map>viewport').hammer(HammerOptions).on("pan", function(e){
+		e.preventDefault();
+		alert(e.type);
 	});
 
 	function GetFirstGroup(){
