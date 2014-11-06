@@ -3673,10 +3673,10 @@ function ReturnBlob( data ){
 	});
 
 // pan view on map
-	$('map>viewport').hammer(HammerOptions).on("drag", function(e){
-		e.preventDefault();
-		alert(e.type);
-	});
+	// $('map>viewport').hammer(HammerOptions).on("drag", function(e){
+	// 	e.preventDefault();
+	// 	alert(e.type);
+	// });
 
 	function GetFirstGroup(){
 		console.log("getting first group");
