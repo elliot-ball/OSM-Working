@@ -3695,8 +3695,8 @@ function ReturnBlob( data ){
 				// }
 			break;
 			case 'dragend':
-				lastX = transform.x;
-				lastY = transform.y;
+				transform.lastX = transform.x;
+				transform.lastY = transform.y;
 			break;
 		}
 		// Apply the drag operation on the map
