@@ -3671,8 +3671,8 @@ function ReturnBlob( data ){
 			break;
 			case "drag":
 				// alert(e.gesture.deltaX);
-				transform.x -= e.gesture.deltaX/2;
-				transform.y -= e.gesture.deltaY/2;
+				transform.x += e.gesture.deltaX/4;
+				transform.y += e.gesture.deltaY/4;
 				if (transform.x > 200) {
 					transform.x = 200;
 				}
