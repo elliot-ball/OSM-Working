@@ -3677,7 +3677,7 @@ function ReturnBlob( data ){
 				transform.end = e.gesture.center;
 			break;
 			case "drag":
-				if($('viewport>pog').find('pog') > 0){
+				if($('viewport').find('pog.selecteddevice') > 0){
 					alert("woop");
 				}
 
