@@ -3687,18 +3687,18 @@ function ReturnBlob( data ){
 					
 					// Limit the coords the map can reach thus keeping the map on screen at all times
 					// TODO: this limit should be improportion to the map size? and not a fixed value?
-					if (transform.lastX > 200) {
-						transform.lastX = 200;
-					}
-					if (transform.lastX < -200) {
-						transform.lastX = -200;
-					}
-					if (transform.lastY > 200) {
-						transform.lastY = 200;
-					}
-					if (transform.lastY < -200) {
-						transform.lastY = -200;
-					}
+					// if (transform.lastX > 200) {
+					// 	transform.lastX = 200;
+					// }
+					// if (transform.lastX < -200) {
+					// 	transform.lastX = -200;
+					// }
+					// if (transform.lastY > 200) {
+					// 	transform.lastY = 200;
+					// }
+					// if (transform.lastY < -200) {
+					// 	transform.lastY = -200;
+					// }
 				}
 				// alert($('viewport').find('pog.selecteddevice').length);
 
@@ -3709,8 +3709,10 @@ function ReturnBlob( data ){
 				transform.lastY = transform.y;
 			break;
 		}
-		// Apply the drag operation on the map
-		$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
+		if(transform.x < 200 || transform.x > 200) {
+			// Apply the drag operation on the map
+			$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
+		}
 	});
 
 
