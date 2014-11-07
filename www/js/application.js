@@ -2779,7 +2779,11 @@ function ReturnBlob( data ){
 
 	var HammerOptions = {
 		preventMouse: true,
-		transformMinScale: 1.1
+		transform_always_block: true,
+		transformMinScale: 1.1,
+		drag_block_horizontal: true,
+	    drag_block_vertical: true,
+	    drag_min_distance: 0
 	}
 	var mDeviceOptions = {
 		preventDefault: true,
@@ -3695,8 +3699,8 @@ function ReturnBlob( data ){
 				// }
 			break;
 			case 'dragend':
-				transform.x = transform.lastX;
-				transform.y = transform.lastY;
+				transform.lastX = transform.x;
+				transform.lastY = transform.y;
 			break;
 		}
 		// Apply the drag operation on the map
