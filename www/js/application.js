@@ -3677,6 +3677,10 @@ function ReturnBlob( data ){
 				transform.end = e.gesture.center;
 			break;
 			case "drag":
+				if($('viewport>pog').find('pog') > 0){
+					alert("woop");
+				}
+
 				// e.gesture contains a value that is equal to the speed and distance of the drag event,
 				// it is divided by 10 to make a slower drag
 				// transform.x/transform.y hold the current coords of the map
