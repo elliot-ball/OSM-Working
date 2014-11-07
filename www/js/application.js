@@ -3658,9 +3658,9 @@ function ReturnBlob( data ){
 		e.preventDefault();
 		// AddMessage(e.type,"short","top");
 		switch( e.type ){
-			case "transformstart":
-				transform.start = e.gesture.center;
-			break;
+			// case "transformstart":
+			// 	transform.start = e.gesture.center;
+			// break;
 			case "transform":
 
 				transform.scale = Math.max( 1.0, e.gesture.scale * transform.oldScale) ;
