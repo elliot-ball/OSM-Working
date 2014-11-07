@@ -3658,9 +3658,9 @@ function ReturnBlob( data ){
 		e.preventDefault();
 		// AddMessage(e.type,"short","top");
 		switch( e.type ){
-			// case "transformstart":
-			// 	transform.start = e.gesture.center;
-			// break;
+			case "transformstart":
+				transform.start = e.gesture.center;
+			break;
 			case "transform":
 
 				transform.scale = Math.max( 1.0, e.gesture.scale * transform.oldScale) ;
@@ -3695,8 +3695,8 @@ function ReturnBlob( data ){
 				// }
 			break;
 			case 'dragend':
-				transform.lastX = transform.x;
-				transform.lastY = transform.y;
+				transform.x = transform.lastX;
+				transform.y = transform.lastY;
 			break;
 		}
 		// Apply the drag operation on the map
