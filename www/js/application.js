@@ -3677,30 +3677,32 @@ function ReturnBlob( data ){
 				transform.end = e.gesture.center;
 			break;
 			case "drag":
+				// Check if there are any device pins that are currently selected so the map doesn't move when only the pins should
 				if($('viewport').find('pog.selecteddevice').length === 0){
 					// e.gesture contains a value that is equal to the speed and distance of the drag event,
 					// it is divided by 10 to make a slower drag
 					// transform.x/transform.y hold the current coords of the map
 					transform.x = e.gesture.deltaX + transform.lastX; 
 					transform.y = e.gesture.deltaY + transform.lastY;
+					
+					// Limit the coords the map can reach thus keeping the map on screen at all times
+					// TODO: this limit should be improportion to the map size? and not a fixed value?
+					if (transform.lastX > 200) {
+						transform.lastX = 200;
+					}
+					if (transform.lastX < -200) {
+						transform.lastX = -200;
+					}
+					if (transform.lastY > 200) {
+						transform.lastY = 200;
+					}
+					if (transform.lastY < -200) {
+						transform.lastY = -200;
+					}
 				}
 				// alert($('viewport').find('pog.selecteddevice').length);
 
 
-				// Limit the coords the map can reach thus keeping the map on screen at all times
-				// TODO: this limit should be improportion to the map size? and not a fixed value?
-				if (transform.x > 200) {
-					transform.x = 200;
-				}
-				if (transform.x < -200) {
-					transform.x = -200;
-				}
-				if (transform.y > 200) {
-					transform.y = 200;
-				}
-				if (transform.y < -200) {
-					transform.y = -200;
-				}
 			break;
 			case 'dragend':
 				transform.lastX = transform.x;
