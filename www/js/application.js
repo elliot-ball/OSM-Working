@@ -3680,6 +3680,7 @@ function ReturnBlob( data ){
 				if($('viewport').find('pog.selecteddevice') > 0){
 					alert("woop");
 				}
+				alert($('viewport').find('pog.selecteddevice').length);
 
 				// e.gesture contains a value that is equal to the speed and distance of the drag event,
 				// it is divided by 10 to make a slower drag
