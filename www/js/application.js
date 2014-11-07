@@ -3677,16 +3677,15 @@ function ReturnBlob( data ){
 				transform.end = e.gesture.center;
 			break;
 			case "drag":
-				if($('viewport').find('pog.selecteddevice') > 0){
-					alert("woop");
+				if($('viewport').find('pog.selecteddevice').length === 0){
+					// e.gesture contains a value that is equal to the speed and distance of the drag event,
+					// it is divided by 10 to make a slower drag
+					// transform.x/transform.y hold the current coords of the map
+					transform.x = e.gesture.deltaX + transform.lastX; 
+					transform.y = e.gesture.deltaY + transform.lastY;
 				}
-				alert($('viewport').find('pog.selecteddevice').length);
+				// alert($('viewport').find('pog.selecteddevice').length);
 
-				// e.gesture contains a value that is equal to the speed and distance of the drag event,
-				// it is divided by 10 to make a slower drag
-				// transform.x/transform.y hold the current coords of the map
-				transform.x = e.gesture.deltaX + transform.lastX; 
-				transform.y = e.gesture.deltaY + transform.lastY;
 
 				// Limit the coords the map can reach thus keeping the map on screen at all times
 				// TODO: this limit should be improportion to the map size? and not a fixed value?
