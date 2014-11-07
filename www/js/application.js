@@ -3689,18 +3689,18 @@ function ReturnBlob( data ){
 
 				// Limit the coords the map can reach thus keeping the map on screen at all times
 				// TODO: this limit should be improportion to the map size? and not a fixed value?
-				// if (transform.x > 200) {
-				// 	transform.x = 200;
-				// }
-				// if (transform.x < -200) {
-				// 	transform.x = -200;
-				// }
-				// if (transform.y > 200) {
-				// 	transform.y = 200;
-				// }
-				// if (transform.y < -200) {
-				// 	transform.y = -200;
-				// }
+				if (transform.x > 200) {
+					transform.x = 200;
+				}
+				if (transform.x < -200) {
+					transform.x = -200;
+				}
+				if (transform.y > 200) {
+					transform.y = 200;
+				}
+				if (transform.y < -200) {
+					transform.y = -200;
+				}
 			break;
 			case 'dragend':
 				transform.lastX = transform.x;
