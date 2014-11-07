@@ -3658,7 +3658,7 @@ function ReturnBlob( data ){
 
 // pinch to zoom on map and dragging of the map
 // transform is an object that holds the position and scale of the current map
-	$('map>viewport').hammer(HammerOptions).on("transformstart transform transformend drag", function(e){
+	$('map>viewport').hammer(HammerOptions).on("transformstart transform transformend drag dragend", function(e){
 		e.preventDefault();
 		// AddMessage(e.type,"short","top");
 		switch( e.type ){
