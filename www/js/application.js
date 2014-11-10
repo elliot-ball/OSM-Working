@@ -3582,8 +3582,8 @@ function ReturnBlob( data ){
 			case "drag":
 					var offset = $('map').position();
 					var image = {
-						w: $('map>viewport>img').width(),
-						h: $('map>viewport>img').height(),
+						w: $('map>viewport>img').width()*transform.scale,
+						h: $('map>viewport>img').height()*transform.scale,
 					}
 					var left = $('map>viewport>img').attr("offset").split(" ")[0];
 					var top = $('map>viewport>img').attr("offset").split(" ")[1];
