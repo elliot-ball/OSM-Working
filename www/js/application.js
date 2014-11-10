@@ -3582,11 +3582,11 @@ function ReturnBlob( data ){
 			case "drag":
 					var offset = $('map').position();
 					var image = {
-						w: $('map>viewport>img').width()*transform.scale,
-						h: $('map>viewport>img').height()*transform.scale,
+						w: $('map>viewport>img').width(),
+						h: $('map>viewport>img').height(),
 					}
-					var left = $('map>viewport>img').attr("offset").split(" ")[0];
-					var top = $('map>viewport>img').attr("offset").split(" ")[1];
+					var left = $('map>viewport>img').attr("offset").split(" ")[0]*transform.scale;
+					var top = $('map>viewport>img').attr("offset").split(" ")[1]*transform.scale;
 					var buffer = 10;
 					var maxX = parseFloat(image.w) - (buffer*2);
 					var maxY = parseFloat(image.h) - buffer;
