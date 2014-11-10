@@ -3714,7 +3714,7 @@ function ReturnBlob( data ){
 		if(transform.x < 200 || transform.x > 200) {
 			// Apply the drag operation on the map
 			$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
-			alert(e.target);
+			alert(e.target.tagName);
 		}
 	});
 
