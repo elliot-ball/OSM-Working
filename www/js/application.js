@@ -3679,7 +3679,7 @@ function ReturnBlob( data ){
 			break;
 			case "drag":
 				// Check if there are any device pins that are currently selected so the map doesn't move when only the pins should
-				if($('viewport').find('pog.selecteddevice').length === 0){
+				
 					// e.gesture contains a value that is equal to the speed and distance of the drag event,
 					// it is divided by 10 to make a slower drag
 					// transform.x/transform.y hold the current coords of the map
@@ -3700,9 +3700,8 @@ function ReturnBlob( data ){
 					// if (transform.lastY < -200) {
 					// 	transform.lastY = -200;
 					// }
-				}
+				
 				// alert($('viewport').find('pog.selecteddevice').length);
-
 
 			break;
 			case 'dragend':
