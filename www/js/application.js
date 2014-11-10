@@ -3670,7 +3670,8 @@ function ReturnBlob( data ){
 				transform.scale = Math.max( 1.0, e.gesture.scale * transform.oldScale) ;
 				transform.scale = Math.min( 5, transform.scale);
 				transform.matrix = $(this).css("-webkit-transform").replace(/(matrix)|([\()])/g, " ").split(",");
-				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+",0,0)");
+				// $(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+",0,0)");
+				// $(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+",0,0)");
 			break;
 			case "transformend":
 				transform.oldScale = transform.scale;
@@ -3709,9 +3710,11 @@ function ReturnBlob( data ){
 				transform.lastY = transform.y;
 			break;
 		}
+
 		if(transform.x < 200 || transform.x > 200) {
 			// Apply the drag operation on the map
 			$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
+			alert(e.target);
 		}
 	});
 
