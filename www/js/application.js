@@ -3619,7 +3619,7 @@ function ReturnBlob( data ){
 						rot = n;
 
 					$(DragEvent.startObj).css({
-						"-webkit-transform" : "matrix("+rot+","+DragEvent.delta.x/transform.scale+","+DragEvent.delta.y/transform.scale+")",
+						"-webkit-transform" : "matrix("+rot+","+DragEvent.delta.x+","+DragEvent.delta.y+")",
 					});
 				for (var i = 0; i < Devices.length; i++) {
 					if( Devices[i].ID_Device == $(DragEvent.startObj).attr('id') ){
