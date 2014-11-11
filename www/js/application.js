@@ -3580,13 +3580,16 @@ function ReturnBlob( data ){
 				DragEvent.startObj = $(this);
 			break;
 			case "drag":
+					// Returns top and left of the absolute positioned map element
 					var offset = $('map').position();
+					// Gets the width and height of the map
 					var image = {
-						w: $('map>viewport>img').width(),
+						w: $('map>viewport>img').width(), 
 						h: $('map>viewport>img').height(),
 					}
-					var left = $('map>viewport>img').attr("offset").split(" ")[0]*transform.scale;
-					var top = $('map>viewport>img').attr("offset").split(" ")[1]*transform.scale;
+					// Get the offset of the map
+					var left = $('map>viewport>img').attr("offset").split(" ")[0];
+					var top = $('map>viewport>img').attr("offset").split(" ")[1];
 					var buffer = 10;
 					var maxX = parseFloat(image.w) - (buffer*2);
 					var maxY = parseFloat(image.h) - buffer;
