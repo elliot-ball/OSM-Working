@@ -3593,12 +3593,12 @@ function ReturnBlob( data ){
 					// Get the transform css values that are used to move the map around the screen
 					mapTransformCoords = $('map>viewport').css("-webkit-transform").split(",");
 
-					alert("x:"+mapTransformCoords[4]+" y:"+mapTransformCoords[5].split(")")[0]);
+					// alert("x:"+mapTransformCoords[4]+" y:"+mapTransformCoords[5].split(")")[0]);
 
 					left += mapTransformCoords[4];
 					top += mapTransformCoords[5].split(")")[0];
 
-					alert("After L:"+left+" T:"+top);
+					// alert("After L:"+left+" T:"+top);
 
 					var buffer = 10;
 					var maxX = parseFloat(image.w) - (buffer*2);
