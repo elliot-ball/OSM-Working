@@ -3725,7 +3725,9 @@ function ReturnBlob( data ){
 				// Get the offset of the map
 				var left = $('map>viewport>img').attr("offset").split(" ")[0];
 				var top = $('map>viewport>img').attr("offset").split(" ")[1];
+				alert($('map>viewport>img').attr("offset"));
 				$('map>viewport>img').attr("offset") = left + transform.x + " " + transform.y + top;
+				alert($('map>viewport>img').attr("offset"));
 			}
 		}
 	});
