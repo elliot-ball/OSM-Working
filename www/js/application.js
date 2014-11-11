@@ -3587,11 +3587,18 @@ function ReturnBlob( data ){
 						w: $('map>viewport>img').width(), 
 						h: $('map>viewport>img').height(),
 					}
-					// Get the offset of the map
+					// Get the offset of the map - the left and top css values used to center the map
 					var left = $('map>viewport>img').attr("offset").split(" ")[0];
 					var top = $('map>viewport>img').attr("offset").split(" ")[1];
-					
-					alert("L:"+left+" T:"+top);
+					// Get the transform css values that are used to move the map around the screen
+					mapTransformCoords = $('map>viewport>img').css("-webkit-transform").split(",");
+
+					alert("Before L:"+left+" T:"+top);
+
+					left += mapTransformCoords[4];
+					top += mapTransformCoords[5].split(")")[0];
+
+					alert("After L:"+left+" T:"+top);
 
 					var buffer = 10;
 					var maxX = parseFloat(image.w) - (buffer*2);
@@ -3721,13 +3728,6 @@ function ReturnBlob( data ){
 			if(e.target.tagName === "IMG") {
 				// Apply the drag operation on the map
 				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
-
-				// Get the offset of the map
-				var left = $('map>viewport>img').attr("offset").split(" ")[0];
-				var top = $('map>viewport>img').attr("offset").split(" ")[1];
-				alert($('map>viewport>img').attr("offset"));
-				$('map>viewport>img').attr("offset") = left + transform.x + " " + transform.y + top;
-				alert($('map>viewport>img').attr("offset"));
 			}
 		}
 	});
