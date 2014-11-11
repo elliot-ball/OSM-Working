@@ -3580,7 +3580,7 @@ function ReturnBlob( data ){
 				DragEvent.startObj = $(this);
 			break;
 			case "drag":
-					// Returns top and left of the absolute positioned map element
+					// Returns top and left of the absolute positioned map element or container?
 					var offset = $('map').position();
 					// Gets the width and height of the map
 					var image = {
@@ -3721,6 +3721,11 @@ function ReturnBlob( data ){
 			if(e.target.tagName === "IMG") {
 				// Apply the drag operation on the map
 				$(this).css("-webkit-transform", "matrix("+transform.scale+",0,0,"+transform.scale+","+transform.x+","+transform.y+")");
+
+				// Get the offset of the map
+				var left = $('map>viewport>img').attr("offset").split(" ")[0];
+				var top = $('map>viewport>img').attr("offset").split(" ")[1];
+				$('map>viewport>img').attr("offset") = left + transform.x + " " + transform.y + top;
 			}
 		}
 	});
