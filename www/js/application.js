@@ -3587,10 +3587,12 @@ function ReturnBlob( data ){
 						w: $('map>viewport>img').width(), 
 						h: $('map>viewport>img').height(),
 					}
-					alert("w:"+image.w+" h:"+image.h);
 					// Get the offset of the map
 					var left = $('map>viewport>img').attr("offset").split(" ")[0];
 					var top = $('map>viewport>img').attr("offset").split(" ")[1];
+					
+					alert("L:"+left+" T:"+top);
+
 					var buffer = 10;
 					var maxX = parseFloat(image.w) - (buffer*2);
 					var maxY = parseFloat(image.h) - buffer;
