@@ -3591,7 +3591,7 @@ function ReturnBlob( data ){
 					var left = $('map>viewport>img').attr("offset").split(" ")[0];
 					var top = $('map>viewport>img').attr("offset").split(" ")[1];
 					// Get the transform css values that are used to move the map around the screen
-					mapTransformCoords = $('map>viewport>img').css("-webkit-transform").split(",");
+					mapTransformCoords = $('map>viewport').css("-webkit-transform").split(",");
 
 					alert("x:"+mapTransformCoords[4]+" y:"+mapTransformCoords[5].split(")")[0]);
 
