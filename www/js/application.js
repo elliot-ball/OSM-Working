@@ -3647,7 +3647,7 @@ function ReturnBlob( data ){
 							Devices[i].Y = y;
 							AddChanges( Devices[i].ID_Device, 'position', Devices[i].X.toFixed(0)+" "+Devices[i].Y.toFixed(0));
 							if( CurrentDevice.ID_Device == Devices[i].ID_Device) {
-									$('#infoDevicePosition').val( Devices[i].X.toFixed(0)+" : "+ Devices[i].Y.toFixed(0) );
+								$('#infoDevicePosition').val( Devices[i].X.toFixed(0)+" : "+ Devices[i].Y.toFixed(0) );
 							}
 						}
 				};
