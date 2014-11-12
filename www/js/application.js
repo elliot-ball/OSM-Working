@@ -3605,8 +3605,8 @@ function ReturnBlob( data ){
 				DragEvent.delta.y = e.gesture.center.pageY - parseFloat( offset.top) - parseFloat(top);
 
 
-				DragEvent.delta.x += parseFloat(mapTransformCoords[4])/2;
-				DragEvent.delta.y += parseFloat(mapTransformCoords[5].split(")")[0])/2;
+				// DragEvent.delta.x += parseFloat(mapTransformCoords[4]);
+				// DragEvent.delta.y += parseFloat(mapTransformCoords[5].split(")")[0]);
 
 				DragEvent.delta.x = Math.max(buffer,DragEvent.delta.x);
 				DragEvent.delta.y = Math.max(buffer,DragEvent.delta.y);
