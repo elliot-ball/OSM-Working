@@ -3604,14 +3604,18 @@ function ReturnBlob( data ){
 					DragEvent.delta.x = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
 					DragEvent.delta.y = e.gesture.center.pageY - parseFloat( offset.top) - parseFloat(top);
 
-					DragEvent.delta.x += parseFloat(mapTransformCoords[4]);
-					DragEvent.delta.y += parseFloat(mapTransformCoords[5].split(")")[0]);
+					
+					// DragEvent.delta.x += parseFloat(mapTransformCoords[4]);
+					// DragEvent.delta.y += parseFloat(mapTransformCoords[5].split(")")[0]);
 
 					DragEvent.delta.x = Math.max(buffer,DragEvent.delta.x);
 					DragEvent.delta.y = Math.max(buffer,DragEvent.delta.y);
 					DragEvent.delta.x = Math.min(maxX, DragEvent.delta.x);
 					DragEvent.delta.y = Math.min(maxY, DragEvent.delta.y);
 
+					// rot = rotation
+					// rot will hold the first 4 values needed for the css transition property
+					// this depends on what direction from the center of the map the device pin is
 					var rot = "";
 					var n = "1,0,0,-1";
 					var s = "1,0, 0, 1";
