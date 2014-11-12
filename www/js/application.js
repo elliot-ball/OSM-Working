@@ -3580,65 +3580,65 @@ function ReturnBlob( data ){
 				DragEvent.startObj = $(this);
 			break;
 			case "drag":
-					// Returns top and left of the absolute positioned map element or container?
-					var offset = $('map').position();
-					// Gets the width and height of the map
-					var image = {
-						w: $('map>viewport>img').width(), 
-						h: $('map>viewport>img').height(),
-					}
-					// Get the offset of the map - the left and top css values used to center the map
-					var left = $('map>viewport>img').attr("offset").split(" ")[0];
-					var top = $('map>viewport>img').attr("offset").split(" ")[1];
-					// Get the transform css values that are used to move the map around the screen
-					mapTransformCoords = $('map>viewport').css("-webkit-transform").split(",");
+				// Returns top and left of the absolute positioned map element or container?
+				var offset = $('map').position();
+				// Gets the width and height of the map
+				var image = {
+					w: $('map>viewport>img').width(), 
+					h: $('map>viewport>img').height(),
+				}
+				// Get the offset of the map - the left and top css values used to center the map
+				var left = $('map>viewport>img').attr("offset").split(" ")[0];
+				var top = $('map>viewport>img').attr("offset").split(" ")[1];
+				// Get the transform css values that are used to move the map around the screen
+				mapTransformCoords = $('map>viewport').css("-webkit-transform").split(",");
 
-					// alert("x:"+mapTransformCoords[4]+" y:"+mapTransformCoords[5].split(")")[0]);
-					
-					// alert("After L:"+left+" T:"+top);
+				// alert("x:"+mapTransformCoords[4]+" y:"+mapTransformCoords[5].split(")")[0]);
+				
+				// alert("After L:"+left+" T:"+top);
 
-					var buffer = 10;
-					var maxX = parseFloat(image.w) - (buffer*2);
-					var maxY = parseFloat(image.h) - buffer;
+				var buffer = 10;
+				var maxX = parseFloat(image.w) - (buffer*2);
+				var maxY = parseFloat(image.h) - buffer;
 
-					DragEvent.delta.x = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
-					DragEvent.delta.y = e.gesture.center.pageY - parseFloat( offset.top) - parseFloat(top);
+				DragEvent.delta.x = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
+				DragEvent.delta.y = e.gesture.center.pageY - parseFloat( offset.top) - parseFloat(top);
 
 
-					// DragEvent.delta.x += parseFloat(mapTransformCoords[4]);
-					// DragEvent.delta.y += parseFloat(mapTransformCoords[5].split(")")[0]);
+				DragEvent.delta.x += parseFloat(mapTransformCoords[4])/2;
+				DragEvent.delta.y += parseFloat(mapTransformCoords[5].split(")")[0])/2;
 
-					DragEvent.delta.x = Math.max(buffer,DragEvent.delta.x);
-					DragEvent.delta.y = Math.max(buffer,DragEvent.delta.y);
-					DragEvent.delta.x = Math.min(maxX, DragEvent.delta.x);
-					DragEvent.delta.y = Math.min(maxY, DragEvent.delta.y);
+				DragEvent.delta.x = Math.max(buffer,DragEvent.delta.x);
+				DragEvent.delta.y = Math.max(buffer,DragEvent.delta.y);
+				DragEvent.delta.x = Math.min(maxX, DragEvent.delta.x);
+				DragEvent.delta.y = Math.min(maxY, DragEvent.delta.y);
 
-					// TODO: Is rotating the device pin necessary?
-					// rot = rotation
-					// rot will hold the first 4 values needed for the css transition property
-					// this depends on what direction from the center of the map the device pin is
-					var rot = "";
-					var n = "1,0,0,-1";
-					var s = "1,0, 0, 1";
-					var e = "0,-1, 1, 0";
-					var w = "0, 1, -1, 0";
-					var se = "1,-0.5,0.5,1";
-					var sw = "1,-0.5,-0.5,1";
-					var ne = "-1,-0.5,0.5,-1";
-					var nw = "-1,0.5,-0.5,-1";
+				// TODO: Is rotating the device pin necessary?
+				// rot = rotation
+				// rot will hold the first 4 values needed for the css transition property
+				// this depends on what direction from the center of the map the device pin is
+				var rot = "";
+				var n = "1,0,0,-1";
+				var s = "1,0, 0, 1";
+				var e = "0,-1, 1, 0";
+				var w = "0, 1, -1, 0";
+				var se = "1,-0.5,0.5,1";
+				var sw = "1,-0.5,-0.5,1";
+				var ne = "-1,-0.5,0.5,-1";
+				var nw = "-1,0.5,-0.5,-1";
 
-					// make this a percentage of the map width & height
-					rot = s;
-					if( DragEvent.delta.x < 70)
-						rot = w;
-					if( DragEvent.delta.x > parseFloat( image.w ) - 70)
-						rot = e;
-					if( DragEvent.delta.y < 70 )
-						rot = n;
+				// make this a percentage of the map width & height
+				rot = s;
+				if( DragEvent.delta.x < 70)
+					rot = w;
+				if( DragEvent.delta.x > parseFloat( image.w ) - 70)
+					rot = e;
+				if( DragEvent.delta.y < 70 )
+					rot = n;
 
-					$(DragEvent.startObj).css({
-						"-webkit-transform" : "matrix("+rot+","+DragEvent.delta.x+","+DragEvent.delta.y+")",
-					});
+				$(DragEvent.startObj).css({
+					"-webkit-transform" : "matrix("+rot+","+DragEvent.delta.x+","+DragEvent.delta.y+")",
+				});
 				for (var i = 0; i < Devices.length; i++) {
 					if( Devices[i].ID_Device == $(DragEvent.startObj).attr('id') ){
 						Devices[i].X = DragEvent.delta.x / parseFloat( $('map>viewport>img').width()) * MAPWIDTH;
