@@ -3594,12 +3594,13 @@ function ReturnBlob( data ){
 					mapTransformCoords = $('map>viewport').css("-webkit-transform").split(",");
 
 					// alert("x:"+mapTransformCoords[4]+" y:"+mapTransformCoords[5].split(")")[0]);
+					
+					left = 0;
+					top = 0;
 
 					left += mapTransformCoords[4];
 					top += mapTransformCoords[5].split(")")[0];
 
-					left = 0;
-					top = 0;
 					// alert("After L:"+left+" T:"+top);
 
 					var buffer = 10;
