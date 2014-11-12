@@ -3595,20 +3595,17 @@ function ReturnBlob( data ){
 
 					// alert("x:"+mapTransformCoords[4]+" y:"+mapTransformCoords[5].split(")")[0]);
 					
-					left = 0;
-					top = 0;
-
-					left += mapTransformCoords[4];
-					top += mapTransformCoords[5].split(")")[0];
-
 					// alert("After L:"+left+" T:"+top);
 
 					var buffer = 10;
 					var maxX = parseFloat(image.w) - (buffer*2);
 					var maxY = parseFloat(image.h) - buffer;
 
-					DragEvent.delta.x = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
+					 = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
 					DragEvent.delta.y = e.gesture.center.pageY - parseFloat( offset.top) - parseFloat(top);
+
+					DragEvent.delta.x += mapTransformCoords[4];
+					DragEvent.delta.y += mapTransformCoords[5].split(")")[0];
 
 					DragEvent.delta.x = Math.max(buffer,DragEvent.delta.x);
 					DragEvent.delta.y = Math.max(buffer,DragEvent.delta.y);
