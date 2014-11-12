@@ -3601,7 +3601,7 @@ function ReturnBlob( data ){
 					var maxX = parseFloat(image.w) - (buffer*2);
 					var maxY = parseFloat(image.h) - buffer;
 
-					 = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
+					DragEvent.delta.x = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
 					DragEvent.delta.y = e.gesture.center.pageY - parseFloat( offset.top) - parseFloat(top);
 
 					DragEvent.delta.x += mapTransformCoords[4];
