@@ -3604,7 +3604,7 @@ function ReturnBlob( data ){
 					DragEvent.delta.x = e.gesture.center.pageX - parseFloat( offset.left) - parseFloat(left);
 					DragEvent.delta.y = e.gesture.center.pageY - parseFloat( offset.top) - parseFloat(top);
 
-					
+
 					// DragEvent.delta.x += parseFloat(mapTransformCoords[4]);
 					// DragEvent.delta.y += parseFloat(mapTransformCoords[5].split(")")[0]);
 
@@ -3616,27 +3616,27 @@ function ReturnBlob( data ){
 					// rot = rotation
 					// rot will hold the first 4 values needed for the css transition property
 					// this depends on what direction from the center of the map the device pin is
-					var rot = "";
-					var n = "1,0,0,-1";
+					// var rot = "";
+					// var n = "1,0,0,-1";
 					var s = "1,0, 0, 1";
-					var e = "0,-1, 1, 0";
-					var w = "0, 1, -1, 0";
-					var se = "1,-0.5,0.5,1";
-					var sw = "1,-0.5,-0.5,1";
-					var ne = "-1,-0.5,0.5,-1";
-					var nw = "-1,0.5,-0.5,-1";
+					// var e = "0,-1, 1, 0";
+					// var w = "0, 1, -1, 0";
+					// var se = "1,-0.5,0.5,1";
+					// var sw = "1,-0.5,-0.5,1";
+					// var ne = "-1,-0.5,0.5,-1";
+					// var nw = "-1,0.5,-0.5,-1";
 
 					//make this a percentage of the map width & height
-					rot = s;
-					if( DragEvent.delta.x < 70)
-						rot = w;
-					if( DragEvent.delta.x > parseFloat( image.w ) - 70)
-						rot = e;
-					if( DragEvent.delta.y < 70 )
-						rot = n;
+					// rot = s;
+					// if( DragEvent.delta.x < 70)
+					// 	rot = w;
+					// if( DragEvent.delta.x > parseFloat( image.w ) - 70)
+					// 	rot = e;
+					// if( DragEvent.delta.y < 70 )
+					// 	rot = n;
 
 					$(DragEvent.startObj).css({
-						"-webkit-transform" : "matrix("+rot+","+DragEvent.delta.x+","+DragEvent.delta.y+")",
+						"-webkit-transform" : "matrix("+s+","+DragEvent.delta.x+","+DragEvent.delta.y+")",
 					});
 				for (var i = 0; i < Devices.length; i++) {
 					if( Devices[i].ID_Device == $(DragEvent.startObj).attr('id') ){
