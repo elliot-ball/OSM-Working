@@ -3595,8 +3595,8 @@ function ReturnBlob( data ){
 
 					// alert("x:"+mapTransformCoords[4]+" y:"+mapTransformCoords[5].split(")")[0]);
 
-					left -= mapTransformCoords[4];
-					top -= mapTransformCoords[5].split(")")[0];
+					left += mapTransformCoords[4];
+					top += mapTransformCoords[5].split(")")[0];
 
 					// alert("After L:"+left+" T:"+top);
 
