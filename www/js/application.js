@@ -3627,7 +3627,7 @@ function ReturnBlob( data ){
 					var ne = "-1,-0.5,0.5,-1";
 					var nw = "-1,0.5,-0.5,-1";
 
-					make this a percentage of the map width & height
+					// make this a percentage of the map width & height
 					rot = s;
 					if( DragEvent.delta.x < 70)
 						rot = w;
